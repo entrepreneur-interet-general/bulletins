@@ -5,8 +5,8 @@ namespace App\Mail;
 use App\Report;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Carbon;
+use Illuminate\Queue\SerializesModels;
 
 class WeeklyReport extends Mailable
 {
