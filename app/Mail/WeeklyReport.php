@@ -4,7 +4,6 @@ namespace App\Mail;
 
 use App\Report;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Carbon;
@@ -12,7 +11,6 @@ use Illuminate\Support\Carbon;
 class WeeklyReport extends Mailable
 {
     use Queueable, SerializesModels;
-
 
     public function build()
     {
