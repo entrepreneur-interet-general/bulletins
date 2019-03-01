@@ -236,6 +236,7 @@ return [
       'DataJust',
       'DataReg',
       'EIG Link',
+      'EIG Node',
       'Explo Code',
       'IA Flash',
       "Karfu 'R",
