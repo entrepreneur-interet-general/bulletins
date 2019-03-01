@@ -3,7 +3,7 @@
 @section('content')
 <section class="section section-grey">
   <div class="container">
-    <h1>Cette semaine</h1>
+    <h1>Semaine {{ $week }}</h1>
     <div class="notification success">Tout est bien enregistré !</div>
 
     <p>Merci d'avoir pris quelques minutes pour nous dire ce qu'il s'est passé cette semaine ! Passe une bonne journée.</p>

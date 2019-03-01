@@ -1,16 +1,17 @@
 @component('mail::message')
 
 # Semaine {{ $weekNumber }}
-Cette semaine, dans le programme EIG.
+Cette semaine, dans l'équipe.
 
 @foreach ($reports as $report)
 @component('mail::panel')
-## Projet {{ $report->project }}
+## {{ $report->project }}
 
-- **Nos priorités :** {{ $report->priorities }}
-- **Nos victoires / problèmes :** {{ $report->victories }}
+- **État d'esprit :** {{ $report->spirit }}
+- **Priorité :** {{ $report->priorities }}
+- **Victoire / Difficulté :** {{ $report->victories }}
 @if (isset($report->help))
-- **Besoin d'aide !** {{ $report->help }}
+- **Besoin : ** {{ $report->help }}
 @endif
 @endcomponent
 @endforeach

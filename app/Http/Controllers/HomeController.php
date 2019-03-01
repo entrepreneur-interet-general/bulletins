@@ -11,42 +11,47 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $projects = $this->projectsToFill();
+        $projects = collect(config('app.projects'));
+        $filledProjects = $this->filledProjects();
+        $week = $this->week();
 
-        $week = $this->weekNumber();
-
-        return view('index', compact('projects', 'week'));
+        return view('index', compact('projects', 'week', 'filledProjects'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-      'project'    => ['required', Rule::in(config('app.projects'))],
-      'priorities' => 'required|max:300',
-      'victories'  => 'required|max:300',
-      'help'       => 'max:300',
-    ]);
+          'spirit' => ['required', Rule::in(['☹️','😐','😀'])],
+          'project'    => ['required', Rule::in(config('app.projects'))],
+          'priorities' => 'required|max:300',
+          'victories'  => 'required|max:300',
+          'help'       => 'max:300',
+        ]);
 
         Report::create([
-      'project'     => $request->input('project'),
-      'week_number' => $this->weekNumber(),
-      'priorities'  => $request->input('priorities'),
-      'victories'   => $request->input('victories'),
-      'help'        => $request->input('help'),
-    ])->save();
+          'project'     => $request->input('project'),
+          'week_number' => $this->weekNumber(),
+          'spirit'  => $request->input('spirit'),
+          'priorities'  => $request->input('priorities'),
+          'victories'   => $request->input('victories'),
+          'help'        => $request->input('help'),
+        ])->save();
 
-        return view('success');
+        return view('success', ['week' => $this->week()]);
     }
 
-    private function projectsToFill()
+    private function week()
     {
-        $filledProjects = Report::where('week_number', $this->weekNumber())->pluck('project');
-
-        return collect(config('app.projects'))->diff($filledProjects);
+        return (new Carbon())->format('W');
     }
 
     private function weekNumber()
     {
         return (new Carbon())->format('Y-W');
+    }
+
+    private function filledProjects()
+    {
+      return Report::where('week_number', $this->weekNumber())->pluck('project');
     }
 }

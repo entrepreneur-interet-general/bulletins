@@ -3,19 +3,19 @@
 @section('content')
 <div class="hero" role="banner" style="background:linear-gradient(to right, #c969a6 0%, #e795a8 15%, #a4cfcd 43%, #45adc5 65%, #265c9f 100%)">
     <div class="hero__container">
-      <h1 class="hero__white-background">Cette semaine…</h1>
+      <h1 class="hero__white-background">Stand-up hebdomadaire</h1>
+      <p class="hero__white-background">Partage ta priorité, réussite et difficulté à l'équipe</p>
     </div>
   </div>
-<section class="section section-grey">
-  <div class="container">
+<section class="section-grey">
+  <div class="container section-white section">
     <form action="/reports/store" method="post" name="form">
       @csrf
-      @if ($projects->count() > 0)
-      <h1>Cette semaine</h1>
+      <h1>Semaine {{ $week }}</h1>
 
-      <p>
-        Dites-nous ce que vous avez fait cette semaine {{ $week }}.
-      </p>
+      <div class="form__group">
+        <div class="text-quote"><p>Ces informations seront partagées par e-mail à toute l'équipe <b>le vendredi à 15h.</b></p></div>
+      </div>
 
       @if ($errors->any())
       <div class="notification error">
@@ -26,46 +26,48 @@
       @endif
 
       <div class="form__group">
-        <label for="project">Mon projet</label>
+        <label for="project">Notre projet</label>
         <select name="project">
           @foreach($projects as $project)
-          <option value="{{ $project }}" {{ (old("project") == $project ? "selected": "") }}>{{ $project }}</option>
+          <option
+            value="{{ $project }}"
+            {{ (old("project") == $project ? "selected": "") }}
+            {{ $filledProjects->contains($project) ? "disabled": ""}}
+          >
+            {{ $filledProjects->contains($project) ? "$project (déjà rempli)" : $project }}
+          </option>
           @endforeach
         </select>
       </div>
 
       <div class="form__group">
         <fieldset>
-          <legend>Notre ambiance :</legend>
-          <input type="radio" name="radio" id="radio-pup" value="☹️"><label for="radio-pup" class="label-inline">☹️</label>
-          <input type="radio" name="radio" id="radio-pup" value="😐"><label for="radio-pup" class="label-inline">😐</label>
-          <input type="radio" name="radio" id="radio-pup" value="😀"><label for="radio-pup" class="label-inline">😀</label>
+          <legend>Notre état d'esprit</legend>
+          <input type="radio" name="spirit" id="spirit" value="☹️"><label for="spirit" class="label-inline">☹️</label>
+          <input type="radio" name="spirit" id="spirit" value="😐"><label for="spirit" class="label-inline">😐</label>
+          <input type="radio" name="spirit" id="spirit" value="😀"><label for="spirit" class="label-inline">😀</label>
         </fieldset>
       </div>
 
       <div class="form__group">
-        <label for="priorities">Notre priorité de la semaine :</label>
-        <textarea name="priorities" required maxlength="300" placeholder="Blabla">{{ old('priorities') }}</textarea>
+        <label for="priorities">Notre priorité</label>
+        <textarea name="priorities" required maxlength="300">{{ old('priorities') }}</textarea>
       </div>
 
       <div class="form__group">
-        <label for="victories">Des victoires ou des problèmes à partager ?</label>
+        <label for="victories">Notre victoire et/ou difficultés</label>
         <textarea name="victories" required maxlength="300">{{ old('victories') }}</textarea>
       </div>
 
       <div class="form__group">
-        <label for="help">Un besoin d'aide ?</label>
+        <label for="help">Notre besoin<span class="label">Optionnel</span></label>
         <textarea name="help" maxlength="300">{{ old('help') }}</textarea>
       </div>
 
       <div class="form__group">
-        <button class="button" type="submit" name="validate">Valider</button>
+        <button class="button" type="submit" name="validate">Partager avec l'équipe</button>
       </div>
     </form>
-
-    @else
-    <div class="notification success">Tout le monde a rempli ses informations !</div>
-    @endif
   </div>
 </section>
 @endsection

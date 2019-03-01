@@ -17,6 +17,7 @@ class CreateReportsTable extends Migration
             $table->bigIncrements('id');
             $table->string('project', 100);
             $table->string('week_number', 7);
+            $table->string('spirit', 10);
             $table->string('priorities', 500);
             $table->string('victories', 500);
             $table->string('help', 500)->nullable();
