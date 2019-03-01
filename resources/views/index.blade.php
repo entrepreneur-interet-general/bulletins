@@ -34,7 +34,7 @@
             {{ (old("project") == $project ? "selected": "") }}
             {{ $filledProjects->contains($project) ? "disabled": ""}}
           >
-            {{ $filledProjects->contains($project) ? "$project (déjà rempli)" : $project }}
+            {{ $filledProjects->contains($project) ? "$project (déjà renseigné)" : $project }}
           </option>
           @endforeach
         </select>
