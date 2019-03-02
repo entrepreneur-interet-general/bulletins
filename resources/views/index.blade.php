@@ -4,7 +4,7 @@
 <div class="hero" role="banner" style="background:linear-gradient(to right, #c969a6 0%, #e795a8 15%, #a4cfcd 43%, #45adc5 65%, #265c9f 100%)">
     <div class="hero__container">
       <h1 class="hero__white-background">Stand-up hebdomadaire</h1>
-      <p class="hero__white-background">Partage ta priorité, réussite et difficulté à l'équipe</p>
+      <p class="hero__white-background">Partage ta priorité, réussite, difficulté à l'équipe</p>
     </div>
   </div>
 <section class="section-grey">
@@ -55,7 +55,7 @@
       </div>
 
       <div class="form__group">
-        <label for="victories">Notre victoire et/ou difficultés</label>
+        <label for="victories">Notre victoire, difficulté</label>
         <textarea name="victories" required maxlength="300">{{ old('victories') }}</textarea>
       </div>
 
@@ -65,7 +65,7 @@
       </div>
 
       <div class="form__group">
-        <button class="button" type="submit" name="validate">Partager avec l'équipe</button>
+        <button class="button" type="submit" name="validate">Partager à l'équipe</button>
       </div>
     </form>
   </div>
