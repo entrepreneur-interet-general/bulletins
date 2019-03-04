@@ -247,4 +247,6 @@ return [
       'PolyGraphe',
     ],
 
+    'report_timezone' => env('REPORT_TIMEZONE', 'UTC')
+
 ];
