@@ -3,14 +3,12 @@
 namespace Tests\Feature;
 
 use App\Report;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class WriteReportTest extends TestCase
 {
     use RefreshDatabase;
-
 
     public function testCompleteForm()
     {
@@ -23,7 +21,7 @@ class WriteReportTest extends TestCase
             'project' => 'Explo Code',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
-            'help' => ''
+            'help' => '',
         ]);
 
         $response->assertOk();
@@ -36,7 +34,7 @@ class WriteReportTest extends TestCase
             'project' => 'Explo Code',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
-            'help' => null
+            'help' => null,
         ], Report::first()->toArray());
     }
 }
