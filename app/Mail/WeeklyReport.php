@@ -5,7 +5,6 @@ namespace App\Mail;
 use App\Report;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Support\Carbon;
 use Illuminate\Queue\SerializesModels;
 
 class WeeklyReport extends Mailable
@@ -14,8 +13,8 @@ class WeeklyReport extends Mailable
 
     public function build()
     {
-        $weekNumber = (new Carbon())->format('Y-W');
-        $reports = Report::where('week_number', $weekNumber)->orderBy('project', 'asc')->get()->shuffle();
+        $weekNumber = now()->format('Y-W');
+        $reports = Report::where('week_number', $weekNumber)->get()->shuffle();
         $projectsNoInfo = collect(config('app.projects'))->diff($reports->pluck('project'));
         $subject = 'Semaine '.$weekNumber;
 
