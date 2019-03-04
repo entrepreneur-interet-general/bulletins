@@ -45,7 +45,17 @@
   </header>
 
   <main role="main">
-    @yield('content')
+    <div class="hero" role="banner" style="background:linear-gradient(to right, #c969a6 0%, #e795a8 15%, #a4cfcd 43%, #45adc5 65%, #265c9f 100%)">
+      <div class="hero__container">
+        <h1 class="hero__white-background">Stand-up hebdomadaire</h1>
+        <p class="hero__white-background">Partage ta priorité, réussite, difficulté à l'équipe</p>
+      </div>
+    </div>
+    <section class="section section-white">
+      <div class="container">
+        @yield('content')
+      </div>
+    </section>
   </main>
 
   <footer class="footer" role="contentinfo">
