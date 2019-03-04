@@ -3,10 +3,8 @@
 namespace Tests\Unit;
 
 use App\Report;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Carbon;
 use Tests\TestCase;
+use Illuminate\Support\Carbon;
 
 class ReportTest extends TestCase
 {

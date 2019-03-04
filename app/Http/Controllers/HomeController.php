@@ -14,7 +14,7 @@ class HomeController extends Controller
             'projects' => collect(config('app.projects')),
             'filledProjects' => $this->filledProjects(),
             'week' => $this->week(),
-            'canBeFilled' => Report::canBeFilled()
+            'canBeFilled' => Report::canBeFilled(),
         ]);
     }
 
