@@ -37,6 +37,7 @@
       <legend>Notre état d'esprit</legend>
       <input type="radio" name="spirit" id="spirit" value="☹️"><label for="spirit" class="label-inline">☹️</label>
       <input type="radio" name="spirit" id="spirit" value="😐"><label for="spirit" class="label-inline">😐</label>
+      <input type="radio" name="spirit" id="spirit" value="🙂"><label for="spirit" class="label-inline">🙂</label>
       <input type="radio" name="spirit" id="spirit" value="😀"><label for="spirit" class="label-inline">😀</label>
     </fieldset>
   </div>

@@ -21,7 +21,7 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-          'spirit' => ['required', Rule::in(['☹️', '😐', '😀'])],
+          'spirit' => ['required', Rule::in(['☹️', '😐', '🙂', '😀'])],
           'project'    => ['required', Rule::in(config('app.projects'))],
           'priorities' => 'required|max:300',
           'victories'  => 'required|max:300',
