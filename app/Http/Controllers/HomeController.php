@@ -4,22 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Report;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $projects = collect(config('app.projects'));
-        $filledProjects = $this->filledProjects();
-        $week = $this->week();
-
-        return view('index', compact('projects', 'week', 'filledProjects'));
+        return view('index', [
+            'projects' => collect(config('app.projects')),
+            'filledProjects' => $this->filledProjects(),
+            'week' => $this->week(),
+            'canBeFilled' => Report::canBeFilled()
+        ]);
     }
 
     public function store(Request $request)
     {
+        abort_unless(Report::canBeFilled(), 403);
+
         $request->validate([
           'spirit' => ['required', Rule::in(['☹️', '😐', '🙂', '😀'])],
           'project'    => ['required', Rule::in(config('app.projects'))],
@@ -42,12 +44,12 @@ class HomeController extends Controller
 
     private function week()
     {
-        return (new Carbon())->format('W');
+        return now()->format('W');
     }
 
     private function weekNumber()
     {
-        return (new Carbon())->format('Y-W');
+        return now()->format('Y-W');
     }
 
     private function filledProjects()
