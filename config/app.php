@@ -248,5 +248,6 @@ return [
     ],
 
     'report_timezone' => env('REPORT_TIMEZONE', 'UTC'),
+    'report_email' => env('REPORT_EMAIL')
 
 ];

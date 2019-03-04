@@ -2,8 +2,10 @@
 
 namespace App\Console;
 
+use App\Mail\WeeklyReport;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Mail;
 
 class Kernel extends ConsoleKernel
 {
@@ -25,8 +27,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function () {
+            Mail::to(config('app.report_email'))->send(new WeeklyReport);
+        })->timezone(config('app.report_timezone'))->fridays()->at('15:05');
     }
 
     /**
