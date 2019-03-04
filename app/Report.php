@@ -14,11 +14,11 @@ class Report extends Model
         $dayOfWeek = $now->shortEnglishDayOfWeek;
 
         if (in_array($dayOfWeek, ['Mon', 'Tues', 'Wed', 'Thu'])) {
-          return true;
+            return true;
         }
 
         if ($dayOfWeek === 'Fri' and $now->hour <= 14) {
-          return true;
+            return true;
         }
 
         return false;
