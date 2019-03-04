@@ -18,8 +18,8 @@ jobs:
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "composer.json" }}
-          - v1-dependencies-
+          - composer-v1-{{ checksum "composer.lock" }}
+          - composer-v1-
 
       - run:
           name: Composer install
