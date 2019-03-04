@@ -16,7 +16,7 @@ class WriteReportTest extends TestCase
 
         $response->assertStatus(200);
 
-        $response = $this->json('POST', '/reports/store', [
+        $response = $this->submitForm([
             'spirit' => '🙂',
             'project' => 'Explo Code',
             'priorities' => 'Writing things!',
@@ -36,5 +36,75 @@ class WriteReportTest extends TestCase
             'victories' => 'It was a good week',
             'help' => null,
         ], Report::first()->toArray());
+    }
+
+    public function testInvalidSpririt()
+    {
+        $this->submitForm([
+            'spirit' => 'NOPE',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => '',
+        ])->assertSessionHasErrors('spirit');
+
+        $this->assertCount(0, Report::all());
+    }
+
+    public function testInvalidProject()
+    {
+        $this->submitForm([
+            'spirit' => '🙂',
+            'project' => 'INVALID',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => '',
+        ])->assertSessionHasErrors('project');
+
+        $this->assertCount(0, Report::all());
+    }
+
+    public function testInvalidPriorities()
+    {
+        $this->submitForm([
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => '',
+            'victories' => 'It was a good week',
+            'help' => '',
+        ])->assertSessionHasErrors('priorities');
+
+        $this->assertCount(0, Report::all());
+    }
+
+    public function testInvalidVictories()
+    {
+        $this->submitForm([
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => '',
+            'help' => '',
+        ])->assertSessionHasErrors('victories');
+
+        $this->assertCount(0, Report::all());
+    }
+
+    public function testInvalidHelp()
+    {
+        $this->submitForm([
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => str_repeat('a', 301),
+        ])->assertSessionHasErrors('help');
+
+        $this->assertCount(0, Report::all());
+    }
+
+    private function submitForm($data)
+    {
+        return $this->post(route('reports.store'), $data);
     }
 }
