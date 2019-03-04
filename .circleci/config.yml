@@ -1,0 +1,59 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.2-node-browsers
+    steps:
+      - checkout
+      - run:
+          name: Install apt packages
+          command: |
+            sudo apt update
+            sudo apt install zlib1g-dev libsqlite3-dev
+      - run:
+          name: Install PHP extensions
+          command: |
+            sudo docker-php-ext-install zip
+            sudo docker-php-ext-install pdo_mysql
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "composer.json" }}
+          - v1-dependencies-
+
+      - run:
+          name: Composer install
+          command: |
+            composer install -n --prefer-dist
+
+      - save_cache:
+          key: composer-v1-{{ checksum "composer.lock" }}
+          paths:
+            - vendor
+
+      - restore_cache:
+          keys:
+            - node-v3-{{ checksum "package.json" }}
+            - node-v3-
+
+      - run:
+          name: Yarn install
+          command: |
+            yarn install
+
+      - save_cache:
+          key: node-v3-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+            - ~/.yarn
+
+      - run:
+          name: Generate env file
+          command: |
+            cp .env.example .env
+            php artisan key:generate
+
+      - run:
+          name: Run PHPUnit tests
+          command: |
+            ./vendor/bin/phpunit
