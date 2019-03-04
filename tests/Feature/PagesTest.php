@@ -8,6 +8,6 @@ class PagesTest extends TestCase
 {
     public function testWhyPage()
     {
-        $this->get('/why')->assertStatus(200);
+        $this->get(route('why'))->assertStatus(200);
     }
 }
