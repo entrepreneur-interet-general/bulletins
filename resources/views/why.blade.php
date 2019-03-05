@@ -1,38 +1,39 @@
 @extends('master')
 
 @section('content')
-<h1>Pourquoi cet outil</h1>
-<p class="lead-text">Comprendre en quelques minutes la naissance de cet outil</p>
+<div class="dark-background" style="max-width: 750px; margin: 0 auto">
+  <h1>Pourquoi cet outil</h1>
+  <p class="lead-text">Cet outil est une alternative asynchrone et écrite aux réunions de suivi hebdomadaires, aussi appelées stand-up meetings</p>
 
-<h2>Connaître le travail des autres équipes</h2>
-<p>
-  Quand plusieurs équipes ou projets travaillent au sein d'une même structure, des besoins récurrents apparaissent :
-  <ul>
-    <li>Quel est l'état d'esprit de l'équipe ?</li>
-    <li>Quelles sont les priorités du moment ?</li>
-    <li>Ont-ils réussi à progresser ? Rencontrent-ils des difficultés ?</li>
-    <li>Ont-ils besoin d'aide ?</li>
-  </ul>
-</p>
-<p>
-  Cet outil répond au besoin d'avoir connaissance des réponses à ces questions pour toutes les équipes.
-</p>
+  <h2>Principe</h2>
+  <p>
+    Les <i>stand-up</i> sont des réunions durant lesquels plusieurs personnes se réunissent au même endroit, au même moment, pour dire à tour de rôle ce sur quoi elles travaillent. Ce sont des points d’étapes récurrents, qui servent à faire circuler des informations au sein d’une équipe. Problème : les <i>stand-up</i> demandent à plusieurs personnes d’interrompre leur travail respectif au même moment pour absorber des informations qui ne leur seront sans doute pas utiles au même moment.
+  </p>
 
-<h2>Un partage hebdomadaire</h2>
-<p>
-  Lorsque l'on suit la méthodologie agile, il est courant de mettre en place un point d'avancement quotidien, un <i>stand-up</i>. Le fait d'organiser cette mini-réunion quotidienne ne nous parait pas adapté lorsque l'on s'intéresse à d'autres projets que le sien et que l'équipe ne travaille potentiellement pas dans le même lieu. L'organisation d'une telle réunion à heure fixe, de manière physique, en ligne par la voie écrite ou par visioconférence semble trop contraignant par rapport au besoin.
-</p>
+  <p>
+    Au lieu d’interrompre le travail de tout le monde, ceci permet à chaque équipe de faire un bilan écrit de la semaine écoulée. Les bilans sont saisis dans un formulaire, que chaque équipe remplit quand bon lui semble — du moment qu’elle le remplit à temps. Une fois renseignés, les bilans sont ensuite agrégés dans un e-mail qui est envoyé à tout le monde, et que chacun peut lire quand bon lui semble. Les informations circulent ainsi sans nécessiter de réunion.
+  </p>
 
-<p>Ainsi, un rythme hebdomadaire nous parait plus adapté lorsque l'on s'intéresse aux nouveautés d'autres équipes.</p>
+  <h2>Fonctionnement</h2>
+  <ol>
+    <li>Chaque équipe entre le bilan de la semaine en complétant le formulaire de suivi, à raison d’un bilan par équipe ;</li>
+    <li>Les bilans saisis sont agrégés dans un e-mail qui est envoyé automatiquement chaque vendredi à 15 heures.</li>
+  </ol>
 
-<h2>Un partage asynchrone</h2>
-<p>
-  Réunir à heure fixe plusieurs équipes travaillant sur des projets différents, au sein de diverses structures, est un défi en soit. Ainsi, il a été jugé qu'il était opportun de permettre à chaque équipe de parler de sa semaine, quand elle le souhaite, avant 15h le vendredi.
-</p>
+  <h2>Visibilité des réponses</h2>
+  <p>
+    Bien que le code de l’application soit ouvert, les réponses saisies dans le formulaire de l'application ne sont pas publiques. Toutefois, ces informations sont utiles pour chaque équipe : c'est pourquoi il est possible d'accéder à un historique de ses bilans, partager les bilans à l'aide d'un lien unique et d'exporter les données.
+  </p>
 
-<h2>Une diffusion programmée</h2>
-<p>
-  Si plusieurs équipes présentent leur avancement quand bon leur semble durant la semaine, il est difficile pour les autres équipes de suivre car les informations des autres équipes ne vont pas être disponibles au même moment. Cette charge d'information répartie dans le temps rend l’absorption du contenu laborieux pour tout le monde. Ainsi, nous permettons à chacun de partager leur semaine quand bon leur semble, mais la diffusion de l'ensemble des informations s'effectue au même moment : le vendredi à 15h. Le fait de pouvoir lire tout d'un bloc, au même moment pour tout le monde, facilite l'ingestion de l'information et permet un temps d'échange productif pour les équipes ensuite.
-</p>
+  <h2>Échéances hebdomadaires</h2>
+  <p>
+    Les échéances à garder en tête, chaque semaine :
+    <ul>
+      <li>Le lundi matin : ouverture du formulaire pour la semaine en cours ;</li>
+      <li>Le vendredi à 14h45 : fermeture du formulaire ;</li>
+      <li>Le vendredi à 15h05 : envoi du récapitulatif.</li>
+    </ul>
+  </p>
+</div>
 
 @endsection
