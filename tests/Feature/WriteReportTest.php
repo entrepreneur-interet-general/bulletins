@@ -34,7 +34,7 @@ class WriteReportTest extends TestCase
 
         $response->assertOk();
 
-        $this->assertCount(1, Report::all());
+        $this->assertEquals(1, Report::count());
 
         $this->assertArraySubset([
             'week_number' => now()->format('Y-W'),
@@ -77,7 +77,7 @@ class WriteReportTest extends TestCase
             'help' => '',
         ])->assertSessionHasErrors('spirit');
 
-        $this->assertCount(0, Report::all());
+        $this->assertEquals(0, Report::count());
     }
 
     public function testInvalidProject()
@@ -90,7 +90,7 @@ class WriteReportTest extends TestCase
             'help' => '',
         ])->assertSessionHasErrors('project');
 
-        $this->assertCount(0, Report::all());
+        $this->assertEquals(0, Report::count());
     }
 
     public function testInvalidPriorities()
@@ -103,7 +103,7 @@ class WriteReportTest extends TestCase
             'help' => '',
         ])->assertSessionHasErrors('priorities');
 
-        $this->assertCount(0, Report::all());
+        $this->assertEquals(0, Report::count());
     }
 
     public function testInvalidVictories()
@@ -116,7 +116,7 @@ class WriteReportTest extends TestCase
             'help' => '',
         ])->assertSessionHasErrors('victories');
 
-        $this->assertCount(0, Report::all());
+        $this->assertEquals(0, Report::count());
     }
 
     public function testInvalidHelp()
@@ -129,7 +129,7 @@ class WriteReportTest extends TestCase
             'help' => str_repeat('a', 301),
         ])->assertSessionHasErrors('help');
 
-        $this->assertCount(0, Report::all());
+        $this->assertEquals(0, Report::count());
     }
 
     public function testCannotFillDuringWeekEnd()
@@ -145,7 +145,7 @@ class WriteReportTest extends TestCase
             'help' => '',
         ])->assertStatus(403);
 
-        $this->assertCount(0, Report::all());
+        $this->assertEquals(0, Report::count());
     }
 
     private function submitForm($data)
