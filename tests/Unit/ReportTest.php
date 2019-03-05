@@ -12,6 +12,7 @@ class ReportTest extends TestCase
     {
         $tests = [
             [Carbon::create(2019, 3, 4), true],
+            [Carbon::create(2019, 3, 5), true],
             [Carbon::create(2019, 3, 7), true],
             [Carbon::create(2019, 3, 8, 14, 59), true],
             [Carbon::create(2019, 3, 8, 15), false],

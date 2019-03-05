@@ -13,7 +13,7 @@ class Report extends Model
         $now = now()->timezone(config('app.report_timezone'));
         $dayOfWeek = $now->shortEnglishDayOfWeek;
 
-        if (in_array($dayOfWeek, ['Mon', 'Tues', 'Wed', 'Thu'])) {
+        if (in_array($dayOfWeek, ['Mon', 'Tue', 'Wed', 'Thu'])) {
             return true;
         }
 
