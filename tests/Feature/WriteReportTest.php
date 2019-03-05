@@ -46,6 +46,27 @@ class WriteReportTest extends TestCase
         ], Report::first()->toArray());
     }
 
+    public function testCanFillTwiceForm()
+    {
+        $data = [
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => '',
+        ];
+
+        $this->assertEquals(0, Report::count());
+
+        $this->submitForm($data);
+
+        $this->assertEquals(1, Report::count());
+
+        $this->submitForm($data)->assertStatus(500);
+
+        $this->assertEquals(1, Report::count());
+    }
+
     public function testInvalidSpririt()
     {
         $this->submitForm([
