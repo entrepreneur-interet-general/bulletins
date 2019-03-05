@@ -39,7 +39,7 @@
 
       <nav>
         <ul class="nav__links">
-          <li class="nav__item"><a href="{{ route('why') }}">Présentation de l'outil</a></li>
+          <li class="nav__item"><a href="{{ route('why') }}">À propos</a></li>
           <li class="nav__item"><a href="https://github.com/entrepreneur-interet-general/ma-semaine">Code source</a></li>
         </ul>
       </nav>
@@ -50,7 +50,7 @@
     <div class="hero" role="banner" style="background:linear-gradient(to right, #c969a6 0%, #e795a8 15%, #a4cfcd 43%, #45adc5 65%, #265c9f 100%)">
       <div class="hero__container">
         <h1 class="hero__white-background">Stand-up hebdomadaire</h1>
-        <p class="hero__white-background">Partage ta priorité, réussite, difficulté à l'équipe</p>
+        <p class="hero__white-background">Comment s’est passée votre semaine ?</p>
       </div>
     </div>
     <section class="section section-white">

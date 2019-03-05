@@ -4,10 +4,11 @@
 @if ($canBeFilled)
   <form action="/reports/store" method="post" name="form">
     @csrf
-    <h1>Semaine {{ $week }}</h1>
+    <h1>Bilan de la semaine {{ $week }}</h1>
+    <p>Faites le point sur la semaine qui vient de s'écouler. 5 minutes, 300 caractères par champ — l'équivalent de 2 tweets.</p>
 
     <div class="form__group">
-      <div class="text-quote"><p>Ces informations seront partagées par e-mail à toute l'équipe <b>le vendredi à 15h.</b></p></div>
+      <div class="text-quote"><p>Vos réponses seront partagées par e-mail à toute l'équipe <b>le vendredi à 15h.</b></p></div>
     </div>
 
     @if ($errors->any())
@@ -19,7 +20,7 @@
     @endif
 
     <div class="form__group">
-      <label for="project">Notre projet</label>
+      <label for="project">Votre projet</label>
       <select name="project">
         @foreach($projects as $project)
         <option
@@ -35,7 +36,7 @@
 
     <div class="form__group">
       <fieldset>
-        <legend>Notre état d'esprit</legend>
+        <legend>Votre état d'esprit</legend>
         <input type="radio" name="spirit" id="spirit" value="☹️"><label for="spirit" class="label-inline">☹️</label>
         <input type="radio" name="spirit" id="spirit" value="😐"><label for="spirit" class="label-inline">😐</label>
         <input type="radio" name="spirit" id="spirit" value="🙂"><label for="spirit" class="label-inline">🙂</label>
@@ -44,22 +45,22 @@
     </div>
 
     <div class="form__group">
-      <label for="priorities">Notre priorité</label>
-      <textarea name="priorities" required maxlength="300">{{ old('priorities') }}</textarea>
+      <label for="priorities">Votre priorité</label>
+      <textarea name="priorities" placeholder="Le sujet le plus important de votre semaine" required maxlength="300">{{ old('priorities') }}</textarea>
     </div>
 
     <div class="form__group">
-      <label for="victories">Notre victoire, difficulté</label>
-      <textarea name="victories" required maxlength="300">{{ old('victories') }}</textarea>
+      <label for="victories">Vos hauts et vos bas</label>
+      <textarea name="victories" placeholder="Ce qui a marché et ce qui vous a donné du fil à retordre" required maxlength="300">{{ old('victories') }}</textarea>
     </div>
 
     <div class="form__group">
-      <label for="help">Notre besoin<span class="label">Optionnel</span></label>
-      <textarea name="help" maxlength="300">{{ old('help') }}</textarea>
+      <label for="help">Demande d'aide<span class="label">Optionnel</span></label>
+      <textarea name="help" placeholder="Faites appel à la communauté pour surmonter un blocage" maxlength="300">{{ old('help') }}</textarea>
     </div>
 
     <div class="form__group">
-      <button class="button" type="submit" name="validate">Partager à l'équipe</button>
+      <button class="button" type="submit" name="validate">Enregistrer</button>
     </div>
   </form>
 @else
