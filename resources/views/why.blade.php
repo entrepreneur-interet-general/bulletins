@@ -30,8 +30,8 @@
     Les échéances à garder en tête, chaque semaine :
     <ul>
       <li>Le lundi matin : ouverture du formulaire pour la semaine en cours ;</li>
-      <li>Le vendredi à 14h45 : fermeture du formulaire ;</li>
-      <li>Le vendredi à 15h05 : envoi du récapitulatif.</li>
+      <li>Le vendredi à 15 h 00 : fermeture du formulaire ;</li>
+      <li>Le vendredi à 15 h 05 : envoi du récapitulatif.</li>
     </ul>
   </p>
 </div>
