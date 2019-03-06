@@ -3,7 +3,7 @@
 @section('content')
 <div class="dark-background" style="max-width: 750px; margin: 0 auto">
   <h1>Pourquoi cet outil</h1>
-  <p class="lead-text">Cet outil est une alternative asynchrone et écrite aux réunions de suivi hebdomadaires, aussi appelées stand-up meetings</p>
+  <p class="lead-text">Cet outil est une alternative asynchrone et écrite aux réunions de suivi hebdomadaires, aussi appelées « <i>stand-up meetings</i> »</p>
 
   <h2>Principe</h2>
   <p>
