@@ -16,7 +16,7 @@ class WeeklyReport extends Mailable
         $weekNumber = now()->format('Y-W');
         $reports = Report::where('week_number', $weekNumber)->get()->shuffle();
         $projectsNoInfo = collect(config('app.projects'))->diff($reports->pluck('project'));
-        $subject = 'Semaine '.$weekNumber;
+        $subject = 'Bilan de la semaine '.$weekNumber;
 
         return $this->markdown('emails.report', compact('reports', 'weekNumber', 'projectsNoInfo'))->subject($subject);
     }

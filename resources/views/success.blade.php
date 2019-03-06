@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<h1>Semaine {{ $week }}</h1>
+<h1>Bilan de la semaine {{ $week }}</h1>
 <div class="notification success">Tout est bien enregistré !</div>
 
 <p>Merci d'avoir pris quelques minutes pour nous dire ce qu'il s'est passé cette semaine ! Passe une bonne journée.</p>
