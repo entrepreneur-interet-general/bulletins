@@ -25,13 +25,13 @@ section-grey
     <h1>Bilans du projet {{ $currentProject }}</h1>
     @foreach($reports as $report)
     <div class="panel">
-      <h2>{{ $report->week_number }}</h2>
+      <h3>{{ $report->week_number }}</h3>
       <ul>
-        <li>État d'esprit : {{ $report->spirit }}</li>
-        <li>Priorité : {{ $report->priorities }}</li>
-        <li>Hauts et bas : {{ $report->victories }}</li>
+        <li><b>État d'esprit :</b> {{ $report->spirit }}</li>
+        <li><b>Priorité :</b> {{ $report->priorities }}</li>
+        <li><b>Hauts et bas :</b> {{ $report->victories }}</li>
         @if ($report->help)
-        <li>Demande d'aide : {{ $report->help }}</li>
+        <li><b>Demande d'aide :</b> {{ $report->help }}</li>
         @endif
       </ul>
     </div>
