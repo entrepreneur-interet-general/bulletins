@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Report;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Database\Eloquent\Collection;
 
 class ReportsController extends Controller
 {
