@@ -16,8 +16,10 @@ Cette semaine, dans l'équipe.
 @endcomponent
 @endforeach
 
-@if ($projectsNoInfo)
+@if ($projectsNoInfo->count() > 0)
 Malheureusement, nous n'avons pas de nouvelles pour ces projets : {{ $projectsNoInfo->implode(', ') }} 😢.
+@else
+Tout le monde a rempli son bilan ! Merci 💪
 @endif
 
 Passez un bon week-end ! 🏝
