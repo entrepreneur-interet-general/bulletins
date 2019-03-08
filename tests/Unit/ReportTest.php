@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 
 class ReportTest extends TestCase
 {
-    public function testExample()
+    public function testReportCanBeFilled()
     {
         $tests = [
             [Carbon::create(2019, 3, 4), true],
