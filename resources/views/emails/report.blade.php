@@ -11,7 +11,7 @@ Cette semaine, dans l'équipe.
 - **Priorité :** {{ $report->priorities }}
 - **Victoire / Difficulté :** {{ $report->victories }}
 @if (isset($report->help))
-- **Besoin : ** {{ $report->help }}
+- **Besoin :** {{ $report->help }}
 @endif
 @endcomponent
 @endforeach
