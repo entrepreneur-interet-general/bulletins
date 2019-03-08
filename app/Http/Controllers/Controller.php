@@ -10,4 +10,14 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected final function week()
+    {
+        return now()->format('W');
+    }
+
+    protected final function weekNumber()
+    {
+        return now()->format('Y-W');
+    }
 }

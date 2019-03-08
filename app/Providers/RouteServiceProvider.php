@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Route;
+use App\Report;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -23,9 +24,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
+
+        Route::bind('reports', function ($value) {
+            return Report::where('project', $value)
+                ->orderBy('week_number', 'DESC')
+                ->get() ?? abort(404);
+        });
     }
 
     /**

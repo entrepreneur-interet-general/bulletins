@@ -53,7 +53,7 @@
         <p class="hero__white-background">Comment s’est passée votre semaine ?</p>
       </div>
     </div>
-    <section class="section section-white">
+    <section class="@yield('section-class', 'section section-white')">
       <div class="container">
         @yield('content')
       </div>
