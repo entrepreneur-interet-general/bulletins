@@ -39,7 +39,7 @@
 
       <nav>
         <ul class="nav__links">
-          <li class="nav__item"><a href="{{ route('why') }}">À propos</a></li>
+          <li class="nav__item"><a href="{{ route('about') }}">À propos</a></li>
           <li class="nav__item"><a href="https://github.com/entrepreneur-interet-general/ma-semaine">Code source</a></li>
         </ul>
       </nav>
