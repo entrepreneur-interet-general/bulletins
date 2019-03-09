@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-@if ($canBeFilled)
+@if ($canBeFilled and ! $allFilled)
   <form action="/reports/store" method="post" name="form">
     @csrf
     <h1>Bilan de la semaine {{ $week }}</h1>

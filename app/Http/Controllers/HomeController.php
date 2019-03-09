@@ -9,8 +9,9 @@ class HomeController extends Controller
     public function index()
     {
         return view('index', [
-            'projects' => collect(config('app.projects')),
-            'filledProjects' => $this->filledProjects(),
+            'projects' => $projects = collect(config('app.projects')),
+            'filledProjects' => $filledProjects = $this->filledProjects(),
+            'allFilled' => $filledProjects->count() === $projects->count(),
             'week' => $this->week(),
             'canBeFilled' => Report::canBeFilled(),
         ]);
