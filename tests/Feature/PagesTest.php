@@ -6,7 +6,7 @@ use Tests\TestCase;
 
 class PagesTest extends TestCase
 {
-    public function testWhyPage()
+    public function testAboutPage()
     {
         $this->get(route('about'))->assertStatus(200);
     }
