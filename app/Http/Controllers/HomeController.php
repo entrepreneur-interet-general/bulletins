@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Report;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,22 @@ class HomeController extends Controller
             'week' => $this->week(),
             'canBeFilled' => Report::canBeFilled(),
         ]);
+    }
+
+    public function login()
+    {
+        return view('login');
+    }
+
+    public function authenticate(Request $request)
+    {
+        if ($request->input('password') !== config('app.report_secret')) {
+            return back()->with('error', "Le mot de passe n'est pas valide.");
+        }
+
+        session(['logged_in' => true]);
+
+        return redirect(route('reports.choose'));
     }
 
     private function filledProjects()

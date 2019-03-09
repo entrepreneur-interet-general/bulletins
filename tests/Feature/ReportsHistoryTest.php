@@ -17,14 +17,23 @@ class ReportsHistoryTest extends TestCase
         $response->assertRedirect(route('reports.index', $this->projects()[0]));
     }
 
-    public function testIndex()
+    public function testIndexNotLoggedIn()
     {
-        $this->get(route('reports.index', $this->projects()[0]))->assertStatus(404);
+        $this->get(route('reports.index', $this->projects()[0]))->assertRedirect(route('login'));
+    }
+
+    public function testIndexLoggedIn()
+    {
+        $this
+            ->withSession(['logged_in' => true])
+            ->get(route('reports.index', $this->projects()[0]))->assertStatus(404);
 
         $dummy = factory(Report::class)->create(['project' => $this->projects()[1]]);
 
         $report = factory(Report::class)->create(['project' => $this->projects()[0]]);
-        $response = $this->get(route('reports.index', $report->project));
+        $response = $this
+            ->withSession(['logged_in' => true])
+            ->get(route('reports.index', $report->project));
 
         $response
             ->assertStatus(200)
