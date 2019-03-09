@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Report;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Validation\Rule;
 
 class ReportsController extends Controller
 {
@@ -38,12 +39,23 @@ class ReportsController extends Controller
         return redirect()->route('reports.index', config('app.projects')[0]);
     }
 
-    public function index(Collection $reports)
+    public function index(Request $request, Collection $reports)
     {
         abort_if($reports->count() == 0, 404);
 
-        $projects = Report::select('project')->distinct()->get()->pluck('project');
+        $currentProject = $request->route()->originalParameter('reports');
 
-        return view('reports.index', compact('reports', 'projects'));
+        if (! is_null($request->query('signature'))) {
+          $projects = collect([$currentProject]);
+        }
+        else {
+          $projects = Report::select('project')->distinct()->get()->pluck('project');
+        }
+
+        return view('reports.index', [
+          'reports' => $reports,
+          'projects' => $projects,
+          'shareUrl' => URL::signedRoute('reports.index', $currentProject)
+        ]);
     }
 }

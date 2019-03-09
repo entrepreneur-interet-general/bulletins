@@ -3,8 +3,9 @@
 namespace Tests\Feature;
 
 use App\Report;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\URL;
+use Tests\TestCase;
 
 class ReportsHistoryTest extends TestCase
 {
@@ -39,7 +40,15 @@ class ReportsHistoryTest extends TestCase
             ->assertStatus(200)
             ->assertViewIs('reports.index')
             ->assertViewHas('projects', collect([$dummy->project, $report->project])->sort()->values())
+            ->assertViewHas('shareUrl', URL::signedRoute('reports.index', $report->project))
             ->assertViewHas('reports', Report::where('project', $report->project)->get());
+    }
+
+    public function testIndexWithSignature()
+    {
+        $report = factory(Report::class)->create();
+
+        $this->get(URL::signedRoute('reports.index', $report->project))->assertOk();
     }
 
     private function projects()

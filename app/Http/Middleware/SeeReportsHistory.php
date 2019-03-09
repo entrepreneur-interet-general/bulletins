@@ -9,10 +9,12 @@ class SeeReportsHistory
 {
     public function handle(Request $request, Closure $next)
     {
-        if (! $request->session()->has('logged_in')) {
-            return redirect(route('login'));
+        $loggedIn = $request->session()->has('logged_in');
+
+        if ($loggedIn or $request->hasValidSignature()) {
+            return $next($request);
         }
 
-        return $next($request);
+        return redirect(route('login'));
     }
 }
