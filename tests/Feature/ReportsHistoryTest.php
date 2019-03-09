@@ -3,9 +3,8 @@
 namespace Tests\Feature;
 
 use App\Report;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ReportsHistoryTest extends TestCase
 {
