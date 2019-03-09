@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class SeeReportsHistory
 {
-
     public function handle(Request $request, Closure $next)
     {
         if (! $request->session()->has('logged_in')) {
