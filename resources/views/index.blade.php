@@ -2,7 +2,7 @@
 
 @section('content')
 @if ($canBeFilled and ! $allFilled)
-  <form action="/reports/store" method="post" name="form">
+  <form action="{{ route('reports.store') }}" method="post" name="form">
     @csrf
     <h1>Bilan de la semaine {{ $week }}</h1>
     <p>Faites le point sur la semaine qui vient de s'écouler. 5 minutes, 300 caractères par champ — l'équivalent de 2 tweets.</p>
