@@ -6,7 +6,7 @@
 
   <title>Ma semaine</title>
   <link href="https://unpkg.com/template.data.gouv.fr@1.2.0/dist/main.min.css" rel="stylesheet">
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
 <body>
   <svg aria-hidden="true" focusable="false" style="display:none">
