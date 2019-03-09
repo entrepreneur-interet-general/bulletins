@@ -40,6 +40,8 @@ class ReportsController extends Controller
 
     public function index(Collection $reports)
     {
+        abort_if($reports->count() == 0, 404);
+
         $projects = Report::select('project')->distinct()->get()->pluck('project');
 
         return view('reports.index', compact('reports', 'projects'));
