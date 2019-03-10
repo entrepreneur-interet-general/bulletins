@@ -251,5 +251,5 @@ return [
     'report_email' => env('REPORT_EMAIL'),
     'report_secret' => env('REPORT_SECRET'),
     'reports_password_hint' => env('REPORTS_PASSWORD_HINT'),
-
+    'slack_webhook' => env('SLACK_WEBHOOK')
 ];
