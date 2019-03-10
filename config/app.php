@@ -250,5 +250,6 @@ return [
     'report_timezone' => env('REPORT_TIMEZONE', 'UTC'),
     'report_email' => env('REPORT_EMAIL'),
     'report_secret' => env('REPORT_SECRET'),
+    'slack_webhook' => env('SLACK_WEBHOOK')
 
 ];
