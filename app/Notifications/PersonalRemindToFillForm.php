@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\SlackMessage;
 
-class RemindToFillForm extends Notification
+class PersonalReminderToFillForm extends Notification
 {
     use Queueable;
 

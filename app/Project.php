@@ -2,12 +2,12 @@
 
 namespace App;
 
-use App\Notifications\RemindToFillForm;
+use App\Notifications\PersonalReminderToFillForm;
 use Illuminate\Support\Facades\Notification;
 
 class Project
 {
-    protected $name;
+    public $name;
     protected $notificationChannel;
     protected $members;
 
@@ -26,7 +26,7 @@ class Project
     {
         foreach ($this->members as $member) {
             Notification::route('slack', config('app.slack_webhook'))
-                ->notify(new RemindToFillForm($member));
+                ->notify(new PersonalReminderToFillForm($member));
         }
     }
 }
