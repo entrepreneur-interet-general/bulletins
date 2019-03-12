@@ -20,7 +20,7 @@ class HomeController extends Controller
 
     public function login()
     {
-        return view('login');
+        return view('login', ['passwordHint' => config('app.reports_password_hint')]);
     }
 
     public function authenticate(Request $request)

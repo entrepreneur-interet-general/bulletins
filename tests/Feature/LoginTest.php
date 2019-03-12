@@ -8,7 +8,13 @@ class LoginTest extends TestCase
 {
     public function testCanLoadForm()
     {
-        $this->get(route('login'))->assertOk();
+        config(['app.reports_password_hint' => 'Password hint']);
+
+        $this->get(route('login'))->assertOk()->assertSee('Password hint');
+
+        config(['app.reports_password_hint' => null]);
+
+        $this->get(route('login'))->assertOk()->assertDontSee('text-quote');
     }
 
     public function testInvalidSubmitForm()

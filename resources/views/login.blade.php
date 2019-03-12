@@ -13,6 +13,12 @@
   </div>
   @endif
 
+  @if ($passwordHint)
+  <div class="form__group">
+    <div class="text-quote"><p>{{ $passwordHint }}</p></div>
+  </div>
+  @endif
+
   <div class="form__group">
     <label for="help">Mot de passe</label>
     <input type="password" required name="password">
