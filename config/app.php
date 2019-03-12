@@ -242,7 +242,7 @@ return [
       new App\Project("Karfu 'R", 'slack', ['UEN32E4RG', 'UEN2E7CCA']),
       new App\Project('LexImpact', 'slack', ['UEMBVDJRW', 'UEQNSABHR']),
       new App\Project('Open Chronic', 'slack', ['UEPDZBWJ2', 'UER2KDHF0']),
-      new App\Project('Open Justice', 'slack', ['UENBQ07GS', 'UEMLZ5Q1X']),
+      new App\Project('Open Justice', 'slack', ['UENBQ07GS', 'UEMLZ5Q1X', 'UENMZPL68']),
       new App\Project('Plume', 'slack', ['UEN3W6W2W', 'UEMENKY8H', 'UEN2WGKAP']),
       new App\Project('PolyGraphe', 'slack', ['UEN80C8MB', 'UEMTJ5UVA']),
     ]),
