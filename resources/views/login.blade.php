@@ -5,13 +5,13 @@
   @csrf
   <h1>Accès à l'historique des bilans</h1>
 
-    <p>Vous devez vous authentifier préalablement.</p>
+  <p>Vous devez vous authentifier préalablement.</p>
 
-    @if (session()->has('error'))
-    <div class="notification error">
-      {{ session('error') }}
-    </div>
-    @endif
+  @if (session()->has('error'))
+  <div class="notification error">
+    {{ session('error') }}
+  </div>
+  @endif
 
   <div class="form__group">
     <label for="help">Mot de passe</label>
