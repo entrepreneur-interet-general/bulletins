@@ -22,7 +22,7 @@
     <div class="form__group">
       <label for="project">Votre projet</label>
       <select name="project">
-        @foreach($projects as $project)
+        @foreach($projects->map->name as $project)
         <option
           value="{{ $project }}"
           {{ (old("project") == $project ? "selected": "") }}

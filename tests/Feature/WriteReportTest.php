@@ -46,7 +46,7 @@ class WriteReportTest extends TestCase
         ], Report::first()->toArray());
     }
 
-    public function testCanFillTwiceForm()
+    public function testCantFillTwiceForm()
     {
         $data = [
             'spirit' => '🙂',

@@ -15,8 +15,8 @@ class ReportsController extends Controller
         abort_unless(Report::canBeFilled(), 403);
 
         $request->validate([
-          'spirit' => ['required', Rule::in(['☹️', '😐', '🙂', '😀'])],
-          'project'    => ['required', Rule::in(config('app.projects'))],
+          'spirit'     => ['required', Rule::in(['☹️', '😐', '🙂', '😀'])],
+          'project'    => ['required', Rule::in(config('app.projects')->names())],
           'priorities' => 'required|max:300',
           'victories'  => 'required|max:300',
           'help'       => 'max:300',
@@ -36,7 +36,7 @@ class ReportsController extends Controller
 
     public function choose()
     {
-        return redirect()->route('reports.index', config('app.projects')[0]);
+        return redirect()->route('reports.index', config('app.projects')[0]->name);
     }
 
     public function index(Request $request, Collection $reports)

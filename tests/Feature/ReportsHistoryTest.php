@@ -15,23 +15,23 @@ class ReportsHistoryTest extends TestCase
     {
         $response = $this->get(route('reports.choose'));
 
-        $response->assertRedirect(route('reports.index', $this->projects()[0]));
+        $response->assertRedirect(route('reports.index', $this->projectNames()[0]));
     }
 
     public function testIndexNotLoggedIn()
     {
-        $this->get(route('reports.index', $this->projects()[0]))->assertRedirect(route('login'));
+        $this->get(route('reports.index', $this->projectNames()[0]))->assertRedirect(route('login'));
     }
 
     public function testIndexLoggedIn()
     {
         $this
             ->withSession(['logged_in' => true])
-            ->get(route('reports.index', $this->projects()[0]))->assertStatus(404);
+            ->get(route('reports.index', $this->projectNames()[0]))->assertStatus(404);
 
-        $dummy = factory(Report::class)->create(['project' => $this->projects()[1]]);
+        $dummy = factory(Report::class)->create(['project' => $this->projectNames()[1]]);
 
-        $report = factory(Report::class)->create(['project' => $this->projects()[0]]);
+        $report = factory(Report::class)->create(['project' => $this->projectNames()[0]]);
         $response = $this
             ->withSession(['logged_in' => true])
             ->get(route('reports.index', $report->project));
@@ -51,8 +51,8 @@ class ReportsHistoryTest extends TestCase
         $this->get(URL::signedRoute('reports.index', $report->project))->assertOk();
     }
 
-    private function projects()
+    private function projectNames()
     {
-        return config('app.projects');
+        return config('app.projects')->map->name;
     }
 }
