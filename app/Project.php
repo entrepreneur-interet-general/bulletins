@@ -2,9 +2,6 @@
 
 namespace App;
 
-use App\Notifications\PersonalReminderToFillForm;
-use Illuminate\Support\Facades\Notification;
-
 class Project
 {
     public $name;
@@ -24,9 +21,10 @@ class Project
 
     public function notify()
     {
+        $text = "Hello ! Vous n'avez pas encore rempli le bilan de la semaine. :point_right: ".config('app.url');
+
         foreach ($this->members as $member) {
-            Notification::route('slack', config('app.slack_webhook'))
-                ->notify(new PersonalReminderToFillForm($member));
+            Slack::sendMessage($member, $text);
         }
     }
 }

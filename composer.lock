@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "966c7c09cacf5dd8b1da6d5f1d7fd621",
-    "content-hash": "3e08f35d4e47828244f25dfb40cc3263",
+    "hash": "d5bb59fd59c565903c8563848edc69cf",
+    "content-hash": "584aeda7d0c799c62ef3bd202fb9c475",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1240,6 +1240,56 @@
             "time": "2019-02-22 10:30:00"
         },
         {
+            "name": "palanik/wrapi",
+            "version": "v0.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/palanik/wrapi-php.git",
+                "reference": "20cd27151af36c28cfdb46c53cfb0de015f32fbf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/palanik/wrapi-php/zipball/20cd27151af36c28cfdb46c53cfb0de015f32fbf",
+                "reference": "20cd27151af36c28cfdb46c53cfb0de015f32fbf",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": ">=6.1.0",
+                "php": ">=5.5.0",
+                "sabre/uri": "^1.0"
+            },
+            "require-dev": {
+                "internations/http-mock": "0.7.0",
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "wrapi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "palanik"
+                }
+            ],
+            "description": "Wrapper for calling Restful API",
+            "homepage": "https://github.com/palanik/wrapi-php",
+            "keywords": [
+                "Guzzle",
+                "api",
+                "function",
+                "functions",
+                "restful",
+                "wrapper"
+            ],
+            "time": "2018-01-22 02:10:09"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v9.99.99",
             "source": {
@@ -1723,6 +1773,57 @@
                 "uuid"
             ],
             "time": "2018-07-19 23:38:55"
+        },
+        {
+            "name": "sabre/uri",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sabre-io/uri.git",
+                "reference": "ada354d83579565949d80b2e15593c2371225e61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sabre-io/uri/zipball/ada354d83579565949d80b2e15593c2371225e61",
+                "reference": "ada354d83579565949d80b2e15593c2371225e61",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.0,<6.0",
+                "sabre/cs": "~1.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/functions.php"
+                ],
+                "psr-4": {
+                    "Sabre\\Uri\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Evert Pot",
+                    "email": "me@evertpot.com",
+                    "homepage": "http://evertpot.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Functions for making sense out of URIs.",
+            "homepage": "http://sabre.io/uri/",
+            "keywords": [
+                "rfc3986",
+                "uri",
+                "url"
+            ],
+            "time": "2017-02-20 19:59:28"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2833,6 +2934,59 @@
                 "environment"
             ],
             "time": "2019-01-30 10:43:17"
+        },
+        {
+            "name": "wrapi/slack",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/palanik/slack-php.git",
+                "reference": "9499c675dd8576fdd05e7fc1cf125c32b51ad66c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/palanik/slack-php/zipball/9499c675dd8576fdd05e7fc1cf125c32b51ad66c",
+                "reference": "9499c675dd8576fdd05e7fc1cf125c32b51ad66c",
+                "shasum": ""
+            },
+            "require": {
+                "palanik/wrapi": "^0.1.7",
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "wrapi\\slack\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "palanik"
+                }
+            ],
+            "description": "Wrapper for Slack Web API",
+            "homepage": "https://github.com/palanik/slack-php",
+            "keywords": [
+                "Api Wrapper",
+                "Guzzle",
+                "api",
+                "api client",
+                "rest",
+                "slack",
+                "slack api client",
+                "slack api wrapper",
+                "slack web api client",
+                "slack web api wrapper",
+                "slack wrapper",
+                "slack-api",
+                "slack-web-api",
+                "wrapi"
+            ],
+            "time": "2019-02-24 00:33:33"
         }
     ],
     "packages-dev": [
