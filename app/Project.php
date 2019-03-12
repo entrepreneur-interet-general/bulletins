@@ -2,6 +2,8 @@
 
 namespace App;
 
+use UnexpectedValueException;
+
 class Project
 {
     public $name;
