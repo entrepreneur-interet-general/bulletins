@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Report;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\Collection;
 
 class ReportsController extends Controller
 {
@@ -63,20 +63,20 @@ class ReportsController extends Controller
     public function export(Collection $reports)
     {
         $headers = [
-            "Content-type" => "text/csv",
-            "Pragma" => "no-cache",
-            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
-            "Expires" => "0"
+            'Content-type' => 'text/csv',
+            'Pragma' => 'no-cache',
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Expires' => '0',
         ];
 
         $project = $reports->first()->project;
-        $filename = $project."-".now()->format('Y-m-d').'.csv';
+        $filename = $project.'-'.now()->format('Y-m-d').'.csv';
 
-        $callback = function() use($reports) {
+        $callback = function () use ($reports) {
             $file = fopen('php://output', 'w');
             fputcsv($file, Schema::getColumnListing('reports'));
 
-            foreach($reports as $report) {
+            foreach ($reports as $report) {
                 fputcsv($file, $report->toArray());
             }
             fclose($file);
