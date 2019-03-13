@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            $text = "<!here|here> :wave: Hello, on est déjà vendredi ! Qu'avez-vous fait cette semaine ? C'est le moment de faire le bilan :point_right: ".config('app.url');
+            $text = "<!here|here> :wave: Hello ! Bonne nouvelle, c'est bientôt la fin de la semaine ! :tada: C'est le moment de partager nos réussites et nos besoins à la promo (attention, l'e-mail part à 15h :rocket:) :point_right: ".config('app.url');
             Slack::sendMessage(config('app.slack_general_channel'), $text);
         })->timezone(config('app.report_timezone'))->fridays()->at('10:00');
 
