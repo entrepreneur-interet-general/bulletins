@@ -6,6 +6,7 @@ use App\Report;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Collection;
 
 class ReportsController extends Controller
@@ -55,6 +56,32 @@ class ReportsController extends Controller
           'reports' => $reports,
           'projects' => $projects,
           'shareUrl' => URL::signedRoute('reports.index', $currentProject),
+          'downloadUrl' => URL::signedRoute('reports.export', $currentProject),
         ]);
+    }
+
+    public function export(Collection $reports)
+    {
+        $headers = [
+            'Content-type' => 'text/csv',
+            'Pragma' => 'no-cache',
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Expires' => '0',
+        ];
+
+        $project = $reports->first()->project;
+        $filename = $project.'-'.now()->format('Y-m-d').'.csv';
+
+        $callback = function () use ($reports) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, Schema::getColumnListing('reports'));
+
+            foreach ($reports as $report) {
+                fputcsv($file, $report->toArray());
+            }
+            fclose($file);
+        };
+
+        return response()->streamDownload($callback, $filename, $headers);
     }
 }
