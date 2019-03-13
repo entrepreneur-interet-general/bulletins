@@ -21,7 +21,7 @@
 
   <div class="form__group">
     <label for="help">Mot de passe</label>
-    <input type="password" required name="password">
+    <input type="password" name="password" autofocus="true" required="true">
   </div>
 
   <div class="form__group">
