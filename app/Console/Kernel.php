@@ -34,7 +34,8 @@ class Kernel extends ConsoleKernel
         })->timezone(config('app.report_timezone'))->fridays()->at('10:00');
 
         $schedule->call(function () {
-            config('app.projects')->unfilledProjectsFor(now()->format('Y-W'))->map->notify();
+            $currentWeek = now()->format('Y-W');
+            config('app.projects')->unfilledProjectsFor($currentWeek)->map->notify();
         })->timezone(config('app.report_timezone'))->fridays()->at('14:00');
 
         $schedule->call(function () {
