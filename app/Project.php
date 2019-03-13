@@ -9,8 +9,9 @@ class Project
     public $name;
     protected $notificationChannel;
     protected $members;
+    public $logoUrl;
 
-    public function __construct($name, $notificationChannel, array $members)
+    public function __construct($name, $notificationChannel, array $members, $logoUrl)
     {
         if ($notificationChannel !== 'slack') {
             throw new UnexpectedValueException;
@@ -19,6 +20,7 @@ class Project
         $this->name = $name;
         $this->notificationChannel = $notificationChannel;
         $this->members = $members;
+        $this->logoUrl = $logoUrl;
     }
 
     public function notify()

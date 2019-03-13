@@ -3,11 +3,14 @@
 namespace Tests\Unit;
 
 use App\Report;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
+use Tests\TestCase;
 
 class ReportTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testReportCanBeFilled()
     {
         $tests = [
@@ -27,5 +30,13 @@ class ReportTest extends TestCase
 
             $this->assertEquals($expected, Report::canBeFilled());
         }
+    }
+
+    public function testProjectObject()
+    {
+        $report = factory(Report::class)->create();
+
+        $this->assertInstanceOf(\App\Project::class, $report->projectObject());
+        $this->assertEquals($report->project, $report->projectObject()->name);
     }
 }

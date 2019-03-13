@@ -7,6 +7,7 @@ section-grey
 @section('content')
 @php
   $currentProject = $reports->first()->project;
+  $projectObject = $reports->first()->projectObject();
 @endphp
 
 <div class="dashboard">
@@ -22,7 +23,7 @@ section-grey
     </ul>
   </aside>
   <div class="main">
-    <h1>Bilans du projet {{ $currentProject }}</h1>
+    <h1>Bilans du projet {{ $currentProject }} <img src="{{ asset($projectObject->logoUrl) }}" alt="{{ $currentProject }}" width="32px"></h1>
 
     <div class="text-right">
       <a class="button small secondary" href="#modal">

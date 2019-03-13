@@ -23,4 +23,9 @@ class Report extends Model
 
         return false;
     }
+
+    public function projectObject()
+    {
+        return config('app.projects')->where('name', $this->project)->first();
+    }
 }
