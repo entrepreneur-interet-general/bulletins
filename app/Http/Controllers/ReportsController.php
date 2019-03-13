@@ -36,7 +36,7 @@ class ReportsController extends Controller
 
     public function choose()
     {
-        return redirect()->route('reports.index', config('app.projects')[0]->name);
+        return redirect()->route('reports.index', config('app.projects')->first()->name);
     }
 
     public function index(Request $request, Collection $reports)
