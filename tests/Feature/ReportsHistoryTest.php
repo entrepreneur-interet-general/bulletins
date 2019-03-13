@@ -41,6 +41,7 @@ class ReportsHistoryTest extends TestCase
             ->assertViewIs('reports.index')
             ->assertViewHas('projects', collect([$dummy->project, $report->project])->sort()->values())
             ->assertViewHas('shareUrl', URL::signedRoute('reports.index', $report->project))
+            ->assertViewHas('downloadUrl', URL::signedRoute('reports.export', $report->project))
             ->assertViewHas('reports', Report::where('project', $report->project)->get());
     }
 
@@ -49,6 +50,21 @@ class ReportsHistoryTest extends TestCase
         $report = factory(Report::class)->create();
 
         $this->get(URL::signedRoute('reports.index', $report->project))->assertOk();
+    }
+
+    public function testExport()
+    {
+        $report = factory(Report::class)->create();
+        $this
+            ->get(route('reports.export', $report->project))
+            ->assertRedirect(route('login'));
+
+        $response = $this
+            ->withSession(['logged_in' => true])
+            ->get(route('reports.export', $report->project));
+
+        $response->assertOk();
+        $response->assertHeader('content-disposition');
     }
 
     private function projectNames()

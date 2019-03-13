@@ -45,6 +45,14 @@ section-grey
       </ul>
     </div>
     @endforeach
+
+    <div class="text-right">
+      <a class="button small secondary" href="{{ $downloadUrl }}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path style="fill:#fff;" d="M16 11h5l-9 10-9-10h5v-11h8v11zm1 11h-10v2h10v-2z"/></svg>
+        <span style="margin-left: .3em">Exporter en CSV</span>
+      </a>
+    </div>
+
   </div>
   <div class="modal__backdrop" id="modal">
     <div class="modal">
