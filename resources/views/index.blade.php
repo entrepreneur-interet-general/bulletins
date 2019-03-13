@@ -5,7 +5,7 @@
   <form action="{{ route('reports.store') }}" method="post" name="form">
     @csrf
     <h1>Bilan de la semaine {{ $week }}</h1>
-    <p>Faites le point sur la semaine qui vient de s'écouler. 5 minutes, 300 caractères par champ — un peu plus de 2 tweets.</p>
+    <p>Faites le point sur la semaine qui vient de s'écouler. 5 minutes, 300 caractères par champ — un peu plus d'un tweet.</p>
 
     <div class="form__group">
       <div class="text-quote"><p>Vos réponses seront partagées par e-mail à toute l'équipe <b>le vendredi à 15h.</b></p></div>
