@@ -6,3 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
         new TextareaAutoResize( textareaElement )
     }
 });
+
+function copy() {
+  var copyText = document.querySelector("#js-copy-target");
+  copyText.select();
+  document.execCommand("copy");
+  document.querySelector("#js-copy-btn").classList.remove('secondary');
+}
+
+document.querySelector("#js-copy-btn").addEventListener("click", copy);
