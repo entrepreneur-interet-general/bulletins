@@ -36,6 +36,6 @@ class HomeController extends Controller
 
     private function filledProjects()
     {
-        return config('app.projects')->filledProjectsFor($this->weekNumber());
+        return config('app.projects')->filledProjectsFor($this->weekNumber())->names();
     }
 }

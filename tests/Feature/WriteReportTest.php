@@ -44,6 +44,8 @@ class WriteReportTest extends TestCase
             'victories' => 'It was a good week',
             'help' => null,
         ], Report::first()->toArray());
+
+        $this->get('/')->assertSee('Explo Code (déjà renseigné)');
     }
 
     public function testCantFillTwiceForm()
