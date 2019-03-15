@@ -5,7 +5,7 @@ Cette semaine, dans l'équipe.
 
 @foreach ($reports as $report)
 @component('mail::panel')
-## <img src="{{ asset($report->projectObject()->logoUrl) }}" alt="{{ $report->project }}" width="20px"> {{ $report->project }}
+## <img src="{{ asset($report->projectObject()->logoUrl) }}" alt="{{ $report->project }}" width="20"> {{ $report->project }}
 
 - **État d'esprit :** {{ $report->spirit }}
 - **Priorité :** {{ $report->priorities }}
