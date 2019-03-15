@@ -35,6 +35,11 @@ class Report extends Model
         return $startOfWeek->format('Y-W');
     }
 
+    public function scopePublished($query)
+    {
+        return $query->where('week_number', '<=', Report::latestPublishedWeek());
+    }
+
     public function projectObject()
     {
         return config('app.projects')->where('name', $this->project)->first();

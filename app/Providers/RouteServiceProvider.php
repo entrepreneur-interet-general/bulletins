@@ -28,6 +28,7 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('reports', function ($value) {
             return Report::where('project', $value)
+                ->published()
                 ->orderBy('week_number', 'DESC')
                 ->get() ?? abort(404);
         });

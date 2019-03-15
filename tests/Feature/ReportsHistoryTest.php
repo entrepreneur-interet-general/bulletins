@@ -3,9 +3,10 @@
 namespace Tests\Feature;
 
 use App\Report;
-use Tests\TestCase;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\URL;
+use Tests\TestCase;
 
 class ReportsHistoryTest extends TestCase
 {
@@ -25,13 +26,23 @@ class ReportsHistoryTest extends TestCase
 
     public function testIndexLoggedIn()
     {
+        Carbon::setTestNow(Carbon::create(2019, 3, 15, 14));
+
         $this
             ->withSession(['logged_in' => true])
             ->get(route('reports.index', $this->projectNames()[0]))->assertStatus(404);
 
+        $notPublished = factory(Report::class)->create([
+            'project' => $this->projectNames()[0],
+            'week_number' => '2019-11'
+        ]);
+
         $dummy = factory(Report::class)->create(['project' => $this->projectNames()[1]]);
 
-        $report = factory(Report::class)->create(['project' => $this->projectNames()[0]]);
+        $report = factory(Report::class)->create([
+            'project' => $this->projectNames()[0],
+            'week_number' => '2019-10'
+        ]);
         $response = $this
             ->withSession(['logged_in' => true])
             ->get(route('reports.index', $report->project));
@@ -42,7 +53,7 @@ class ReportsHistoryTest extends TestCase
             ->assertViewHas('projects', collect([$dummy->project, $report->project])->sort()->values())
             ->assertViewHas('shareUrl', URL::signedRoute('reports.index', $report->project))
             ->assertViewHas('downloadUrl', URL::signedRoute('reports.export', $report->project))
-            ->assertViewHas('reports', Report::where('project', $report->project)->get());
+            ->assertViewHas('reports', Report::where('project', $report->project)->where('week_number', '2019-10')->get());
     }
 
     public function testIndexWithSignature()
