@@ -3,10 +3,10 @@
 namespace Tests\Feature;
 
 use App\Report;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\URL;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ReportsHistoryTest extends TestCase
 {
@@ -34,14 +34,14 @@ class ReportsHistoryTest extends TestCase
 
         $notPublished = factory(Report::class)->create([
             'project' => $this->projectNames()[0],
-            'week_number' => '2019-11'
+            'week_number' => '2019-11',
         ]);
 
         $dummy = factory(Report::class)->create(['project' => $this->projectNames()[1]]);
 
         $report = factory(Report::class)->create([
             'project' => $this->projectNames()[0],
-            'week_number' => '2019-10'
+            'week_number' => '2019-10',
         ]);
         $response = $this
             ->withSession(['logged_in' => true])
