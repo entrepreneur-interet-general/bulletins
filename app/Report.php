@@ -24,6 +24,17 @@ class Report extends Model
         return false;
     }
 
+    public static function latestPublishedWeek()
+    {
+        $startOfWeek = now()->startOfWeek();
+
+        if (self::canBeFilled()) {
+            return $startOfWeek->subWeek(1)->format('Y-W');
+        }
+
+        return $startOfWeek->format('Y-W');
+    }
+
     public function projectObject()
     {
         return config('app.projects')->where('name', $this->project)->first();
