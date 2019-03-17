@@ -236,7 +236,7 @@ return [
       new App\Project('DataJust', 'slack', ['UFP3Z5XT9', 'UEP1QMJ8G'], 'images/logo/DataJust.png'),
       new App\Project('DataReg', 'slack', ['UEP0XENPK', 'UEMAW8E64'], 'images/logo/DataReg.png'),
       new App\Project('EIG Link', 'slack', ['U85PEEN9H', 'U85SM3C3E'], 'images/logo/EIGLink.png'),
-      new App\Project('EIG Node', 'slack', ['U80K1J3NE', 'U83PGP6TW'], 'images/logo/EIGLink.png'),
+      new App\Project('EIG Node', 'slack', ['U80K1J3NE', 'U83PGP6TW'], 'images/logo/EIGNode.png'),
       new App\Project('Explo Code', 'slack', ['UEP68HULF', 'UEN3EERS6'], 'images/logo/ExploCode.png'),
       new App\Project('IA Flash', 'slack', ['UEMUZ0REX', 'UFETC0RPW'], 'images/logo/IA-Flash.png'),
       new App\Project("Karfu 'R", 'slack', ['UEN32E4RG', 'UEN2E7CCA'], 'images/logo/KarfuR.png'),
