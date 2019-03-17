@@ -62,4 +62,22 @@ class ReportTest extends TestCase
         $this->assertInstanceOf(\App\Project::class, $report->projectObject());
         $this->assertEquals($report->project, $report->projectObject()->name);
     }
+
+    public function testStartOfWeek()
+    {
+        $report = factory(Report::class)->make(['week_number' => '2019-10']);
+        $report2 = factory(Report::class)->make(['week_number' => '2019-01']);
+
+        $this->assertEquals(Carbon::create(2019, 3, 4), $report->startOfWeek);
+        $this->assertEquals(Carbon::create(2018, 12, 31), $report2->startOfWeek);
+    }
+
+    public function testEndOfWeek()
+    {
+        $report = factory(Report::class)->make(['week_number' => '2019-10']);
+        $report2 = factory(Report::class)->make(['week_number' => '2019-01']);
+
+        $this->assertEquals(Carbon::create(2019, 3, 8), $report->endOfWeek);
+        $this->assertEquals(Carbon::create(2019, 1, 4), $report2->endOfWeek);
+    }
 }

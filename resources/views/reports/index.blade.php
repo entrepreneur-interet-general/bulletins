@@ -34,7 +34,8 @@ section-grey
 
     @foreach($reports as $report)
     <div class="panel">
-      <h3>{{ $report->week_number }}</h3>
+      <h3 style="margin-bottom: -.3em">{{ $report->week_number }}</h3>
+      <span class="text-grey-dark">Du {{ $report->startOfWeek->isoFormat('LL') }} au {{ $report->endOfWeek->isoFormat('LL') }}</span>
       <ul>
         <li><b>État d'esprit :</b> {{ $report->spirit }}</li>
         <li><b>Priorité :</b> {{ $report->priorities }}</li>

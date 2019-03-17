@@ -2,11 +2,23 @@
 
 namespace App;
 
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Report extends Model
 {
     protected $guarded = [];
+
+    public function getStartOfWeekAttribute()
+    {
+        list($year, $week) = explode('-', $this->week_number);
+        return now()->setIsoDate($year, $week)->startOfWeek();
+    }
+
+    public function getEndOfWeekAttribute()
+    {
+        return $this->startOfWeek->next(Carbon::FRIDAY);
+    }
 
     public static function canBeFilled()
     {
