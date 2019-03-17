@@ -32,7 +32,10 @@ class ReportsController extends Controller
           'help'        => $request->input('help'),
         ])->save();
 
-        return view('success', ['week' => $this->week()]);
+        return view('success', [
+          'week' => $this->week(),
+          'gif' => $this->randomGif(),
+        ]);
     }
 
     public function choose()
@@ -83,5 +86,16 @@ class ReportsController extends Controller
         };
 
         return response()->streamDownload($callback, $filename, $headers);
+    }
+
+    private function randomGif()
+    {
+        return (object) collect([
+          ['id' => '4Zo41lhzKt6iZ8xff9', 'width' => 480, 'height' => 480],
+          ['id' => 'Ztw0p2RGR36E0', 'width' => 480, 'height' => 270],
+          ['id' => 'SwImQhtiNA7io', 'width' => 480, 'height' => 297],
+          ['id' => 'eYilisUwipOEM', 'width' => 480, 'height' => 348],
+          ['id' => 'tQ8uT9t0uK92M', 'width' => 480, 'height' => 270],
+        ])->shuffle()->first();
     }
 }
