@@ -12,6 +12,7 @@ class Report extends Model
     public function getStartOfWeekAttribute()
     {
         list($year, $week) = explode('-', $this->week_number);
+
         return now()->setIsoDate($year, $week)->startOfWeek();
     }
 
