@@ -6,7 +6,6 @@ use App\Report;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Collection;
 
 class ReportsController extends Controller
@@ -56,7 +55,8 @@ class ReportsController extends Controller
         }
 
         return view('reports.index', [
-          'reports' => $reports,
+          'reports' => $reports->groupBy->month,
+          'currentProject' => $reports->first()->projectObject(),
           'projects' => $projects,
           'shareUrl' => URL::signedRoute('reports.index', $currentProject),
           'downloadUrl' => URL::signedRoute('reports.export', $currentProject),
@@ -77,7 +77,7 @@ class ReportsController extends Controller
 
         $callback = function () use ($reports) {
             $file = fopen('php://output', 'w');
-            fputcsv($file, Schema::getColumnListing('reports'));
+            fputcsv($file, array_keys(Report::first()->toArray()));
 
             foreach ($reports as $report) {
                 fputcsv($file, $report->toArray());

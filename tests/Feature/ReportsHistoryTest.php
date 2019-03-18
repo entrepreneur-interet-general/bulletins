@@ -51,9 +51,10 @@ class ReportsHistoryTest extends TestCase
             ->assertStatus(200)
             ->assertViewIs('reports.index')
             ->assertViewHas('projects', collect([$dummy->project, $report->project])->sort()->values())
+            ->assertViewHas('currentProject', $report->projectObject())
             ->assertViewHas('shareUrl', URL::signedRoute('reports.index', $report->project))
             ->assertViewHas('downloadUrl', URL::signedRoute('reports.export', $report->project))
-            ->assertViewHas('reports', Report::where('project', $report->project)->where('week_number', '2019-10')->get());
+            ->assertViewHas('reports', Report::where('project', $report->project)->where('week_number', '2019-10')->get()->groupBy->month);
     }
 
     public function testIndexWithSignature()
