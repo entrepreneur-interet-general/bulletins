@@ -51,7 +51,7 @@
 
     <div class="form__group">
       <label for="victories">Vos hauts et vos bas</label>
-      <textarea name="victories" rows="3" placeholder="Ce qui a marché et ce qui vous a donné du fil à retordre" required maxlength="300">{{ old('victories') }}</textarea>
+      <textarea name="victories" rows="3" placeholder="Ce qui a fonctionné et ce qui vous a donné du fil à retordre" required maxlength="300">{{ old('victories') }}</textarea>
     </div>
 
     <div class="form__group">
