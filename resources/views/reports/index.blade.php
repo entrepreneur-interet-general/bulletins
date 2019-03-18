@@ -25,14 +25,16 @@ section-grey
     <div class="panel">
       <h1>{{ $projectName }} <img src="{{ asset($currentProject->logoUrl) }}" alt="{{ $projectName }}" width="32px"></h1>
 
-      <div class="form__group">
-        <label>Bilans par mois</label>
-        <ul class="label-list">
-          @foreach($reports as $month => $nope)
-            <li class="label"><a href="#{{ Str::slug($month)}}">{{ $month }}</a></li>
-          @endforeach
-        </ul>
-      </div>
+      @if($reports->count() > 1)
+        <div class="form__group">
+          <label>Bilans par mois</label>
+          <ul class="label-list">
+            @foreach($reports as $month => $nope)
+              <li class="label"><a href="#{{ Str::slug($month)}}">{{ $month }}</a></li>
+            @endforeach
+          </ul>
+        </div>
+      @endif
 
       <div class="form__group" style="margin-top: .5em">
         <label>Actions</label>
