@@ -86,7 +86,7 @@ class ReportTest extends TestCase
         $report = factory(Report::class)->make(['week_number' => '2019-10']);
         $report2 = factory(Report::class)->make(['week_number' => '2019-01']);
 
-        $this->assertEquals('mars 2019', $report->month);
-        $this->assertEquals('décembre 2018', $report2->month);
+        $this->assertEquals('March 2019', $report->month);
+        $this->assertEquals('December 2018', $report2->month);
     }
 }
