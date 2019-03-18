@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Report extends Model
 {
     protected $guarded = [];
+    protected $appends = ['start_of_week', 'end_of_week', 'month'];
 
     public function getStartOfWeekAttribute()
     {
