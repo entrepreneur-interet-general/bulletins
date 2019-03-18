@@ -80,4 +80,13 @@ class ReportTest extends TestCase
         $this->assertEquals(Carbon::create(2019, 3, 8), $report->endOfWeek);
         $this->assertEquals(Carbon::create(2019, 1, 4), $report2->endOfWeek);
     }
+
+    public function testMonth()
+    {
+        $report = factory(Report::class)->make(['week_number' => '2019-10']);
+        $report2 = factory(Report::class)->make(['week_number' => '2019-01']);
+
+        $this->assertEquals('mars 2019', $report->month);
+        $this->assertEquals('décembre 2018', $report2->month);
+    }
 }

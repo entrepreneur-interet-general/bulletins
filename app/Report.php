@@ -21,6 +21,11 @@ class Report extends Model
         return $this->startOfWeek->next(Carbon::FRIDAY);
     }
 
+    public function getMonthAttribute()
+    {
+        return $this->startOfWeek->monthName.' '.$this->startOfWeek->year;
+    }
+
     public static function canBeFilled()
     {
         $now = now()->timezone(config('app.report_timezone'));
