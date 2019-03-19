@@ -89,4 +89,13 @@ class ReportTest extends TestCase
         $this->assertEquals('March 2019', $report->month);
         $this->assertEquals('December 2018', $report2->month);
     }
+
+    public function testScopeWeek()
+    {
+        $report = factory(Report::class)->create(['week_number' => '2019-10']);
+        $report2 = factory(Report::class)->create(['week_number' => '2019-01']);
+
+        $this->assertEquals(collect([$report->id]), Report::forWeek('2019-10')->pluck('id'));
+        $this->assertEquals(collect([$report2->id]), Report::forWeek('2019-01')->pluck('id'));
+    }
 }
