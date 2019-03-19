@@ -8,6 +8,6 @@ Route::get('/reports', 'ReportsController@choose')->name('reports.choose');
 Route::get('/reports/{reports}', 'ReportsController@index')->name('reports.index')->middleware('logged_in');
 Route::get('/reports/{reports}/export', 'ReportsController@export')->name('reports.export')->middleware('logged_in');
 Route::view('/about', 'about')->name('about');
-Route::get('/email', function () {
-    return (new App\Mail\WeeklyReport())->render();
+Route::get('/email/{week?}', function ($week = null) {
+    return (new App\Mail\WeeklyReport($week))->render();
 });

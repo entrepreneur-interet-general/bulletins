@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use UnexpectedValueException;
 use App\Report;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -11,19 +12,28 @@ class WeeklyReport extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $week;
+
+    public function __construct($week = null)
+    {
+        $this->week = $week ?? now()->format('Y-W');
+
+        if (! preg_match('/^\d{4}-\d{2}$/', $this->week)) {
+            throw new UnexpectedValueException($week.' is not a valid week.');
+        }
+    }
+
     public function build()
     {
-        $weekNumber = now()->format('Y-W');
+        $reports = Report::forWeek($this->week)->get()->shuffle();
+        $helpRequests = Report::forWeek($this->week)->orderBy('project')->pluck('help', 'project')->filter();
+        $projectsNoInfo = config('app.projects')->unfilledProjectsFor($this->week)->map->name;
 
-        $reports = Report::forWeek($weekNumber)->get()->shuffle();
-        $helpRequests = Report::forWeek($weekNumber)->orderBy('project')->pluck('help', 'project')->filter();
-        $projectsNoInfo = config('app.projects')->unfilledProjectsFor($weekNumber)->map->name;
-
-        $subject = 'Bilan de la semaine '.$weekNumber;
+        $subject = 'Bilan de la semaine '.$this->week;
 
         return $this->markdown('emails.report', [
             'reports' => $reports,
-            'weekNumber' => $weekNumber,
+            'weekNumber' => $this->week,
             'helpRequests' => $helpRequests,
             'projectsNoInfo' => $projectsNoInfo,
         ])->subject($subject);
