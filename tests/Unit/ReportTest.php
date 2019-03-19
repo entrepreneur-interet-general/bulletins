@@ -98,4 +98,28 @@ class ReportTest extends TestCase
         $this->assertEquals(collect([$report->id]), Report::forWeek('2019-10')->pluck('id'));
         $this->assertEquals(collect([$report2->id]), Report::forWeek('2019-01')->pluck('id'));
     }
+
+    public function testScopePublished()
+    {
+        $report = factory(Report::class)->create(['week_number' => '2019-09']);
+        $report2 = factory(Report::class)->create(['week_number' => '2019-10']);
+
+        $tests = [
+            [Carbon::create(2019, 3, 4), [$report->id]],
+            [Carbon::create(2019, 3, 5), [$report->id]],
+            [Carbon::create(2019, 3, 7), [$report->id]],
+            [Carbon::create(2019, 3, 8, 14, 59), [$report->id]],
+            [Carbon::create(2019, 3, 8, 15), [$report->id, $report2->id]],
+            [Carbon::create(2019, 3, 9), [$report->id, $report2->id]],
+            [Carbon::create(2019, 3, 10), [$report->id, $report2->id]],
+            [Carbon::create(2019, 3, 11), [$report->id, $report2->id]],
+        ];
+
+        foreach ($tests as $test) {
+            list($date, $expected) = $test;
+            Carbon::setTestNow($date);
+
+            $this->assertEquals(collect($expected), Report::published()->orderBy('id')->pluck('id'));
+        }
+    }
 }
