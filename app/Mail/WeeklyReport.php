@@ -2,10 +2,10 @@
 
 namespace App\Mail;
 
-use UnexpectedValueException;
 use App\Report;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use UnexpectedValueException;
 use Illuminate\Queue\SerializesModels;
 
 class WeeklyReport extends Mailable
