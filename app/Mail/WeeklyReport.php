@@ -14,10 +14,18 @@ class WeeklyReport extends Mailable
     public function build()
     {
         $weekNumber = now()->format('Y-W');
-        $reports = Report::where('week_number', $weekNumber)->get()->shuffle();
+
+        $reports = Report::forWeek($weekNumber)->get()->shuffle();
+        $helpRequests = Report::forWeek($weekNumber)->orderBy('project')->pluck('help', 'project')->filter();
         $projectsNoInfo = config('app.projects')->unfilledProjectsFor($weekNumber)->map->name;
+
         $subject = 'Bilan de la semaine '.$weekNumber;
 
-        return $this->markdown('emails.report', compact('reports', 'weekNumber', 'projectsNoInfo'))->subject($subject);
+        return $this->markdown('emails.report', [
+            'reports' => $reports,
+            'weekNumber' => $weekNumber,
+            'helpRequests' => $helpRequests,
+            'projectsNoInfo' => $projectsNoInfo,
+        ])->subject($subject);
     }
 }

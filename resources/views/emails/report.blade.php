@@ -3,6 +3,16 @@
 # Semaine {{ $weekNumber }}
 Cette semaine, dans l'équipe.
 
+@if($helpRequests->count() > 0)
+## Demandes d'aide
+@component('mail::panel')
+@foreach($helpRequests as $project => $help)
+- **{{ $project }} :** {{ $help }}
+@endforeach
+@endcomponent
+@endif
+
+## Nouvelles de la semaine
 @foreach ($reports as $report)
 @component('mail::panel')
 ## <img src="{{ asset($report->projectObject()->logoUrl) }}" alt="{{ $report->project }}" width="20"> {{ $report->project }}
