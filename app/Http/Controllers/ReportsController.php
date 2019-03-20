@@ -51,7 +51,7 @@ class ReportsController extends Controller
         if (! is_null($request->query('signature'))) {
             $projects = collect([$currentProject]);
         } else {
-            $projects = Report::select('project')->distinct()->get()->pluck('project');
+            $projects = Report::published()->select('project')->distinct()->get()->pluck('project');
         }
 
         return view('reports.index', [
