@@ -79,7 +79,6 @@ class ReportsHistoryTest extends TestCase
         $response->assertHeader('content-disposition');
     }
 
-
     public function testWeekIndex()
     {
         $report = factory(Report::class)->create();
