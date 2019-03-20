@@ -5,17 +5,6 @@ jobs:
       - image: circleci/php:7.2-node-browsers
     steps:
       - checkout
-      - run:
-          name: Install apt packages
-          command: |
-            sudo apt update
-            sudo apt install zlib1g-dev libsqlite3-dev
-      - run:
-          name: Install PHP extensions
-          command: |
-            sudo docker-php-ext-install zip
-            sudo docker-php-ext-install pdo_mysql
-
       - restore_cache:
           keys:
           - composer-v1-{{ checksum "composer.lock" }}
