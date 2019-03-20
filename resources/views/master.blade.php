@@ -39,7 +39,15 @@
 
       <nav>
         <ul class="nav__links">
-          <li class="nav__item"><a href="{{ route('reports.choose') }}">Historique des bilans</a></li>
+          <li class="nav__item">
+            <div class="dropdown">
+              Historique des bilans
+              <div class="dropdown-content">
+                <a href="{{ route('reports.choose') }}">Par projet</a>
+                <a href="{{ route('reports.week_index') }}">Par semaine</a>
+              </div>
+            </div>
+          </li>
           <li class="nav__item"><a href="{{ route('about') }}">À propos</a></li>
           <li class="nav__item"><a href="https://github.com/entrepreneur-interet-general/ma-semaine">Code source</a></li>
         </ul>
