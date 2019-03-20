@@ -63,6 +63,13 @@ class ReportsController extends Controller
         ]);
     }
 
+    public function weekIndex()
+    {
+        return view('reports.week_index', [
+            'data' => Report::latest()->select('week_number')->distinct()->get()->groupBy->month,
+        ]);
+    }
+
     public function export(Collection $reports)
     {
         $headers = [

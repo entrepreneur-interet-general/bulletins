@@ -79,6 +79,20 @@ class ReportsHistoryTest extends TestCase
         $response->assertHeader('content-disposition');
     }
 
+
+    public function testWeekIndex()
+    {
+        $report = factory(Report::class)->create();
+
+        $this->get(route('reports.week_index'))->assertRedirect(route('login'));
+
+        $this
+            ->withSession(['logged_in' => true])
+            ->get(route('reports.week_index'))
+            ->assertOk()
+            ->assertViewHas('data');
+    }
+
     private function projectNames()
     {
         return config('app.projects')->map->name;
