@@ -6,6 +6,7 @@
 
   <title>Ma semaine</title>
   <link href="https://unpkg.com/template.data.gouv.fr@1.2.1/dist/main.min.css" rel="stylesheet">
+  <link href="{{ mix('/css/all.css') }}" rel="stylesheet">
   <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
 <body>
@@ -56,7 +57,7 @@
   </header>
 
   <main role="main">
-    <div class="hero" role="banner" style="background:linear-gradient(to right, #c969a6 0%, #e795a8 15%, #a4cfcd 43%, #45adc5 65%, #265c9f 100%)">
+    <div class="hero" role="banner">
       <div class="hero__container">
         <h1 class="hero__white-background">Stand-up hebdomadaire</h1>
         <p class="hero__white-background">Comment s’est passée votre semaine ?</p>
