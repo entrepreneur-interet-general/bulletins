@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Ma semaine</title>
-  <link href="https://unpkg.com/template.data.gouv.fr@1.2.0/dist/main.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/template.data.gouv.fr@1.2.1/dist/main.min.css" rel="stylesheet">
   <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
 <body>
