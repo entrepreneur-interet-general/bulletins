@@ -59,10 +59,10 @@ section-grey
         </div>
         <ul>
           <li><b>État d'esprit :</b> {{ $report->spirit }}</li>
-          <li><b>Priorité :</b> {{ $report->priorities }}</li>
-          <li><b>Hauts et bas :</b> {{ $report->victories }}</li>
+          <li><b>Priorité :</b> {{ App\Markdown::parseLine($report->priorities) }}</li>
+          <li><b>Hauts et bas :</b> {{ App\Markdown::parseLine($report->victories) }}</li>
           @if ($report->help)
-          <li><b>Demande d'aide :</b> {{ $report->help }}</li>
+            <li><b>Demande d'aide :</b> {{ App\Markdown::parseLine($report->help) }}</li>
           @endif
         </ul>
       </div>
