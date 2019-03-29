@@ -65,8 +65,10 @@ class ReportsController extends Controller
 
     public function weekIndex()
     {
+        $weekNumbers = Report::published()->latest()->select('week_number')->distinct();
+
         return view('reports.week_index', [
-            'data' => Report::latest()->select('week_number')->distinct()->get()->groupBy->month,
+            'data' => $weekNumbers->get()->groupBy->month,
         ]);
     }
 
