@@ -29,7 +29,7 @@ Cette semaine, dans l'équipe.
 @if ($projectsNoInfo->count() > 0)
 Malheureusement, nous n'avons pas de nouvelles pour ces projets : {{ $projectsNoInfo->implode(', ') }} 😢.
 @else
-Tout le monde a rempli son bilan ! Merci 💪
+Tout le monde a rempli son bilan ! 💪 Merci 🙏
 @endif
 
 Passez un bon week-end ! 🏝
