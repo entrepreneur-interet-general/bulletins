@@ -228,6 +228,7 @@ return [
 
     ],
 
+    // Projects we are following
     'projects' => new App\Projects([
       new App\Project('ACOSS', 'slack', ['UEMA8DE8Y', 'UEN897F5K'], 'images/logo/ACOSS-Plateforme.png'),
       new App\Project('ADLER', 'slack', ['UEPH8SSJE', 'UEMUL8CFM'], 'images/logo/Adler.png'),
@@ -247,9 +248,22 @@ return [
       new App\Project('PolyGraphe', 'slack', ['UEN80C8MB', 'UEMTJ5UVA'], 'images/logo/Polygraphe.png'),
     ]),
 
+    // Timezone to use for reports.
+    // Use a time zone name from the IANA database like Europe/Paris.
     'report_timezone' => env('REPORT_TIMEZONE', 'UTC'),
+
+    // To which email address should weekly reports be sent to.
     'report_email' => env('REPORT_EMAIL'),
+
+    // The password to see previous reports in the web interface.
     'report_secret' => env('REPORT_SECRET'),
-    'reports_password_hint' => env('REPORTS_PASSWORD_HINT'),
+
+    // An hint to guess the password of the web interface.
+    // If you don't want to provide an hint, leave it null.
+    'reports_password_hint' => env('REPORTS_PASSWORD_HINT', null),
+
+    // A Slack channel name where a reminder to fill the reports
+    // will be posted on Fridays at 10:00 AM.
+    // Example: #general
     'slack_general_channel' => env('SLACK_GENERAL_CHANNEL'),
 ];
