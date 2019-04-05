@@ -25,7 +25,7 @@ class Project
 
     public function notify()
     {
-        if (is_null($notificationChannel)) {
+        if (is_null($this->notificationChannel)) {
             return;
         }
 
