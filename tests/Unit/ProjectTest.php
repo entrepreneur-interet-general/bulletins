@@ -2,9 +2,9 @@
 
 namespace Tests\Unit;
 
-use UnexpectedValueException;
 use App\Project;
 use Tests\TestCase;
+use UnexpectedValueException;
 
 class ProjectTest extends TestCase
 {
