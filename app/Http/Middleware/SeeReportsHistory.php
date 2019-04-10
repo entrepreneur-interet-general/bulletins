@@ -15,6 +15,6 @@ class SeeReportsHistory
             return $next($request);
         }
 
-        return redirect(route('login'));
+        return redirect()->guest(route('login'));
     }
 }

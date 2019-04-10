@@ -38,4 +38,16 @@ class LoginTest extends TestCase
 
         $this->assertTrue(session()->has('logged_in'));
     }
+
+    public function testRedirectedIntended()
+    {
+        redirect()->setIntendedUrl(route('about'));
+
+        $this
+            ->post(route('login'), ['password' => config('app.report_secret')])
+            ->assertSessionMissing('error')
+            ->assertRedirect(route('about'));
+
+        $this->assertTrue(session()->has('logged_in'));
+    }
 }

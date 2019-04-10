@@ -31,7 +31,7 @@ class HomeController extends Controller
 
         session(['logged_in' => true]);
 
-        return redirect(route('reports.choose'));
+        return redirect()->intended(route('reports.choose'));
     }
 
     private function filledProjects()

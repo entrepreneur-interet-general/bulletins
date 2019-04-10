@@ -84,6 +84,8 @@ class ReportsHistoryTest extends TestCase
         $report = factory(Report::class)->create();
 
         $this->get(route('reports.week_index'))->assertRedirect(route('login'));
+        // Intended URL has been saved in session
+        $this->assertEquals(route('reports.week_index'), session()->get('url.intended'));
 
         $this
             ->withSession(['logged_in' => true])
