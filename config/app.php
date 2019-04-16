@@ -254,6 +254,7 @@ return [
     'report_timezone' => env('REPORT_TIMEZONE', 'UTC'),
 
     // To which email address should weekly reports be sent to.
+    // Example: `team@company.com`
     'report_email' => env('REPORT_EMAIL'),
 
     // The password to see previous reports in the web interface.
@@ -264,7 +265,7 @@ return [
     'reports_password_hint' => env('REPORTS_PASSWORD_HINT', null),
 
     // A Slack channel name where a reminder to fill the reports
-    // will be posted on Fridays at 10:00 AM.
+    // will be posted on Fridays at 10 AM.
     // Example: #general
     'slack_general_channel' => env('SLACK_GENERAL_CHANNEL'),
 ];
