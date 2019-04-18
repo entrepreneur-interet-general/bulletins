@@ -1,5 +1,5 @@
-[![CircleCI build status](https://img.shields.io/circleci/project/github/entrepreneur-interet-general/ma-semaine.svg?style=flat-square)](https://circleci.com/gh/entrepreneur-interet-general/ma-semaine)
-[![Software License](https://img.shields.io/badge/License-AGPL-orange.svg?style=flat-square)](https://github.com/entrepreneur-interet-general/ma-semaine/blob/master/LICENSE)
+[![CircleCI build status](https://img.shields.io/circleci/project/github/entrepreneur-interet-general/bulletins.svg?style=flat-square)](https://circleci.com/gh/entrepreneur-interet-general/bulletins)
+[![Software License](https://img.shields.io/badge/License-AGPL-orange.svg?style=flat-square)](https://github.com/entrepreneur-interet-general/bulletins/blob/master/LICENSE)
 
 # What is it
 Bulletins is a weekly retrospective tool for multiple projects or teams. It lets people reflect on their past week with 4 questions which can be answered super quickly:
@@ -28,8 +28,8 @@ Bulletins is a [Laravel](https://laravel.com) 5.8 project. It requires PHP 7.1+ 
 
 A standard installation may look like this:
 ```
-git clone https://github.com/entrepreneur-interet-general/ma-semaine.git
-cd ma-semaine
+git clone https://github.com/entrepreneur-interet-general/bulletins.git
+cd bulletins
 composer install
 cp .env.example .env
 php artisan key:generate
