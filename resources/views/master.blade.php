@@ -50,7 +50,7 @@
             </div>
           </li>
           <li class="nav__item"><a href="{{ route('about') }}">À propos</a></li>
-          <li class="nav__item"><a href="https://github.com/entrepreneur-interet-general/ma-semaine">Code source</a></li>
+          <li class="nav__item"><a href="https://github.com/entrepreneur-interet-general/bulletins">Code source</a></li>
         </ul>
       </nav>
     </div>
@@ -74,7 +74,7 @@
     <div class="container">
       <div class="footer__logo">
         <ul class="footer__social">
-          <li><a href="https://github.com/entrepreneur-interet-general/ma-semaine" title="Github"><svg class="icon icon-github"><use xlink:href="#github"></use></svg></a></li>
+          <li><a href="https://github.com/entrepreneur-interet-general/bulletins" title="GitHub"><svg class="icon icon-github"><use xlink:href="#github"></use></svg></a></li>
         </ul>
       </div>
     </div>
