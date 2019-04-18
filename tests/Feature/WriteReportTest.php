@@ -45,7 +45,7 @@ class WriteReportTest extends TestCase
             'help' => null,
         ], Report::first()->toArray());
 
-        $this->get('/')->assertSee('Explo Code (déjà renseigné)');
+        $this->get('/')->assertSee('Explo Code (already filled)');
     }
 
     public function testCantFillTwiceForm()
