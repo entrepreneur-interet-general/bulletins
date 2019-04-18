@@ -3,9 +3,9 @@
 @section('content')
 <form action="{{ route('login') }}" method="post" name="form">
   @csrf
-  <h1>Accès à l'historique des bilans</h1>
+  <h1>{{ __('login.title') }}</h1>
 
-  <p>Vous devez vous authentifier préalablement.</p>
+  <p>{{ __('login.password') }}</p>
 
   @if (session()->has('error'))
   <div class="notification error">
@@ -25,7 +25,7 @@
   </div>
 
   <div class="form__group">
-    <button class="button" type="submit" name="validate">S'authentifier</button>
+    <button class="button" type="submit" name="validate">{{ __('login.login') }}</button>
   </div>
 </form>
 @endsection
