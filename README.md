@@ -2,7 +2,7 @@
 [![Software License](https://img.shields.io/badge/License-AGPL-orange.svg?style=flat-square)](https://github.com/entrepreneur-interet-general/ma-semaine/blob/master/LICENSE)
 
 # What is it
-$APP_NAME is a weekly retrospective tool for multiple projects or teams. It lets people reflect on their past week with 4 questions which can be answered super quickly:
+Bulletins is a weekly retrospective tool for multiple projects or teams. It lets people reflect on their past week with 4 questions which can be answered super quickly:
 - What's the team mood?
 - What were the main goals this week?
 - What worked great and what was harder?
@@ -11,7 +11,7 @@ $APP_NAME is a weekly retrospective tool for multiple projects or teams. It lets
 It's asynchronous and transparent at its heart. All teams can fill their retrospective when they want through a simple web interface, as long as it's before Friday 3 PM. On Fridays at 3 PM, everyone gets a weekly recap email with all filled retrospectives. The web interface lets everyone browse through previous retrospectives by week or by team.
 
 ## Features
-$APP_NAME is opinionated on a few things. Here are some principles:
+Bulletins is opinionated on a few things. Here are some principles:
 - Retrospectives should be quick. The form has a select and 3 text inputs. Each text input is limited to 300 characters (a bit more than a tweet). Filling a retrospective for a team takes less than 5 minutes per week.
 - We don't provide an authentication system. It should be deployed internally or can be secured with something like HTTP Auth Basic.
 - Transparency is important. When teams fill their retrospective, it can be read by all other teams. Everyone who has access to the application can browse through previous retrospectives and export them in CSV.
@@ -24,7 +24,7 @@ $APP_NAME is opinionated on a few things. Here are some principles:
 - Each team can share a unique URL which lets anyone see all previous retrospectives of a specific team. It's useful when working with outside people or clients for example.
 
 ## Installation
-$APP_NAME is a [Laravel](https://laravel.com) 5.8 project. It requires PHP 7.1+ and [Composer](https://getcomposer.org).
+Bulletins is a [Laravel](https://laravel.com) 5.8 project. It requires PHP 7.1+ and [Composer](https://getcomposer.org).
 
 A standard installation may look like this:
 ```
