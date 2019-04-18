@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Ma semaine</title>
+  <title>{{ config('app.name') }}</title>
   <link href="https://unpkg.com/template.data.gouv.fr@1.2.1/dist/main.min.css" rel="stylesheet">
   <link href="{{ mix('/css/all.css') }}" rel="stylesheet">
   <link rel="icon" type="image/png" href="/images/favicon.png">
@@ -35,22 +35,22 @@
   <header class="navbar" role="navigation">
     <div class="navbar__container">
       <a class="navbar__home" href="/">
-        Ma Semaine
+        {{ config('app.name') }}
       </a>
 
       <nav>
         <ul class="nav__links">
           <li class="nav__item">
             <div class="dropdown">
-              Historique des bilans
+              {{ __('layout.previous_bulletins') }}
               <div class="dropdown-content">
-                <a href="{{ route('reports.choose') }}">Par projet</a>
-                <a href="{{ route('reports.week_index') }}">Par semaine</a>
+                <a href="{{ route('reports.choose') }}">{{ __('layout.previous_bulletins.project') }}</a>
+                <a href="{{ route('reports.week_index') }}">{{ __('layout.previous_bulletins.week') }}</a>
               </div>
             </div>
           </li>
-          <li class="nav__item"><a href="{{ route('about') }}">À propos</a></li>
-          <li class="nav__item"><a href="https://github.com/entrepreneur-interet-general/ma-semaine">Code source</a></li>
+          <li class="nav__item"><a href="{{ route('about') }}">{{ __('layout.about') }}</a></li>
+          <li class="nav__item"><a href="https://github.com/entrepreneur-interet-general/ma-semaine">{{ __('layout.source_code') }}</a></li>
         </ul>
       </nav>
     </div>
@@ -59,8 +59,8 @@
   <main role="main">
     <div class="hero" role="banner">
       <div class="hero__container">
-        <h1 class="hero__white-background">Stand-up hebdomadaire</h1>
-        <p class="hero__white-background">Comment s’est passée votre semaine ?</p>
+        <h1 class="hero__white-background">{{ __('layout.hero_title') }}</h1>
+        <p class="hero__white-background">{{ __('layout.hero_subtitle') }}</p>
       </div>
     </div>
     <section class="@yield('section-class', 'section section-white')">
