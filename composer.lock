@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b6f5646fbc553921522284a81b9ec7d9",
-    "content-hash": "9aba0ca8983c7d364fdcee0e02d44ffe",
+    "hash": "eac07fb6644773b3e31f0773d9a9c0bf",
+    "content-hash": "9519c45f5d7acf0b8122f8f9a146a98a",
     "packages": [
         {
             "name": "bugsnag/bugsnag",
@@ -4320,16 +4320,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.8",
+            "version": "7.5.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "c29c0525cf4572c11efe1db49a8b8aee9dfac58a"
+                "reference": "134669cf0eeac3f79bc7f0c793efbc158bffc160"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c29c0525cf4572c11efe1db49a8b8aee9dfac58a",
-                "reference": "c29c0525cf4572c11efe1db49a8b8aee9dfac58a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/134669cf0eeac3f79bc7f0c793efbc158bffc160",
+                "reference": "134669cf0eeac3f79bc7f0c793efbc158bffc160",
                 "shasum": ""
             },
             "require": {
@@ -4400,7 +4400,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-03-26 13:23:54"
+            "time": "2019-04-19 15:50:46"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -4967,6 +4967,68 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-10-03 07:35:21"
+        },
+        {
+            "name": "themsaid/laravel-langman",
+            "version": "v1.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/themsaid/laravel-langman.git",
+                "reference": "27cdaa7eca53a0fe7a54c413285de6112f3166de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/themsaid/laravel-langman/zipball/27cdaa7eca53a0fe7a54c413285de6112f3166de",
+                "reference": "27cdaa7eca53a0fe7a54c413285de6112f3166de",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.1",
+                "illuminate/filesystem": "~5.1",
+                "illuminate/support": "~5.1",
+                "php": "^5.5.9 || ^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.4",
+                "orchestra/database": "~3.0",
+                "orchestra/testbench": "~3.0",
+                "phpunit/phpunit": "^4.8 || ^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Themsaid\\Langman\\LangmanServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Themsaid\\Langman\\": "src"
+                },
+                "classmap": [
+                    "tests"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Said",
+                    "email": "theMohamedSaid@gmail.com",
+                    "homepage": "https://themsaid.github.io"
+                }
+            ],
+            "description": "Manage language files with ease.",
+            "homepage": "https://github.com/themsaid/laravel-langman",
+            "keywords": [
+                "laravel",
+                "localization",
+                "multilingual"
+            ],
+            "time": "2017-08-06 15:02:00"
         },
         {
             "name": "theseer/tokenizer",
