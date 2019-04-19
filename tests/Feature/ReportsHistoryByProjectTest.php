@@ -64,51 +64,6 @@ class ReportsHistoryTest extends TestCase
         $this->get(URL::signedRoute('reports.index', $report->project))->assertOk();
     }
 
-    public function testExport()
-    {
-        $report = factory(Report::class)->create();
-        $this
-            ->get(route('reports.export', $report->project))
-            ->assertRedirect(route('login'));
-
-        $response = $this
-            ->withSession(['logged_in' => true])
-            ->get(route('reports.export', $report->project));
-
-        $response->assertOk();
-        $response->assertHeader('content-disposition');
-    }
-
-    public function testWeekIndex()
-    {
-        $report = factory(Report::class)->create();
-
-        $this->get(route('reports.week_index'))->assertRedirect(route('login'));
-        // Intended URL has been saved in session
-        $this->assertEquals(route('reports.week_index'), session()->get('url.intended'));
-
-        $this
-            ->withSession(['logged_in' => true])
-            ->get(route('reports.week_index'))
-            ->assertOk()
-            ->assertViewHas('data');
-    }
-
-    public function testWeekHistory()
-    {
-        $report = factory(Report::class)->create();
-
-        $this
-            ->get(route('email_report', $report->week_number))
-            ->assertRedirect(route('login'));
-
-        $response = $this
-            ->withSession(['logged_in' => true])
-            ->get(route('email_report', $report->week_number));
-
-        $response->assertOk();
-    }
-
     private function projectNames()
     {
         return config('app.projects')->map->name;
