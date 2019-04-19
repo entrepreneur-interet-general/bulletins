@@ -94,6 +94,21 @@ class ReportsHistoryTest extends TestCase
             ->assertViewHas('data');
     }
 
+    public function testWeekHistory()
+    {
+        $report = factory(Report::class)->create();
+
+        $this
+            ->get(route('email_report', $report->week_number))
+            ->assertRedirect(route('login'));
+
+        $response = $this
+            ->withSession(['logged_in' => true])
+            ->get(route('email_report', $report->week_number));
+
+        $response->assertOk();
+    }
+
     private function projectNames()
     {
         return config('app.projects')->map->name;
