@@ -11,4 +11,4 @@ Route::get('/reports/{reports}/export', 'ReportsController@export')->name('repor
 Route::view('/about', 'about')->name('about');
 Route::get('/email/{week?}', function ($week = null) {
     return (new App\Mail\WeeklyReport($week))->render();
-})->name('email_report')->middleware('logged_in');;
+})->name('email_report')->middleware('logged_in');
