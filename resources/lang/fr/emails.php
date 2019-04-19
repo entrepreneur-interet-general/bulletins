@@ -11,4 +11,5 @@ return [
     'no_news' => "Malheureusement, nous n'avons pas de nouvelles pour ces projets : :projects 😢.",
     'all_filled' => 'Tout le monde a rempli son bilan ! 💪 Merci 🙏',
     'outro' => 'Passez un bon week-end ! 🏝',
+    'subject' => 'Bilan de la semaine :week',
 ];
