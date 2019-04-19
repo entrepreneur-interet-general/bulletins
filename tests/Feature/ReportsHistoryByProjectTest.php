@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ReportsHistoryTest extends TestCase
+class ReportsHistoryByProjectTest extends TestCase
 {
     use RefreshDatabase;
 
