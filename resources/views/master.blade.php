@@ -42,15 +42,15 @@
         <ul class="nav__links">
           <li class="nav__item">
             <div class="dropdown">
-              {{ __('layout.previous_bulletins') }}
+              {{ trans('layout.previous_bulletins') }}
               <div class="dropdown-content">
-                <a href="{{ route('reports.choose') }}">{{ __('layout.previous_bulletins.project') }}</a>
-                <a href="{{ route('reports.week_index') }}">{{ __('layout.previous_bulletins.week') }}</a>
+                <a href="{{ route('reports.choose') }}">{{ trans('layout.previous_bulletins.project') }}</a>
+                <a href="{{ route('reports.week_index') }}">{{ trans('layout.previous_bulletins.week') }}</a>
               </div>
             </div>
           </li>
-          <li class="nav__item"><a href="{{ route('about') }}">{{ __('layout.about') }}</a></li>
-          <li class="nav__item"><a href="https://github.com/entrepreneur-interet-general/bulletins">{{ __('layout.source_code') }}</a></li>
+          <li class="nav__item"><a href="{{ route('about') }}">{{ trans('layout.about') }}</a></li>
+          <li class="nav__item"><a href="https://github.com/entrepreneur-interet-general/bulletins">{{ trans('layout.source_code') }}</a></li>
         </ul>
       </nav>
     </div>
@@ -59,8 +59,8 @@
   <main role="main">
     <div class="hero" role="banner">
       <div class="hero__container">
-        <h1 class="hero__white-background">{{ __('layout.hero_title') }}</h1>
-        <p class="hero__white-background">{{ __('layout.hero_subtitle') }}</p>
+        <h1 class="hero__white-background">{{ trans('layout.hero_title') }}</h1>
+        <p class="hero__white-background">{{ trans('layout.hero_subtitle') }}</p>
       </div>
     </div>
     <section class="@yield('section-class', 'section section-white')">
