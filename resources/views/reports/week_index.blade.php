@@ -9,7 +9,7 @@ section-grey
   <div class="main">
     <div class="panel">
       <div class="panel__header">
-        <h2>Bilans précédents</h2>
+        <h2>{{ trans('reports.previous_reports') }}</h2>
       </div>
       <div class="form__group">
         @foreach($data as $month => $reports)

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    // reports.index
     'by_month' => 'Bilans par mois',
     'actions' => 'Actions',
     'share' => 'Partager',
@@ -14,4 +15,7 @@ return [
     'share_description' => "Pour partager <b>uniquement</b> l'historique des bilans du projet :project, vous pouvez partager ce lien unique.",
     'copy' => 'Copier',
     'close' => 'Fermer',
+
+    // reports.week_index
+    'previous_reports' => 'Bilans précédents',
 ];
