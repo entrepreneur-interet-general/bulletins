@@ -29,8 +29,7 @@ class Project
             return;
         }
 
-        $format = "Pour le moment nous n'avons pas de nouvelles du défi %s :sob: Votre mission : partager les nouvelles de la semaine à la promo en moins d'une heure. Attention, décollage à 15h ! :rocket: :point_right: %s";
-        $text = sprintf($format, $this->name, config('app.url'));
+        $text = trans('notifications.individual_reminder', ['project' => $this->name, 'url' => config('app.url')]);
 
         foreach ($this->members as $member) {
             Slack::sendMessage($member, $text);
