@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function authenticate(Request $request)
     {
         if ($request->input('password') !== config('app.report_secret')) {
-            return back()->with('error', "Le mot de passe n'est pas valide.");
+            return back()->with('error', trans('auth.failed'));
         }
 
         session(['logged_in' => true]);
