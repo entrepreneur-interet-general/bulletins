@@ -12,4 +12,5 @@ return [
     'all_filled' => 'Everybody filled their bulletins. 💪 Thanks! 🙏',
     'outro' => 'Have a nice weekend! 🏝',
     'subject' => 'Bulettins of the week :week',
+    'footer' => "To save trees, eat beavers and don't print this email.",
 ];
