@@ -1,8 +1,7 @@
 <?php
 
-
 return [
-    'title' => '',
-    'password' => '',
-    'login' => '',
+    'title' => 'Access to previous bulletins',
+    'password' => 'You should log in first.',
+    'login' => 'Log in',
 ];
