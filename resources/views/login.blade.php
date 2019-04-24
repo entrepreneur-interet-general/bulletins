@@ -5,7 +5,7 @@
   @csrf
   <h1>{{ trans('login.title') }}</h1>
 
-  <p>{{ trans('login.password') }}</p>
+  <p>{{ trans('login.description') }}</p>
 
   @if (session()->has('error'))
   <div class="notification error">
@@ -20,7 +20,7 @@
   @endif
 
   <div class="form__group">
-    <label for="help">Mot de passe</label>
+    <label for="help">{{ trans('login.password') }}</label>
     <input type="password" name="password" autofocus="true" required="true">
   </div>
 

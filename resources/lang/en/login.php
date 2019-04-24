@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Access to previous bulletins',
-    'password' => 'You should log in first.',
+    'description' => 'You should log in first.',
+    'password' => 'Password',
     'login' => 'Log in',
 ];
