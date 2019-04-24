@@ -12,4 +12,5 @@ return [
     'all_filled' => 'Tout le monde a rempli son bilan ! 💪 Merci 🙏',
     'outro' => 'Passez un bon week-end ! 🏝',
     'subject' => 'Bilan de la semaine :week',
+    'footer' => "Pour sauver des arbres, mangez des castors et n’imprimez pas cet e-mail.",
 ];
