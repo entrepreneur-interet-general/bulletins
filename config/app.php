@@ -250,7 +250,7 @@ return [
     ]),
 
     // Timezone to use for reports.
-    // Use a time zone name from the IANA database like Europe/Paris.
+    // Use a timezone name from the IANA database like Europe/Paris.
     'report_timezone' => env('REPORT_TIMEZONE', 'UTC'),
 
     // To which email address should weekly reports be sent to.
