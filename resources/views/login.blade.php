@@ -3,9 +3,9 @@
 @section('content')
 <form action="{{ route('login') }}" method="post" name="form">
   @csrf
-  <h1>Accès à l'historique des bilans</h1>
+  <h1>{{ trans('login.title') }}</h1>
 
-  <p>Vous devez vous authentifier préalablement.</p>
+  <p>{{ trans('login.description') }}</p>
 
   @if (session()->has('error'))
   <div class="notification error">
@@ -20,12 +20,12 @@
   @endif
 
   <div class="form__group">
-    <label for="help">Mot de passe</label>
+    <label for="help">{{ trans('login.password') }}</label>
     <input type="password" name="password" autofocus="true" required="true">
   </div>
 
   <div class="form__group">
-    <button class="button" type="submit" name="validate">S'authentifier</button>
+    <button class="button" type="submit" name="validate">{{ trans('login.login') }}</button>
   </div>
 </form>
 @endsection

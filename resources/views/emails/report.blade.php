@@ -1,10 +1,10 @@
 @component('mail::message')
 
-# Semaine {{ $weekNumber }}
-Cette semaine, dans l'équipe.
+# {{ trans('form.retrospective_title', ['week' => $weekNumber]) }}
+{{ trans('emails.intro') }}
 
 @if($helpRequests->count() > 0)
-## Demandes d'aide
+## {{ trans('emails.help_requests') }}
 @component('mail::panel')
 @foreach($helpRequests as $project => $help)
 - **{{ $project }} :** {{ $help }}
@@ -12,26 +12,26 @@ Cette semaine, dans l'équipe.
 @endcomponent
 @endif
 
-## Nouvelles de la semaine
+## {{ trans('emails.news') }}
 @foreach ($reports as $report)
 @component('mail::panel')
 ## <img src="{{ asset($report->projectObject()->logoUrl) }}" alt="{{ $report->project }}" width="20"> {{ $report->project }}
 
-- **État d'esprit :** {{ $report->spirit }}
-- **Priorité :** {{ $report->priorities }}
-- **Victoire / Difficulté :** {{ $report->victories }}
+- **{{ trans('emails.mood') }}** {{ $report->spirit }}
+- **{{ trans('emails.priority') }}** {{ $report->priorities }}
+- **{{ trans('emails.ups_and_downs') }}** {{ $report->victories }}
 @if (isset($report->help))
-- **Besoin :** {{ $report->help }}
+- **{{ trans('emails.help') }}** {{ $report->help }}
 @endif
 @endcomponent
 @endforeach
 
 @if ($projectsNoInfo->count() > 0)
-Malheureusement, nous n'avons pas de nouvelles pour ces projets : {{ $projectsNoInfo->implode(', ') }} 😢.
+{{ trans('emails.no_news', ['projects' => $projectsNoInfo->implode(', ')]) }}
 @else
-Tout le monde a rempli son bilan ! 💪 Merci 🙏
+{{ trans('emails.all_filled') }}
 @endif
 
-Passez un bon week-end ! 🏝
+{{ trans('emails.outro') }}
 
 @endcomponent
