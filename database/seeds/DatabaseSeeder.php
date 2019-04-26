@@ -1,13 +1,12 @@
 <?php
 
 use App\Report;
-use Faker\Factory as FakerFactory;
-use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
+use Illuminate\Database\Seeder;
+use Faker\Factory as FakerFactory;
 
 class DatabaseSeeder extends Seeder
 {
-
     public function run()
     {
         $faker = FakerFactory::create();
