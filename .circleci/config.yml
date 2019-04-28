@@ -52,23 +52,23 @@ jobs:
       - image: circleci/php:7.2-node-browsers
     steps:
       - run:
-        name: Composer create project
-        command: |
-          composer create-project entrepreneur-interet-general/bulletins
+          name: Composer create project
+          command: |
+            composer create-project entrepreneur-interet-general/bulletins
 
       - run:
-        name: Copy default env file
-        command: |
-          cd bulletins
-          cp .env.example .env
-          php artisan key:generate
+          name: Copy default env file
+          command: |
+            cd bulletins
+            cp .env.example .env
+            php artisan key:generate
 
       - run:
-        name: Creating database with seeding data
-        command: |
-          cd bulletins
-          touch database/database.sqlite
-          php artisan migrate:fresh --seed
+          name: Creating database with seeding data
+          command: |
+            cd bulletins
+            touch database/database.sqlite
+            php artisan migrate:fresh --seed
 workflows:
   version: 2
   commit:
