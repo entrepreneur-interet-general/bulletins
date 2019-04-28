@@ -74,11 +74,11 @@ jobs:
           command: |
             cd bulletins
             php artisan serve --port=8000
-            sleep 1
           background: true
       - run:
           name: Test GET /
           command: |
+            sleep 1
             wget --tries=1 http://localhost:8000
 workflows:
   version: 2
