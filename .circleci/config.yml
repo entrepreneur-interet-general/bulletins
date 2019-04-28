@@ -72,12 +72,13 @@ jobs:
       - run:
           name: Start PHP server
           command: |
+            cd bulletins
             php artisan serve --port=8000
           background: true
       - run:
           name: Test GET /
           command: |
-            wget http://localhost:8000
+            wget --tries=1 http://localhost:8000
 workflows:
   version: 2
   commit:
