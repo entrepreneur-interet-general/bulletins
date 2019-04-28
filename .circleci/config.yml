@@ -64,7 +64,7 @@ jobs:
             php artisan key:generate
 
       - run:
-          name: Creating database with seeding data
+          name: Create database with seeding data
           command: |
             cd bulletins
             touch database/database.sqlite
