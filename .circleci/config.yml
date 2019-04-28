@@ -69,6 +69,15 @@ jobs:
             cd bulletins
             touch database/database.sqlite
             php artisan migrate:fresh --seed
+      - run:
+          name: Start PHP server
+          command: |
+            php artisan serve --port=8000
+          background: true
+      - run:
+          name: Test GET /
+          command: |
+            wget http://localhost:8000
 workflows:
   version: 2
   commit:
