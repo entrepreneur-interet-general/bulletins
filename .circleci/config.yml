@@ -85,7 +85,6 @@ workflows:
   commit:
     jobs:
       - build
-      - install_from_composer
   cron:
     triggers:
       - schedule:
