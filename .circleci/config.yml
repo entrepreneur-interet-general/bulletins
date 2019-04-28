@@ -54,7 +54,7 @@ jobs:
       - run:
           name: Composer create project
           command: |
-            composer create-project --prefer-dist --stability=dev entrepreneur-interet-general/bulletins
+            composer create-project --stability=dev entrepreneur-interet-general/bulletins
 
       - run:
           name: Copy default env file
