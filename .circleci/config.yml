@@ -74,6 +74,7 @@ jobs:
           command: |
             cd bulletins
             php artisan serve --port=8000
+            sleep 1
           background: true
       - run:
           name: Test GET /
