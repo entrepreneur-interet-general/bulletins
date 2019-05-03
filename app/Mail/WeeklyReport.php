@@ -29,7 +29,7 @@ class WeeklyReport extends Mailable
         $helpRequests = Report::forWeek($this->week)->orderBy('project')->pluck('help', 'project')->filter();
         $projectsNoInfo = config('app.projects')->unfilledProjectsFor($this->week)->map->name;
 
-        $subject = trans('email.subject', ['week' => $this->week]);
+        $subject = trans('emails.subject', ['week' => $this->week]);
 
         return $this->markdown('emails.report', [
             'reports' => $reports,
