@@ -50,8 +50,6 @@
             </div>
           </li>
           <li class="nav__item"><a href="{{ route('about') }}">{{ trans('layout.about') }}</a></li>
-          <li class="nav__item"><a href="https://github.com/entrepreneur-interet-general/bulletins">{{ trans('layout.source_code') }}</a></li>
-          <li class="nav__item"><a href="https://bulletins.eig-forever.org">{{ trans('layout.documentation') }}</a></li>
           <li class="nav__item">
             <div class="dropdown">
               {{ trans('layout.language') }}
@@ -87,6 +85,11 @@
           <li><a href="https://github.com/entrepreneur-interet-general/bulletins" title="GitHub"><svg class="icon icon-github"><use xlink:href="#github"></use></svg></a></li>
         </ul>
       </div>
+      <ul class="footer__links">
+        <li><a href="https://bulletins.eig-forever.org">{{ trans('layout.documentation') }}</a></li>
+        <li><a href="https://github.com/entrepreneur-interet-general/bulletins">{{ trans('layout.source_code') }}</a></li>
+      </ul>
+      <ul class="footer__links"></ul>
     </div>
   </footer>
   <script src="{{ mix('/js/app.js') }}"></script>
