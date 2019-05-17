@@ -25,7 +25,7 @@ class ReportTest extends TestCase
         ];
 
         foreach ($tests as $test) {
-            list($date, $expected) = $test;
+            [$date, $expected] = $test;
             Carbon::setTestNow($date);
 
             $this->assertEquals($expected, Report::canBeFilled());
@@ -46,7 +46,7 @@ class ReportTest extends TestCase
         ];
 
         foreach ($tests as $test) {
-            list($date, $expected) = $test;
+            [$date, $expected] = $test;
             Carbon::setTestNow($date);
 
             $message = 'Wrong week for '.$date;
@@ -116,7 +116,7 @@ class ReportTest extends TestCase
         ];
 
         foreach ($tests as $test) {
-            list($date, $expected) = $test;
+            [$date, $expected] = $test;
             Carbon::setTestNow($date);
 
             $this->assertEquals(collect($expected), Report::published()->orderBy('id')->pluck('id'));
