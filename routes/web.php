@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/login', 'HomeController@login')->name('login');
 Route::post('/login', 'HomeController@authenticate')->name('login');
 Route::post('/reports/store', 'ReportsController@store')->name('reports.store');
@@ -12,3 +12,4 @@ Route::view('/about', 'about')->name('about');
 Route::get('/email/{week?}', function ($week = null) {
     return (new App\Mail\WeeklyReport($week))->render();
 })->name('email_report')->middleware('logged_in');
+Route::get('/locale/{locale}', 'LanguagesController@setLocale')->name('setLocale');

@@ -8,4 +8,7 @@ return [
     'source_code' => 'Code source',
     'hero_title' => 'Stand-up hebdomadaire',
     'hero_subtitle' => 'Comment s’est passée votre semaine ?',
+    'language' => 'Langage',
+    'language_fr' => 'Français',
+    'language_en' => 'Anglais',
 ];
