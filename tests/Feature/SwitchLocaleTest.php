@@ -15,13 +15,11 @@ class SwitchLocaleTest extends TestCase
 
         $response = $this->get(route('home'));
 
-        $response->assertOk();
-        $response->assertSee(trans('layout.previous_bulletins', [], 'en'));
+        $response->assertOk()->assertSee(trans('layout.previous_bulletins', [], 'en'));
 
         $response = $this->get(route('setLocale', 'fr'));
 
         $response = $this->get(route('home'));
-        $response->assertOk();
-        $response->assertSee(trans('layout.previous_bulletins', [], 'fr'));
+        $response->assertOk()->assertSee(trans('layout.previous_bulletins', [], 'fr'));
     }
 }
