@@ -33,7 +33,7 @@
   </svg>
 
   <header class="navbar" role="navigation">
-    <div class="navbar__container">
+    <div class="navbar__container container">
       <a class="navbar__home" href="/">
         {{ config('app.name') }}
       </a>
