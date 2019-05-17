@@ -8,4 +8,7 @@ return [
     'source_code' => 'Source code',
     'hero_title' => 'Bulletins',
     'hero_subtitle' => 'How was your week?',
+    'language' => 'Language',
+    'language_fr' => 'French',
+    'language_en' => 'English',
 ];
