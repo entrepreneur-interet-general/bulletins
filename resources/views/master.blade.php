@@ -51,6 +51,7 @@
           </li>
           <li class="nav__item"><a href="{{ route('about') }}">{{ trans('layout.about') }}</a></li>
           <li class="nav__item"><a href="https://github.com/entrepreneur-interet-general/bulletins">{{ trans('layout.source_code') }}</a></li>
+          <li class="nav__item"><a href="https://bulletins.eig-forever.org">{{ trans('layout.documentation') }}</a></li>
           <li class="nav__item">
             <div class="dropdown">
               {{ trans('layout.language') }}

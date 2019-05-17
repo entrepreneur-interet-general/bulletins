@@ -11,4 +11,5 @@ return [
     'language' => 'Language',
     'language_fr' => 'French',
     'language_en' => 'English',
+    'documentation' => 'Documentation',
 ];
