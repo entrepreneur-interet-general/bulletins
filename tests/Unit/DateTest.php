@@ -2,10 +2,9 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
 use App\Date;
+use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-
 
 class DateTest extends TestCase
 {
