@@ -4,6 +4,8 @@
 return [
     // reports.index
     'by_month' => 'Bulletins by month',
+    'past_dates' => 'Past key dates',
+    'upcoming_dates' => 'Upcoming key dates',
     'actions' => 'Actions',
     'share' => 'Share',
     'csv_export' => 'Export in CSV',

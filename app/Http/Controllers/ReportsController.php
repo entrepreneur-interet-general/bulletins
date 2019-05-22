@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Date;
 use App\Report;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -60,6 +61,8 @@ class ReportsController extends Controller
           'projects' => $projects,
           'shareUrl' => URL::signedRoute('reports.index', $currentProject),
           'downloadUrl' => URL::signedRoute('reports.export', $currentProject),
+          'upcomingDates' => Date::forProject($currentProject)->upcoming()->get(),
+          'pastDates' => Date::forProject($currentProject)->past()->get(),
         ]);
     }
 

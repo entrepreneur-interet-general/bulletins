@@ -3,6 +3,8 @@
 return [
     // reports.index
     'by_month' => 'Bilans par mois',
+    'past_dates' => 'Dates importantes passées',
+    'upcoming_dates' => 'Dates importantes futures',
     'actions' => 'Actions',
     'share' => 'Partager',
     'csv_export' => 'Exporter en CSV',

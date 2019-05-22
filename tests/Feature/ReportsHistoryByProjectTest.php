@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Date;
 use App\Report;
 use Tests\TestCase;
 use Illuminate\Support\Carbon;
@@ -43,6 +44,9 @@ class ReportsHistoryByProjectTest extends TestCase
             'project' => $this->projectNames()[0],
             'week_number' => '2019-10',
         ]);
+        factory(Date::class, 5)->create(['project' => $this->projectNames()[1]]);
+        factory(Date::class, 5)->create(['project' => $report->project]);
+
         $response = $this
             ->withSession(['logged_in' => true])
             ->get(route('reports.index', $report->project));
@@ -54,7 +58,9 @@ class ReportsHistoryByProjectTest extends TestCase
             ->assertViewHas('currentProject', $report->projectObject())
             ->assertViewHas('shareUrl', URL::signedRoute('reports.index', $report->project))
             ->assertViewHas('downloadUrl', URL::signedRoute('reports.export', $report->project))
-            ->assertViewHas('reports', Report::where('project', $report->project)->where('week_number', '2019-10')->get()->groupBy->month);
+            ->assertViewHas('reports', Report::where('project', $report->project)->where('week_number', '2019-10')->get()->groupBy->month)
+            ->assertViewHas('upcomingDates', Date::forProject($report->project)->upcoming()->get())
+            ->assertViewHas('pastDates', Date::forProject($report->project)->past()->get());
     }
 
     public function testIndexWithSignature()
