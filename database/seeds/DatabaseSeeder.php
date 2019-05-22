@@ -1,7 +1,7 @@
 <?php
 
-use App\Report;
 use App\Date;
+use App\Report;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
 use Faker\Factory as FakerFactory;
@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
                 }
             }
 
-            for ($i=0; $i < $faker->numberBetween(3, 10); $i++) {
+            for ($i = 0; $i < $faker->numberBetween(3, 10); $i++) {
                 factory(Date::class)->create([
                     'project' => $name,
                     'date' => $this->randomDate($faker),
