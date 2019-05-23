@@ -12,7 +12,7 @@
     </div>
   @endif
 
-  @if($pastDates->count() > 1)
+  @if($pastDates->count() > 0)
     <div class="form__group">
       <label>{{ trans('reports.past_dates') }}</label>
       <ul>
@@ -23,7 +23,7 @@
     </div>
   @endif
 
-  @if($upcomingDates->count() > 1)
+  @if($upcomingDates->count() > 0)
     <div class="form__group">
       <label>{{ trans('reports.upcoming_dates') }}</label>
       <ul>
