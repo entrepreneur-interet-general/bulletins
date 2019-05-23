@@ -1,5 +1,6 @@
 <?php
 
+use App\Date;
 use App\Report;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
@@ -20,6 +21,13 @@ class DatabaseSeeder extends Seeder
                     ]);
                 }
             }
+
+            for ($i = 0; $i < $faker->numberBetween(3, 10); $i++) {
+                factory(Date::class)->create([
+                    'project' => $name,
+                    'date' => $this->randomDate($faker),
+                ]);
+            }
         }
     }
 
@@ -33,5 +41,10 @@ class DatabaseSeeder extends Seeder
         }
 
         return $weeks;
+    }
+
+    private function randomDate($faker)
+    {
+        return now()->addDays($faker->unique()->numberBetween(-200, 200))->toDateString();
     }
 }
