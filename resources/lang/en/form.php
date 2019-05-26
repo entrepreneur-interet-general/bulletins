@@ -17,5 +17,5 @@ return [
     'key_date.placeholder'      => "What's going to happen this day?",
     'optional'                  => 'Optional',
     'save'                      => 'Save',
-    'cant_fill'                 => "It's not possible to share a bulletin for this week. See you this week!",
+    'cant_fill'                 => "It's not possible to share a bulletin for this week. See you next week!",
 ];
