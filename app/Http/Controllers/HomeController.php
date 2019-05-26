@@ -10,11 +10,11 @@ class HomeController extends Controller
     public function index()
     {
         return view('index', [
-            'projects' => $projects = config('app.projects'),
+            'projects'       => $projects = config('app.projects'),
             'filledProjects' => $filledProjects = $this->filledProjects(),
-            'allFilled' => $filledProjects->count() === $projects->count(),
-            'week' => $this->week(),
-            'canBeFilled' => Report::canBeFilled(),
+            'allFilled'      => $filledProjects->count() === $projects->count(),
+            'week'           => $this->week(),
+            'canBeFilled'    => Report::canBeFilled(),
         ]);
     }
 

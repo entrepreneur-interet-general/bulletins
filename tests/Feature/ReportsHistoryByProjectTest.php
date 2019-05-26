@@ -34,14 +34,14 @@ class ReportsHistoryByProjectTest extends TestCase
             ->get(route('reports.index', $this->projectNames()[0]))->assertStatus(404);
 
         $notPublished = factory(Report::class)->create([
-            'project' => $this->projectNames()[0],
+            'project'     => $this->projectNames()[0],
             'week_number' => '2019-11',
         ]);
 
         $dummy = factory(Report::class)->create(['project' => $this->projectNames()[1]]);
 
         $report = factory(Report::class)->create([
-            'project' => $this->projectNames()[0],
+            'project'     => $this->projectNames()[0],
             'week_number' => '2019-10',
         ]);
         factory(Date::class, 5)->create(['project' => $this->projectNames()[1]]);
