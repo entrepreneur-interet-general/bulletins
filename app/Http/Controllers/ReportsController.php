@@ -21,6 +21,8 @@ class ReportsController extends Controller
           'priorities' => 'required|max:300',
           'victories'  => 'required|max:300',
           'help'       => 'max:300',
+          'key_date'   => 'date|date_format:Y-m-d|required_with:key_date_description',
+          'key_date_description'   => 'max:200|required_with:key_date',
         ]);
 
         Report::create([
@@ -31,6 +33,14 @@ class ReportsController extends Controller
           'victories'   => $request->input('victories'),
           'help'        => $request->input('help'),
         ])->save();
+
+        if (request()->has('key_date')) {
+          Date::create([
+            'project'     => $request->input('project'),
+            'date' => request()->input('key_date'),
+            'description' => request()->input('key_date_description'),
+          ]);
+        }
 
         return view('success', [
           'week' => $this->week(),

@@ -60,6 +60,12 @@
     </div>
 
     <div class="form__group">
+      <label for="key_date">{{ trans('form.key_date') }}<span class="label">{{ trans('form.optional') }}</span></label>
+      <input type="date" min="{{ now()->format('Y-m-d')}}" name="key_date" value="{{ old('key_date') }}" style="margin-bottom: 1em">
+      <input type="text" name="key_date_description" placeholder="{{ trans('form.key_date.placeholder') }}" value="{{ old('key_date_description') }}">
+    </div>
+
+    <div class="form__group">
       <button class="button" type="submit" name="validate">{{ trans('form.save') }}</button>
     </div>
   </form>

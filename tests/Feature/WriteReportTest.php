@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Date;
 use App\Report;
 use Tests\TestCase;
 use Illuminate\Support\Carbon;
@@ -46,6 +47,40 @@ class WriteReportTest extends TestCase
         ], Report::first()->toArray());
 
         $this->get('/')->assertSee('Explo Code (already filled)');
+    }
+
+    public function testFillWithAKeyDate()
+    {
+        $this->withoutExceptionHandling();
+
+        $response = $this->submitForm([
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => '',
+            'key_date' => $date = now()->addDays(5)->format('Y-m-d'),
+            'key_date_description' => 'Date description'
+        ]);
+
+        $response->assertOk();
+
+        $this->assertEquals(1, Report::count());
+
+        $this->assertArraySubset([
+            'week_number' => now()->format('Y-W'),
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => null,
+        ], Report::first()->toArray());
+
+        $this->assertArraySubset([
+            'project' => 'Explo Code',
+            'date' => $date,
+            'description' => 'Date description'
+        ], Date::first()->toArray());
     }
 
     public function testCantFillTwiceForm()
@@ -130,6 +165,48 @@ class WriteReportTest extends TestCase
             'victories' => 'It was a good week',
             'help' => str_repeat('a', 301),
         ])->assertSessionHasErrors('help');
+
+        $this->assertEquals(0, Report::count());
+    }
+
+    public function testPartialFillForDateNoDescription()
+    {
+        $this->submitForm([
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => 'Send help',
+            'key_date' => now()->addDays(20)->format('Y-m-d'),
+        ])->assertSessionHasErrors('key_date_description');
+
+        $this->assertEquals(0, Report::count());
+    }
+
+    public function testDateIsAValidDate()
+    {
+        $this->submitForm([
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => 'Send help',
+            'key_date' => 'Foo',
+        ])->assertSessionHasErrors('key_date');
+
+        $this->assertEquals(0, Report::count());
+    }
+
+    public function testPartialFillForDateNoDate()
+    {
+        $this->submitForm([
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => 'Send help',
+            'key_date_description' => 'Description',
+        ])->assertSessionHasErrors('key_date');
 
         $this->assertEquals(0, Report::count());
     }
