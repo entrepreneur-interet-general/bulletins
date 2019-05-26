@@ -60,7 +60,7 @@ class WriteReportTest extends TestCase
             'victories' => 'It was a good week',
             'help' => '',
             'key_date' => $date = now()->addDays(5)->format('Y-m-d'),
-            'key_date_description' => 'Date description'
+            'key_date_description' => 'Date description',
         ]);
 
         $response->assertOk();
@@ -79,7 +79,7 @@ class WriteReportTest extends TestCase
         $this->assertArraySubset([
             'project' => 'Explo Code',
             'date' => $date,
-            'description' => 'Date description'
+            'description' => 'Date description',
         ], Date::first()->toArray());
     }
 

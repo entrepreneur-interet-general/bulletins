@@ -35,7 +35,7 @@ class ReportsController extends Controller
         ])->save();
 
         if (request()->has('key_date')) {
-          Date::create([
+            Date::create([
             'project'     => $request->input('project'),
             'date' => request()->input('key_date'),
             'description' => request()->input('key_date_description'),
