@@ -32,9 +32,9 @@ class WeeklyReport extends Mailable
         $subject = trans('emails.subject', ['week' => $this->week]);
 
         return $this->markdown('emails.report', [
-            'reports' => $reports,
-            'weekNumber' => $this->week,
-            'helpRequests' => $helpRequests,
+            'reports'        => $reports,
+            'weekNumber'     => $this->week,
+            'helpRequests'   => $helpRequests,
             'projectsNoInfo' => $projectsNoInfo,
         ])->subject($subject);
     }

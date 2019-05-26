@@ -25,11 +25,11 @@ class WriteReportTest extends TestCase
         $response->assertStatus(200);
 
         $response = $this->submitForm([
-            'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'spirit'     => '🙂',
+            'project'    => 'Explo Code',
             'priorities' => 'Writing things!',
-            'victories' => 'It was a good week',
-            'help' => '',
+            'victories'  => 'It was a good week',
+            'help'       => '',
         ]);
 
         $response->assertOk();
@@ -38,11 +38,11 @@ class WriteReportTest extends TestCase
 
         $this->assertArraySubset([
             'week_number' => now()->format('Y-W'),
-            'spirit' => '🙂',
-            'project' => 'Explo Code',
-            'priorities' => 'Writing things!',
-            'victories' => 'It was a good week',
-            'help' => null,
+            'spirit'      => '🙂',
+            'project'     => 'Explo Code',
+            'priorities'  => 'Writing things!',
+            'victories'   => 'It was a good week',
+            'help'        => null,
         ], Report::first()->toArray());
 
         $this->get('/')->assertSee('Explo Code (already filled)');
@@ -51,11 +51,11 @@ class WriteReportTest extends TestCase
     public function testCantFillTwiceForm()
     {
         $data = [
-            'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'spirit'     => '🙂',
+            'project'    => 'Explo Code',
             'priorities' => 'Writing things!',
-            'victories' => 'It was a good week',
-            'help' => '',
+            'victories'  => 'It was a good week',
+            'help'       => '',
         ];
 
         $this->assertEquals(0, Report::count());
@@ -72,11 +72,11 @@ class WriteReportTest extends TestCase
     public function testInvalidSpririt()
     {
         $this->submitForm([
-            'spirit' => 'NOPE',
-            'project' => 'Explo Code',
+            'spirit'     => 'NOPE',
+            'project'    => 'Explo Code',
             'priorities' => 'Writing things!',
-            'victories' => 'It was a good week',
-            'help' => '',
+            'victories'  => 'It was a good week',
+            'help'       => '',
         ])->assertSessionHasErrors('spirit');
 
         $this->assertEquals(0, Report::count());
@@ -85,11 +85,11 @@ class WriteReportTest extends TestCase
     public function testInvalidProject()
     {
         $this->submitForm([
-            'spirit' => '🙂',
-            'project' => 'INVALID',
+            'spirit'     => '🙂',
+            'project'    => 'INVALID',
             'priorities' => 'Writing things!',
-            'victories' => 'It was a good week',
-            'help' => '',
+            'victories'  => 'It was a good week',
+            'help'       => '',
         ])->assertSessionHasErrors('project');
 
         $this->assertEquals(0, Report::count());
@@ -98,11 +98,11 @@ class WriteReportTest extends TestCase
     public function testInvalidPriorities()
     {
         $this->submitForm([
-            'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'spirit'     => '🙂',
+            'project'    => 'Explo Code',
             'priorities' => '',
-            'victories' => 'It was a good week',
-            'help' => '',
+            'victories'  => 'It was a good week',
+            'help'       => '',
         ])->assertSessionHasErrors('priorities');
 
         $this->assertEquals(0, Report::count());
@@ -111,11 +111,11 @@ class WriteReportTest extends TestCase
     public function testInvalidVictories()
     {
         $this->submitForm([
-            'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'spirit'     => '🙂',
+            'project'    => 'Explo Code',
             'priorities' => 'Writing things!',
-            'victories' => '',
-            'help' => '',
+            'victories'  => '',
+            'help'       => '',
         ])->assertSessionHasErrors('victories');
 
         $this->assertEquals(0, Report::count());
@@ -124,11 +124,11 @@ class WriteReportTest extends TestCase
     public function testInvalidHelp()
     {
         $this->submitForm([
-            'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'spirit'     => '🙂',
+            'project'    => 'Explo Code',
             'priorities' => 'Writing things!',
-            'victories' => 'It was a good week',
-            'help' => str_repeat('a', 301),
+            'victories'  => 'It was a good week',
+            'help'       => str_repeat('a', 301),
         ])->assertSessionHasErrors('help');
 
         $this->assertEquals(0, Report::count());
@@ -140,11 +140,11 @@ class WriteReportTest extends TestCase
         Carbon::setTestNow(Carbon::create(2019, 3, 9));
 
         $this->submitForm([
-            'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'spirit'     => '🙂',
+            'project'    => 'Explo Code',
             'priorities' => 'Writing things!',
-            'victories' => 'It was a good week',
-            'help' => '',
+            'victories'  => 'It was a good week',
+            'help'       => '',
         ])->assertStatus(403);
 
         $this->assertEquals(0, Report::count());

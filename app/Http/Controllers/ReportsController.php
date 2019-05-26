@@ -26,7 +26,7 @@ class ReportsController extends Controller
         Report::create([
           'project'     => $request->input('project'),
           'week_number' => $this->weekNumber(),
-          'spirit'  => $request->input('spirit'),
+          'spirit'      => $request->input('spirit'),
           'priorities'  => $request->input('priorities'),
           'victories'   => $request->input('victories'),
           'help'        => $request->input('help'),
@@ -34,7 +34,7 @@ class ReportsController extends Controller
 
         return view('success', [
           'week' => $this->week(),
-          'gif' => $this->randomGif(),
+          'gif'  => $this->randomGif(),
         ]);
     }
 
@@ -56,13 +56,13 @@ class ReportsController extends Controller
         }
 
         return view('reports.index', [
-          'reports' => $reports->groupBy->month,
+          'reports'        => $reports->groupBy->month,
           'currentProject' => $reports->first()->projectObject(),
-          'projects' => $projects,
-          'shareUrl' => URL::signedRoute('reports.index', $currentProject),
-          'downloadUrl' => URL::signedRoute('reports.export', $currentProject),
-          'upcomingDates' => Date::forProject($currentProject)->upcoming()->get(),
-          'pastDates' => Date::forProject($currentProject)->past()->get(),
+          'projects'       => $projects,
+          'shareUrl'       => URL::signedRoute('reports.index', $currentProject),
+          'downloadUrl'    => URL::signedRoute('reports.export', $currentProject),
+          'upcomingDates'  => Date::forProject($currentProject)->upcoming()->get(),
+          'pastDates'      => Date::forProject($currentProject)->past()->get(),
         ]);
     }
 
@@ -78,10 +78,10 @@ class ReportsController extends Controller
     public function export(Collection $reports)
     {
         $headers = [
-            'Content-type' => 'text/csv',
-            'Pragma' => 'no-cache',
+            'Content-type'  => 'text/csv',
+            'Pragma'        => 'no-cache',
             'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
-            'Expires' => '0',
+            'Expires'       => '0',
         ];
 
         $project = $reports->first()->project;
