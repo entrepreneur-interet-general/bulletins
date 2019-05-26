@@ -40,6 +40,10 @@ class Report extends Model
             return true;
         }
 
+        if ($dayOfWeek === 'Fri' and $now->hour == 15 and $now->minute < 5) {
+            return true;
+        }
+
         return false;
     }
 
