@@ -13,6 +13,8 @@ return [
     'ups_and_downs.placeholder' => 'What went great and what was harder',
     'help'                      => 'Help requests',
     'help.placeholder'          => 'Ask the rest of the team to give you a hand',
+    'key_date'                  => 'Key date coming',
+    'key_date.placeholder'      => "What's going to happen this day?",
     'optional'                  => 'Optional',
     'save'                      => 'Save',
     'cant_fill'                 => "It's not possible to share a bulletin for this week. See you this week!",

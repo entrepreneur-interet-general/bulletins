@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Date extends Model
 {
-    public $casts = ['date' => 'date'];
+    public $guarded = [];
+    public $casts = ['date' => 'datetime:Y-m-d'];
 
     public function scopeForProject($query, $project)
     {

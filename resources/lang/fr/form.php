@@ -13,6 +13,8 @@ return [
     'ups_and_downs.placeholder' => 'Ce qui a fonctionné et ce qui vous a donné du fil à retordre',
     'help'                      => "Demande d'aide",
     'help.placeholder'          => 'Faites appel à la communauté pour surmonter un blocage',
+    'key_date'                  => 'Date clé à venir',
+    'key_date.placeholder'      => 'Quel événement va-t-il se dérouler à cette date ?',
     'optional'                  => 'Optionnel',
     'save'                      => 'Enregistrer',
     'cant_fill'                 => "Il n'est plus possible de partager ses informations pour cette semaine. À la semaine prochaine !",
