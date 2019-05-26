@@ -16,13 +16,13 @@ class ReportsController extends Controller
         abort_unless(Report::canBeFilled(), 403);
 
         $request->validate([
-          'spirit'     => ['required', Rule::in(['☹️', '😐', '🙂', '😀'])],
-          'project'    => ['required', Rule::in(config('app.projects')->names())],
-          'priorities' => 'required|max:300',
-          'victories'  => 'required|max:300',
-          'help'       => 'max:300',
-          'key_date'   => 'date|date_format:Y-m-d|required_with:key_date_description',
-          'key_date_description'   => 'max:200|required_with:key_date',
+          'spirit'               => ['required', Rule::in(['☹️', '😐', '🙂', '😀'])],
+          'project'              => ['required', Rule::in(config('app.projects')->names())],
+          'priorities'           => 'required|max:300',
+          'victories'            => 'required|max:300',
+          'help'                 => 'max:300',
+          'key_date'             => 'date|date_format:Y-m-d|required_with:key_date_description',
+          'key_date_description' => 'max:200|required_with:key_date',
         ]);
 
         Report::create([
@@ -37,7 +37,7 @@ class ReportsController extends Controller
         if (request()->has('key_date')) {
             Date::create([
             'project'     => $request->input('project'),
-            'date' => request()->input('key_date'),
+            'date'        => request()->input('key_date'),
             'description' => request()->input('key_date_description'),
           ]);
         }
