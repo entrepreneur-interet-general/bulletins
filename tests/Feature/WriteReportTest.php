@@ -26,11 +26,13 @@ class WriteReportTest extends TestCase
         $response->assertStatus(200);
 
         $response = $this->submitForm([
-            'spirit'     => '🙂',
-            'project'    => 'Explo Code',
-            'priorities' => 'Writing things!',
-            'victories'  => 'It was a good week',
-            'help'       => '',
+            'spirit'               => '🙂',
+            'project'              => 'Explo Code',
+            'priorities'           => 'Writing things!',
+            'victories'            => 'It was a good week',
+            'help'                 => '',
+            'key_date'             => null,
+            'key_date_description' => null,
         ]);
 
         $response->assertOk();
@@ -51,8 +53,6 @@ class WriteReportTest extends TestCase
 
     public function testFillWithAKeyDate()
     {
-        $this->withoutExceptionHandling();
-
         $response = $this->submitForm([
             'spirit'               => '🙂',
             'project'              => 'Explo Code',
