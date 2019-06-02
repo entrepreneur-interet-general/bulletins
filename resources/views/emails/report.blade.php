@@ -12,6 +12,15 @@
 @endcomponent
 @endif
 
+@if(! $upcomingDates->isEmpty())
+## {{ trans('emails.upcoming_key_dates') }}
+@component('mail::panel')
+@foreach($upcomingDates as $upcomingDate)
+- {{ trans('emails.key_date', ['date' => $upcomingDate->date->isoFormat('LL'), 'project' => $upcomingDate->project, 'description' => $upcomingDate->description])}}
+@endforeach
+@endcomponent
+@endif
+
 ## {{ trans('emails.news') }}
 @foreach ($reports as $report)
 @component('mail::panel')

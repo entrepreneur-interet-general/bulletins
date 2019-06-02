@@ -3,6 +3,8 @@
 return [
     'intro'         => "Cette semaine, dans l'équipe.",
     'help_requests' => "Demandes d'aide",
+    'upcoming_key_dates' => "Dates importantes la semaine prochaine",
+    'key_date' => ':date : :project – :description',
     'news'          => 'Nouvelles de la semaine',
     'mood'          => "État d'esprit :",
     'priority'      => 'Priorité :',
