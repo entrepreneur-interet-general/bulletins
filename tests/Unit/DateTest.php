@@ -13,7 +13,8 @@ class DateTest extends TestCase
     public function testForProject()
     {
         factory(Date::class)->create(['project' => 'A']);
-        factory(Date::class, 2)->create(['project' => 'B']);
+        factory(Date::class)->create(['project' => 'B', 'date' => '2015-01-01']);
+        factory(Date::class)->create(['project' => 'B', 'date' => '2015-01-02']);
 
         $this->assertEquals(1, Date::forProject('A')->count());
         $this->assertEquals(2, Date::forProject('B')->count());
