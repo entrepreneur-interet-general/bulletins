@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Date;
 use App\Report;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -26,6 +27,11 @@ class WeeklyReport extends Mailable
     public function build()
     {
         $reports = Report::forWeek($this->week)->get()->shuffle();
+
+        if ($reports->isEmpty()) {
+            return;
+        }
+
         $helpRequests = Report::forWeek($this->week)->orderBy('project')->pluck('help', 'project')->filter();
         $projectsNoInfo = config('app.projects')->unfilledProjectsFor($this->week)->map->name;
 
@@ -33,9 +39,18 @@ class WeeklyReport extends Mailable
 
         return $this->markdown('emails.report', [
             'reports'        => $reports,
+            'upcomingDates'  => $this->upcomingDates($reports),
             'weekNumber'     => $this->week,
             'helpRequests'   => $helpRequests,
             'projectsNoInfo' => $projectsNoInfo,
         ])->subject($subject);
+    }
+
+    private function upcomingDates($reports)
+    {
+        $friday = $reports->first()->endOfWeek;
+        $nextFriday = $friday->copy()->addWeek(1);
+
+        return Date::whereBetween('date', [$friday, $nextFriday])->orderBy('date')->get();
     }
 }
