@@ -29,7 +29,7 @@ class WeeklyReport extends Mailable
         $reports = Report::forWeek($this->week)->get()->shuffle();
 
         if ($reports->isEmpty()) {
-            return;
+            return "No reports";
         }
 
         $helpRequests = Report::forWeek($this->week)->orderBy('project')->pluck('help', 'project')->filter();
