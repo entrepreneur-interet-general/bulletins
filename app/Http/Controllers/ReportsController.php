@@ -26,7 +26,7 @@ class ReportsController extends Controller
             'date',
             'date_format:Y-m-d',
             'required_with:key_date_description',
-            'unique:dates,date,NULL,id,project,'.$request->input('project'),
+            'unique:dates,date,null,id,project,'.$request->input('project'),
           ],
           'key_date_description' => 'nullable|max:200|required_with:key_date',
         ]);
