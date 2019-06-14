@@ -107,11 +107,11 @@ class WriteReportTest extends TestCase
     public function testCantFillDatesTwice()
     {
         $data = [
-            'spirit'     => '🙂',
-            'project'    => 'Explo Code',
-            'priorities' => 'Writing things!',
-            'victories'  => 'It was a good week',
-            'help'       => '',
+            'spirit'               => '🙂',
+            'project'              => 'Explo Code',
+            'priorities'           => 'Writing things!',
+            'victories'            => 'It was a good week',
+            'help'                 => '',
             'key_date'             => $date = now()->addDays(5)->format('Y-m-d'),
             'key_date_description' => 'Date description',
         ];
