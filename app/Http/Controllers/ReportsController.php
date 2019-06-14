@@ -40,11 +40,11 @@ class ReportsController extends Controller
           'help' => $request->input('help'),
         ])->save();
 
-        if (request()->filled('key_date')) {
+        if ($request->filled('key_date')) {
             Date::create([
             'project' => $request->input('project'),
-            'date' => request()->input('key_date'),
-            'description' => request()->input('key_date_description'),
+            'date' => $request->input('key_date'),
+            'description' => $request->input('key_date_description'),
           ]);
         }
 
