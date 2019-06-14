@@ -16,12 +16,12 @@ class ReportsController extends Controller
         abort_unless(Report::canBeFilled(), 403);
 
         $request->validate([
-          'spirit'     => ['required', Rule::in(['☹️', '😐', '🙂', '😀'])],
-          'project'    => ['required', Rule::in(config('app.projects')->names())],
+          'spirit' => ['required', Rule::in(['☹️', '😐', '🙂', '😀'])],
+          'project' => ['required', Rule::in(config('app.projects')->names())],
           'priorities' => 'required|max:300',
-          'victories'  => 'required|max:300',
-          'help'       => 'max:300',
-          'key_date'   => [
+          'victories' => 'required|max:300',
+          'help' => 'max:300',
+          'key_date' => [
             'nullable',
             'date',
             'date_format:Y-m-d',
@@ -32,25 +32,25 @@ class ReportsController extends Controller
         ]);
 
         Report::create([
-          'project'     => $request->input('project'),
+          'project' => $request->input('project'),
           'week_number' => $this->weekNumber(),
-          'spirit'      => $request->input('spirit'),
-          'priorities'  => $request->input('priorities'),
-          'victories'   => $request->input('victories'),
-          'help'        => $request->input('help'),
+          'spirit' => $request->input('spirit'),
+          'priorities' => $request->input('priorities'),
+          'victories' => $request->input('victories'),
+          'help' => $request->input('help'),
         ])->save();
 
         if (request()->filled('key_date')) {
             Date::create([
-            'project'     => $request->input('project'),
-            'date'        => request()->input('key_date'),
+            'project' => $request->input('project'),
+            'date' => request()->input('key_date'),
             'description' => request()->input('key_date_description'),
           ]);
         }
 
         return view('success', [
           'week' => $this->week(),
-          'gif'  => $this->randomGif(),
+          'gif' => $this->randomGif(),
         ]);
     }
 
@@ -72,13 +72,13 @@ class ReportsController extends Controller
         }
 
         return view('reports.index', [
-          'reports'        => $reports->groupBy->month,
+          'reports' => $reports->groupBy->month,
           'currentProject' => $reports->first()->projectObject(),
-          'projects'       => $projects,
-          'shareUrl'       => URL::signedRoute('reports.index', $currentProject),
-          'downloadUrl'    => URL::signedRoute('reports.export', $currentProject),
-          'upcomingDates'  => Date::forProject($currentProject)->upcoming()->get(),
-          'pastDates'      => Date::forProject($currentProject)->past()->get(),
+          'projects' => $projects,
+          'shareUrl' => URL::signedRoute('reports.index', $currentProject),
+          'downloadUrl' => URL::signedRoute('reports.export', $currentProject),
+          'upcomingDates' => Date::forProject($currentProject)->upcoming()->get(),
+          'pastDates' => Date::forProject($currentProject)->past()->get(),
         ]);
     }
 
@@ -94,10 +94,10 @@ class ReportsController extends Controller
     public function export(Collection $reports)
     {
         $headers = [
-            'Content-type'  => 'text/csv',
-            'Pragma'        => 'no-cache',
+            'Content-type' => 'text/csv',
+            'Pragma' => 'no-cache',
             'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
-            'Expires'       => '0',
+            'Expires' => '0',
         ];
 
         $project = $reports->first()->project;

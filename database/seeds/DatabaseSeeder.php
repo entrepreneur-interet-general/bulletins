@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
             foreach ($this->weeks() as $week) {
                 if ($faker->numberBetween(1, 100) <= 80) {
                     factory(Report::class)->create([
-                        'project'     => $name,
+                        'project' => $name,
                         'week_number' => $week,
                     ]);
                 }
@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             for ($i = 0; $i < $faker->numberBetween(3, 10); $i++) {
                 factory(Date::class)->create([
                     'project' => $name,
-                    'date'    => $this->randomDate($faker),
+                    'date' => $this->randomDate($faker),
                 ]);
             }
         }

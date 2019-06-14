@@ -26,12 +26,12 @@ class WriteReportTest extends TestCase
         $response->assertStatus(200);
 
         $response = $this->submitForm([
-            'spirit'               => '🙂',
-            'project'              => 'Explo Code',
-            'priorities'           => 'Writing things!',
-            'victories'            => 'It was a good week',
-            'help'                 => '',
-            'key_date'             => null,
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => '',
+            'key_date' => null,
             'key_date_description' => null,
         ]);
 
@@ -41,11 +41,11 @@ class WriteReportTest extends TestCase
 
         $this->assertArraySubset([
             'week_number' => now()->format('Y-W'),
-            'spirit'      => '🙂',
-            'project'     => 'Explo Code',
-            'priorities'  => 'Writing things!',
-            'victories'   => 'It was a good week',
-            'help'        => null,
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => null,
         ], Report::first()->toArray());
 
         $this->get('/')->assertSee('Explo Code (already filled)');
@@ -54,12 +54,12 @@ class WriteReportTest extends TestCase
     public function testFillWithAKeyDate()
     {
         $response = $this->submitForm([
-            'spirit'               => '🙂',
-            'project'              => 'Explo Code',
-            'priorities'           => 'Writing things!',
-            'victories'            => 'It was a good week',
-            'help'                 => '',
-            'key_date'             => $date = now()->addDays(5)->format('Y-m-d'),
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => '',
+            'key_date' => $date = now()->addDays(5)->format('Y-m-d'),
             'key_date_description' => 'Date description',
         ]);
 
@@ -69,16 +69,16 @@ class WriteReportTest extends TestCase
 
         $this->assertArraySubset([
             'week_number' => now()->format('Y-W'),
-            'spirit'      => '🙂',
-            'project'     => 'Explo Code',
-            'priorities'  => 'Writing things!',
-            'victories'   => 'It was a good week',
-            'help'        => null,
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => null,
         ], Report::first()->toArray());
 
         $this->assertArraySubset([
-            'project'     => 'Explo Code',
-            'date'        => $date,
+            'project' => 'Explo Code',
+            'date' => $date,
             'description' => 'Date description',
         ], Date::first()->toArray());
     }
@@ -86,11 +86,11 @@ class WriteReportTest extends TestCase
     public function testCantFillTwiceForm()
     {
         $data = [
-            'spirit'     => '🙂',
-            'project'    => 'Explo Code',
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
             'priorities' => 'Writing things!',
-            'victories'  => 'It was a good week',
-            'help'       => '',
+            'victories' => 'It was a good week',
+            'help' => '',
         ];
 
         $this->assertEquals(0, Report::count());
@@ -107,12 +107,12 @@ class WriteReportTest extends TestCase
     public function testCantFillDatesTwice()
     {
         $data = [
-            'spirit'               => '🙂',
-            'project'              => 'Explo Code',
-            'priorities'           => 'Writing things!',
-            'victories'            => 'It was a good week',
-            'help'                 => '',
-            'key_date'             => $date = now()->addDays(5)->format('Y-m-d'),
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => '',
+            'key_date' => $date = now()->addDays(5)->format('Y-m-d'),
             'key_date_description' => 'Date description',
         ];
 
@@ -134,11 +134,11 @@ class WriteReportTest extends TestCase
     public function testInvalidSpririt()
     {
         $this->submitForm([
-            'spirit'     => 'NOPE',
-            'project'    => 'Explo Code',
+            'spirit' => 'NOPE',
+            'project' => 'Explo Code',
             'priorities' => 'Writing things!',
-            'victories'  => 'It was a good week',
-            'help'       => '',
+            'victories' => 'It was a good week',
+            'help' => '',
         ])->assertSessionHasErrors('spirit');
 
         $this->assertEquals(0, Report::count());
@@ -147,11 +147,11 @@ class WriteReportTest extends TestCase
     public function testInvalidProject()
     {
         $this->submitForm([
-            'spirit'     => '🙂',
-            'project'    => 'INVALID',
+            'spirit' => '🙂',
+            'project' => 'INVALID',
             'priorities' => 'Writing things!',
-            'victories'  => 'It was a good week',
-            'help'       => '',
+            'victories' => 'It was a good week',
+            'help' => '',
         ])->assertSessionHasErrors('project');
 
         $this->assertEquals(0, Report::count());
@@ -160,11 +160,11 @@ class WriteReportTest extends TestCase
     public function testInvalidPriorities()
     {
         $this->submitForm([
-            'spirit'     => '🙂',
-            'project'    => 'Explo Code',
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
             'priorities' => '',
-            'victories'  => 'It was a good week',
-            'help'       => '',
+            'victories' => 'It was a good week',
+            'help' => '',
         ])->assertSessionHasErrors('priorities');
 
         $this->assertEquals(0, Report::count());
@@ -173,11 +173,11 @@ class WriteReportTest extends TestCase
     public function testInvalidVictories()
     {
         $this->submitForm([
-            'spirit'     => '🙂',
-            'project'    => 'Explo Code',
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
             'priorities' => 'Writing things!',
-            'victories'  => '',
-            'help'       => '',
+            'victories' => '',
+            'help' => '',
         ])->assertSessionHasErrors('victories');
 
         $this->assertEquals(0, Report::count());
@@ -186,11 +186,11 @@ class WriteReportTest extends TestCase
     public function testInvalidHelp()
     {
         $this->submitForm([
-            'spirit'     => '🙂',
-            'project'    => 'Explo Code',
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
             'priorities' => 'Writing things!',
-            'victories'  => 'It was a good week',
-            'help'       => str_repeat('a', 301),
+            'victories' => 'It was a good week',
+            'help' => str_repeat('a', 301),
         ])->assertSessionHasErrors('help');
 
         $this->assertEquals(0, Report::count());
@@ -199,12 +199,12 @@ class WriteReportTest extends TestCase
     public function testPartialFillForDateNoDescription()
     {
         $this->submitForm([
-            'spirit'     => '🙂',
-            'project'    => 'Explo Code',
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
             'priorities' => 'Writing things!',
-            'victories'  => 'It was a good week',
-            'help'       => 'Send help',
-            'key_date'   => now()->addDays(20)->format('Y-m-d'),
+            'victories' => 'It was a good week',
+            'help' => 'Send help',
+            'key_date' => now()->addDays(20)->format('Y-m-d'),
         ])->assertSessionHasErrors('key_date_description');
 
         $this->assertEquals(0, Report::count());
@@ -213,12 +213,12 @@ class WriteReportTest extends TestCase
     public function testDateIsAValidDate()
     {
         $this->submitForm([
-            'spirit'     => '🙂',
-            'project'    => 'Explo Code',
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
             'priorities' => 'Writing things!',
-            'victories'  => 'It was a good week',
-            'help'       => 'Send help',
-            'key_date'   => 'Foo',
+            'victories' => 'It was a good week',
+            'help' => 'Send help',
+            'key_date' => 'Foo',
         ])->assertSessionHasErrors('key_date');
 
         $this->assertEquals(0, Report::count());
@@ -227,11 +227,11 @@ class WriteReportTest extends TestCase
     public function testPartialFillForDateNoDate()
     {
         $this->submitForm([
-            'spirit'               => '🙂',
-            'project'              => 'Explo Code',
-            'priorities'           => 'Writing things!',
-            'victories'            => 'It was a good week',
-            'help'                 => 'Send help',
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => 'Send help',
             'key_date_description' => 'Description',
         ])->assertSessionHasErrors('key_date');
 
@@ -244,11 +244,11 @@ class WriteReportTest extends TestCase
         Carbon::setTestNow(Carbon::create(2019, 3, 9));
 
         $this->submitForm([
-            'spirit'     => '🙂',
-            'project'    => 'Explo Code',
+            'spirit' => '🙂',
+            'project' => 'Explo Code',
             'priorities' => 'Writing things!',
-            'victories'  => 'It was a good week',
-            'help'       => '',
+            'victories' => 'It was a good week',
+            'help' => '',
         ])->assertStatus(403);
 
         $this->assertEquals(0, Report::count());
