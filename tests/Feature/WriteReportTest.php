@@ -104,6 +104,33 @@ class WriteReportTest extends TestCase
         $this->assertEquals(1, Report::count());
     }
 
+    public function testCantFillDatesTwice()
+    {
+        $data = [
+            'spirit'               => '🙂',
+            'project'              => 'Explo Code',
+            'priorities'           => 'Writing things!',
+            'victories'            => 'It was a good week',
+            'help'                 => '',
+            'key_date'             => $date = now()->addDays(5)->format('Y-m-d'),
+            'key_date_description' => 'Date description',
+        ];
+
+        Carbon::setTestNow(Carbon::create(2019, 1, 4));
+        $this->submitForm($data)->assertStatus(200);
+
+        $this->assertEquals(1, Report::count());
+        $this->assertEquals(1, Date::count());
+
+        Carbon::setTestNow(Carbon::create(2019, 3, 8));
+        $this->submitForm($data)
+            ->assertStatus(302)
+            ->assertSessionHasErrors('key_date');
+
+        $this->assertEquals(1, Report::count());
+        $this->assertEquals(1, Date::count());
+    }
+
     public function testInvalidSpririt()
     {
         $this->submitForm([

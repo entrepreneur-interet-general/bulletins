@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Date;
 use App\Report;
-use App\Projects;
 use Tests\TestCase;
 use App\Mail\WeeklyReport;
 use UnexpectedValueException;

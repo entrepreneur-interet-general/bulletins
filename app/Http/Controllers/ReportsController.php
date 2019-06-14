@@ -16,12 +16,18 @@ class ReportsController extends Controller
         abort_unless(Report::canBeFilled(), 403);
 
         $request->validate([
-          'spirit'               => ['required', Rule::in(['☹️', '😐', '🙂', '😀'])],
-          'project'              => ['required', Rule::in(config('app.projects')->names())],
-          'priorities'           => 'required|max:300',
-          'victories'            => 'required|max:300',
-          'help'                 => 'max:300',
-          'key_date'             => 'nullable|date|date_format:Y-m-d|required_with:key_date_description',
+          'spirit'     => ['required', Rule::in(['☹️', '😐', '🙂', '😀'])],
+          'project'    => ['required', Rule::in(config('app.projects')->names())],
+          'priorities' => 'required|max:300',
+          'victories'  => 'required|max:300',
+          'help'       => 'max:300',
+          'key_date'   => [
+            'nullable',
+            'date',
+            'date_format:Y-m-d',
+            'required_with:key_date_description',
+            'unique:dates,date,null,id,project,'.$request->input('project'),
+          ],
           'key_date_description' => 'nullable|max:200|required_with:key_date',
         ]);
 

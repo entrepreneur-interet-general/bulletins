@@ -1,6 +1,5 @@
 <?php
 
-
 return [
     // reports.index
     'by_month'          => 'Bulletins by month',
