@@ -22,4 +22,22 @@ class ProjectTest extends TestCase
         $project = new Project('The name', $channel = null, $members = [], 'img.png');
         $project->notify();
     }
+
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testNotifySlackChannel()
+    {
+        $project = new Project('The name', $channel = 'slack', $members = [], 'img.png');
+        $project->notify();
+    }
+
+    /**
+     * @doesNotPerformAssertions
+     */
+    public function testNotifyEmailChannel()
+    {
+        $project = new Project('The name', $channel = 'email', $members = [], 'img.png');
+        $project->notify();
+    }
 }
