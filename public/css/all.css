@@ -1,7 +1,1 @@
-.hero{background:linear-gradient(to right,#c969a6 0,#e795a8 15%,#a4cfcd 43%,#45adc5 65%,#265c9f 100%)}.panel+*{margin-top:1.5em}
-
-@media (max-width:749px) {
-  .dashboard .main {
-    padding: 2em 0;
-  }
-}
+.hero{background:linear-gradient(to right,#c969a6 0,#e795a8 15%,#a4cfcd 43%,#45adc5 65%,#265c9f 100%)}.panel+*{margin-top:1.5em}@media (max-width:749px){.dashboard .main{padding:2em 0}}

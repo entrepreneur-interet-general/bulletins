@@ -4,3 +4,9 @@
 .panel + * {
   margin-top: 1.5em;
 }
+
+@media (max-width:749px) {
+  .dashboard .main {
+    padding: 2em 0;
+  }
+}
