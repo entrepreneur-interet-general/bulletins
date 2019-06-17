@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Mail\FillBulletinReminder;
+use Mail;
 use UnexpectedValueException;
 
 class Project
@@ -11,9 +13,11 @@ class Project
     protected $members;
     public $logoUrl;
 
+    const SUPPORTED_NOTIFICATION_CHANNELS = ['slack', 'email', null];
+
     public function __construct($name, $notificationChannel, array $members, $logoUrl)
     {
-        if ($notificationChannel !== 'slack' and ! is_null($notificationChannel)) {
+        if (! in_array($notificationChannel, self::SUPPORTED_NOTIFICATION_CHANNELS)) {
             throw new UnexpectedValueException;
         }
 
@@ -25,10 +29,30 @@ class Project
 
     public function notify()
     {
-        if (is_null($this->notificationChannel)) {
-            return;
+        switch ($this->notificationChannel) {
+            case 'slack':
+                $this->slackNotify();
+                break;
+
+            case 'email':
+                $this->emailNotify();
+                break;
+
+            default:
+                return;
         }
 
+    }
+
+    private function emailNotify()
+    {
+        foreach ($this->members as $member) {
+            Mail::to($member)->send(new FillBulletinReminder($this->name, config('app.url')));
+        }
+    }
+
+    private function slackNotify()
+    {
         $text = trans('notifications.individual_reminder', ['project' => $this->name, 'url' => config('app.url')]);
 
         foreach ($this->members as $member) {
