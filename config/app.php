@@ -231,7 +231,7 @@ return [
 
     // Projects we are following
     'projects' => App\Projects::fromYaml(
-        config_path(env('PROJECTS_CONFIG_PATH', 'projects.yml'))
+        config_path(env('PROJECTS_CONFIG_FILENAME', 'projects.yml'))
     ),
 
     // Timezone to use for reports.
