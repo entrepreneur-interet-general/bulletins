@@ -4,9 +4,21 @@ namespace App;
 
 use UnexpectedValueException;
 use Illuminate\Support\Collection;
+use Symfony\Component\Yaml\Yaml;
 
 class Projects extends Collection
 {
+    public static function fromYaml($path)
+    {
+        $config = collect(Yaml::parse(file_get_contents($path)));
+
+        $projects = $config->map(function($project) {
+            return new Project($project['name'], array_get($project, 'notification'), $project['members'], $project['logo']);
+        });
+
+        return new self($projects);
+    }
+
     public function names()
     {
         return $this->map->name;

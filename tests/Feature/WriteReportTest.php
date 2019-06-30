@@ -27,7 +27,7 @@ class WriteReportTest extends TestCase
 
         $response = $this->submitForm([
             'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
             'help' => '',
@@ -42,20 +42,20 @@ class WriteReportTest extends TestCase
         $this->assertArraySubset([
             'week_number' => now()->format('Y-W'),
             'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
             'help' => null,
         ], Report::first()->toArray());
 
-        $this->get('/')->assertSee('Explo Code (already filled)');
+        $this->get('/')->assertSee('Example project (already filled)');
     }
 
     public function testFillWithAKeyDate()
     {
         $response = $this->submitForm([
             'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
             'help' => '',
@@ -70,14 +70,14 @@ class WriteReportTest extends TestCase
         $this->assertArraySubset([
             'week_number' => now()->format('Y-W'),
             'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
             'help' => null,
         ], Report::first()->toArray());
 
         $this->assertArraySubset([
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'date' => $date,
             'description' => 'Date description',
         ], Date::first()->toArray());
@@ -87,7 +87,7 @@ class WriteReportTest extends TestCase
     {
         $data = [
             'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
             'help' => '',
@@ -108,7 +108,7 @@ class WriteReportTest extends TestCase
     {
         $data = [
             'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
             'help' => '',
@@ -135,7 +135,7 @@ class WriteReportTest extends TestCase
     {
         $this->submitForm([
             'spirit' => 'NOPE',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
             'help' => '',
@@ -161,7 +161,7 @@ class WriteReportTest extends TestCase
     {
         $this->submitForm([
             'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => '',
             'victories' => 'It was a good week',
             'help' => '',
@@ -174,7 +174,7 @@ class WriteReportTest extends TestCase
     {
         $this->submitForm([
             'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => 'Writing things!',
             'victories' => '',
             'help' => '',
@@ -187,7 +187,7 @@ class WriteReportTest extends TestCase
     {
         $this->submitForm([
             'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
             'help' => str_repeat('a', 301),
@@ -200,7 +200,7 @@ class WriteReportTest extends TestCase
     {
         $this->submitForm([
             'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
             'help' => 'Send help',
@@ -214,7 +214,7 @@ class WriteReportTest extends TestCase
     {
         $this->submitForm([
             'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
             'help' => 'Send help',
@@ -228,7 +228,7 @@ class WriteReportTest extends TestCase
     {
         $this->submitForm([
             'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
             'help' => 'Send help',
@@ -245,7 +245,7 @@ class WriteReportTest extends TestCase
 
         $this->submitForm([
             'spirit' => '🙂',
-            'project' => 'Explo Code',
+            'project' => 'Example project',
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
             'help' => '',
