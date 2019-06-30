@@ -1,0 +1,12 @@
+-
+  logo: images/logo/example.png
+  members:
+    - UEMA8DE9Y
+    - UEN897F5U
+  name: "Example project"
+-
+  logo: images/logo/bar.png
+  members:
+    - UEMA8AA8Y
+  name: Bar
+  notification: slack
