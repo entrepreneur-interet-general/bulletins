@@ -230,24 +230,9 @@ return [
     ],
 
     // Projects we are following
-    'projects' => new App\Projects([
-      new App\Project('ACOSS', 'slack', ['UEMA8DE8Y', 'UEN897F5K'], 'images/logo/ACOSS-Plateforme.png'),
-      new App\Project('ADLER', 'slack', ['UEPH8SSJE', 'UEMUL8CFM'], 'images/logo/Adler.png'),
-      new App\Project('CartoBio', 'slack', ['UEMV1JHGT', 'UENNM7ZB3'], 'images/logo/CartoBio.png'),
-      new App\Project('CibNAV', 'slack', ['UEMUVJ0UB', 'UEVFULCJX'], 'images/logo/CibNav.png'),
-      new App\Project('DataJust', 'slack', ['UFP3Z5XT9', 'UEP1QMJ8G'], 'images/logo/DataJust.png'),
-      new App\Project('DataReg', 'slack', ['UEP0XENPK', 'UEMAW8E64'], 'images/logo/DataReg.png'),
-      new App\Project('EIG Link', 'slack', ['U85PEEN9H', 'U85SM3C3E'], 'images/logo/EIGLink.png'),
-      new App\Project('EIG Node', 'slack', ['U80K1J3NE', 'U83PGP6TW'], 'images/logo/EIGNode.png'),
-      new App\Project('Explo Code', 'slack', ['UEP68HULF', 'UEN3EERS6'], 'images/logo/ExploCode.png'),
-      new App\Project('IA Flash', 'slack', ['UEMUZ0REX', 'UFETC0RPW'], 'images/logo/IA-Flash.png'),
-      new App\Project("Karfu 'R", 'slack', ['UEN32E4RG', 'UEN2E7CCA'], 'images/logo/KarfuR.png'),
-      new App\Project('LexImpact', 'slack', ['UEMBVDJRW', 'UEQNSABHR'], 'images/logo/LexImpact.png'),
-      new App\Project('Open Chronic', 'slack', ['UEPDZBWJ2', 'UER2KDHF0'], 'images/logo/OpenChronic.png'),
-      new App\Project('Open Justice', 'slack', ['UENBQ07GS', 'UEMLZ5Q1X', 'UENMZPL68'], 'images/logo/OpenJustice.png'),
-      new App\Project('Plume', 'slack', ['UEN3W6W2W', 'UEMENKY8H', 'UEN2WGKAP'], 'images/logo/Plume.png'),
-      new App\Project('PolyGraphe', 'slack', ['UEN80C8MB', 'UEMTJ5UVA'], 'images/logo/Polygraphe.png'),
-    ]),
+    'projects' => App\Projects::fromYaml(
+        config_path(env('PROJECTS_CONFIG_FILENAME', 'projects.yml'))
+    ),
 
     // Timezone to use for reports.
     // Use a timezone name from the IANA database like Europe/Paris.

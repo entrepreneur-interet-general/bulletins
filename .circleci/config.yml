@@ -40,6 +40,7 @@ jobs:
           name: Generate env file
           command: |
             cp .env.example .env
+            cp config/projects.example.yml config/projects.yml
             php artisan key:generate
 
       - run:
