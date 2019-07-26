@@ -15,6 +15,8 @@ class ReportsHistoryByProjectTest extends TestCase
 
     public function testRedirectedOnIndex()
     {
+        $this->get(route('reports.choose'))->assertStatus(404);
+
         $report = factory(Report::class)->create();
 
         $this->get(route('reports.choose'))

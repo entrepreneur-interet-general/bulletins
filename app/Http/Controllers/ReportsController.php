@@ -56,6 +56,8 @@ class ReportsController extends Controller
 
     public function choose()
     {
+        abort_if(Report::published()->count() == 0, 404);
+
         $name = Report::published()->orderBy('project')->first()->project;
 
         return redirect()->route('reports.index', $name);
