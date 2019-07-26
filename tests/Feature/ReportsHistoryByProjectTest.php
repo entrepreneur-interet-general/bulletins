@@ -15,9 +15,12 @@ class ReportsHistoryByProjectTest extends TestCase
 
     public function testRedirectedOnIndex()
     {
-        $response = $this->get(route('reports.choose'));
+        $this->get(route('reports.choose'))->assertStatus(404);
 
-        $response->assertRedirect(route('reports.index', $this->projectNames()[0]));
+        $report = factory(Report::class)->create();
+
+        $this->get(route('reports.choose'))
+        ->assertRedirect(route('reports.index', $report->project));
     }
 
     public function testIndexNotLoggedIn()
