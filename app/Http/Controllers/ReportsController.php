@@ -56,7 +56,9 @@ class ReportsController extends Controller
 
     public function choose()
     {
-        return redirect()->route('reports.index', config('app.projects')->first()->name);
+        $name = Report::published()->orderBy('project')->first()->project;
+
+        return redirect()->route('reports.index', $name);
     }
 
     public function index(Request $request, Collection $reports)
