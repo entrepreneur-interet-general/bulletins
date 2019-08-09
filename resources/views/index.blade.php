@@ -22,6 +22,7 @@
     <div class="form__group">
       <label for="project">{{ trans('form.project') }}</label>
       <select name="project">
+        <option disabled selected value>{{ trans('form.select_project') }}</option>
         @foreach($projects->map->name as $project)
         <option
           value="{{ $project }}"

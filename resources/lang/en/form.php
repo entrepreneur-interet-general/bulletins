@@ -5,6 +5,7 @@ return [
     'description' => 'Take a look back at this week. 5 minutes, 300 characters per field — a bit more than a tweet.',
     'previous_bulletins.week' => 'Your answers will be shared by email to the team on <b>Friday at 3PM.</b>',
     'project' => 'Your project',
+    'select_project' => '-- Select your project --',
     'already_filled' => '(already filled)',
     'team_mood' => 'Your team mood',
     'priority' => 'Your priority',

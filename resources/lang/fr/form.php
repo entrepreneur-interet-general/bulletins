@@ -5,6 +5,7 @@ return [
     'description' => "Faites le point sur la semaine qui vient de s'écouler. 5 minutes, 300 caractères par champ — un peu plus d'un tweet.",
     'previous_bulletins.week' => "Vos réponses seront partagées par e-mail à toute l'équipe <b>le vendredi à 15h.</b>",
     'project' => 'Votre projet',
+    'select_project' => '-- Choisissez votre projet --',
     'already_filled' => '(déjà renseigné)',
     'team_mood' => "Votre état d'esprit",
     'priority' => 'Votre priorité',
