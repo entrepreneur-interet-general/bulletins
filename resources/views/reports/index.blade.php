@@ -29,7 +29,10 @@ section-grey
       @foreach($reports as $report)
       <div class="panel">
         <div class="panel__header">
-          <h3>{{ $report->week_number }}</h3>
+          <h3 id="{{ $report->week_number }}">
+            <a href="#{{ $report->week_number }}" aria-hidden="true" class="header-anchor">#</a>
+            {{ $report->week_number }}
+          </h3>
           <small class="panel__header-extra">
           {{ trans('reports.time_period', ['start' => $report->startOfWeek->isoFormat('LL'), 'end' => $report->endOfWeek->isoFormat('LL')]) }}
           </small>
