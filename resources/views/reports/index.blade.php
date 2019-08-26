@@ -25,7 +25,10 @@ section-grey
     @include('reports._info')
 
     @foreach($reports as $month => $reports)
-      <h5 id="{{ Str::slug($month)}}">{{ ucfirst($month) }}</h5>
+      <h5 id="{{ Str::slug($month) }}">
+        <a href="#{{ Str::slug($month) }}" aria-hidden="true" class="header-anchor">#</a>
+        {{ ucfirst($month) }}
+      </h5>
       @foreach($reports as $report)
       <div class="panel">
         <div class="panel__header">

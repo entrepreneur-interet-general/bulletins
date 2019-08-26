@@ -6,7 +6,7 @@
       <label>{{ trans('reports.by_month') }}</label>
       <ul class="label-list">
         @foreach($reports as $month => $nope)
-          <li class="label"><a href="#{{ Str::slug($month)}}">{{ $month }}</a></li>
+          <li class="label"><a href="#{{ Str::slug($month) }}">{{ $month }}</a></li>
         @endforeach
       </ul>
     </div>
