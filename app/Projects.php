@@ -14,7 +14,7 @@ class Projects extends Collection
 
         $projects = $config->map(function ($project) {
             return new Project($project['name'], array_get($project, 'notification'), $project['members'], $project['logo']);
-        });
+        })->sortBy('name');
 
         return new self($projects);
     }
