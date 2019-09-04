@@ -2,9 +2,10 @@
 
 namespace App;
 
-use UnexpectedValueException;
-use Symfony\Component\Yaml\Yaml;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Symfony\Component\Yaml\Yaml;
+use UnexpectedValueException;
 
 class Projects extends Collection
 {
@@ -13,7 +14,7 @@ class Projects extends Collection
         $config = collect(Yaml::parse(file_get_contents($path)));
 
         $projects = $config->map(function ($project) {
-            return new Project($project['name'], array_get($project, 'notification'), $project['members'], $project['logo']);
+            return new Project($project['name'], Arr::get($project, 'notification'), $project['members'], $project['logo']);
         })->sortBy('name');
 
         return new self($projects);
