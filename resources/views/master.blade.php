@@ -65,7 +65,7 @@
   </header>
 
   <main role="main">
-    <div class="hero" role="banner">
+    <div class="hero slope_from_white" role="banner">
       <div class="hero__container">
         <h1 class="hero__white-background">{{ trans('layout.hero_title') }}</h1>
         <p class="hero__white-background">{{ trans('layout.hero_subtitle') }}</p>
