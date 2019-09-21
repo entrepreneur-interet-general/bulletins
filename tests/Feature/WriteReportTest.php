@@ -104,7 +104,7 @@ class WriteReportTest extends TestCase
         $this->assertEquals(1, Report::count());
     }
 
-    public function testCantFillDatesTwice()
+    public function testCantFillDatesTwiceForSameProject()
     {
         $data = [
             'spirit' => '🙂',
@@ -112,7 +112,7 @@ class WriteReportTest extends TestCase
             'priorities' => 'Writing things!',
             'victories' => 'It was a good week',
             'help' => '',
-            'key_date' => $date = now()->addDays(5)->format('Y-m-d'),
+            'key_date' => now()->addDays(5)->format('Y-m-d'),
             'key_date_description' => 'Date description',
         ];
 
@@ -129,6 +129,31 @@ class WriteReportTest extends TestCase
 
         $this->assertEquals(1, Report::count());
         $this->assertEquals(1, Date::count());
+    }
+
+    public function testCanFillSameDateForDifferentProjects()
+    {
+        $data = [
+            'spirit' => '🙂',
+            'project' => config('app.projects')->names()[0],
+            'priorities' => 'Writing things!',
+            'victories' => 'It was a good week',
+            'help' => '',
+            'key_date' => now()->addDays(5)->format('Y-m-d'),
+            'key_date_description' => 'Date description',
+        ];
+
+        $this->submitForm($data)->assertStatus(200);
+
+        $this->assertEquals(1, Report::count());
+        $this->assertEquals(1, Date::count());
+
+        $data['project'] = config('app.projects')->names()[1];
+
+        $this->submitForm($data)->assertStatus(200);
+
+        $this->assertEquals(2, Report::count());
+        $this->assertEquals(2, Date::count());
     }
 
     public function testInvalidSpririt()
