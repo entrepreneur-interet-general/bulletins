@@ -11,3 +11,10 @@
   logo: images/logos/bar.png
   members:
     - bar@example.com
+-
+  name: "Inactive project"
+  notification: email
+  logo: images/logos/example.png
+  members:
+    - inactive@example.com
+  is_active: false

@@ -17,7 +17,7 @@ class ReportsController extends Controller
 
         $request->validate([
           'spirit' => ['required', Rule::in(['☹️', '😐', '🙂', '😀'])],
-          'project' => ['required', Rule::in(config('app.projects')->names())],
+          'project' => ['required', Rule::in(config('app.projects')->active()->names())],
           'priorities' => 'required|max:300',
           'victories' => 'required|max:300',
           'help' => 'max:300',

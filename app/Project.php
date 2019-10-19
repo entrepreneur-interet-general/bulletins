@@ -15,7 +15,7 @@ class Project
 
     const SUPPORTED_NOTIFICATION_CHANNELS = ['slack', 'email', null];
 
-    public function __construct($name, $notificationChannel, array $members, $logoUrl)
+    public function __construct($name, $notificationChannel, array $members, $logoUrl, $isActive)
     {
         if (! in_array($notificationChannel, self::SUPPORTED_NOTIFICATION_CHANNELS)) {
             throw new UnexpectedValueException;
@@ -25,6 +25,12 @@ class Project
         $this->notificationChannel = $notificationChannel;
         $this->members = $members;
         $this->logoUrl = $logoUrl;
+        $this->isActive = $isActive;
+    }
+
+    public function isActive()
+    {
+        return $this->isActive;
     }
 
     public function notify()

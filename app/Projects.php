@@ -14,10 +14,15 @@ class Projects extends Collection
         $config = collect(Yaml::parse(file_get_contents($path)));
 
         $projects = $config->map(function ($project) {
-            return new Project($project['name'], Arr::get($project, 'notification'), $project['members'], $project['logo']);
+            return new Project($project['name'], Arr::get($project, 'notification'), $project['members'], $project['logo'], Arr::get($project, 'is_active', true));
         })->sortBy('name');
 
         return new self($projects);
+    }
+
+    public function active()
+    {
+        return $this->filter->isActive();
     }
 
     public function names()
