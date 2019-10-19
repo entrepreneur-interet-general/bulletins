@@ -1,0 +1,26 @@
+version: "3.0"
+services:
+  web:
+    image: nginx:latest
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx-log.conf:/usr/local/etc/php-fpm.d/zz-log.conf
+    links:
+      - php
+  php:
+    image: php:7-fpm
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DB_CONNECTION="sqlite"
+      - REPORT_SECRET="password"
+      - APP_LOCALE="fr"
+      - APP_ENV="production"
+    # volumes:
+     # - .:/var/www # dev only
