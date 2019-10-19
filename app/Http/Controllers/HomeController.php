@@ -10,7 +10,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('index', [
-            'projects' => $projects = config('app.projects'),
+            'projects' => $projects = config('app.projects')->active(),
             'filledProjects' => $filledProjects = $this->filledProjects(),
             'allFilled' => $filledProjects->count() === $projects->count(),
             'week' => $this->week(),
@@ -36,6 +36,6 @@ class HomeController extends Controller
 
     private function filledProjects()
     {
-        return config('app.projects')->filledProjectsFor($this->weekNumber())->names();
+        return config('app.projects')->active()->filledProjectsFor($this->weekNumber())->names();
     }
 }
