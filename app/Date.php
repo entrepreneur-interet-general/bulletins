@@ -9,6 +9,12 @@ class Date extends Model
     public $guarded = [];
     public $casts = ['date' => 'datetime:Y-m-d'];
 
+
+    public function getMonthAttribute()
+    {
+        return $this->date->monthName.' '.$this->date->year;
+    }
+
     public function scopeForProject($query, $project)
     {
         return $query->where('project', '=', $project);
