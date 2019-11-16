@@ -56,7 +56,6 @@ h6:hover .header-anchor {
 }
 
 .date_grid {
-  grid-template-columns: repeat(3, 1fr);
   margin-bottom: 3em;
 }
 
