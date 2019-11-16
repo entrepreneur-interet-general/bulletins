@@ -2,5 +2,5 @@
 
 return [
     // dates.index
-    'title' => 'Key dates'
+    'title' => 'Key dates',
 ];
