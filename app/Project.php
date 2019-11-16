@@ -2,9 +2,9 @@
 
 namespace App;
 
+use App\Mail\FillBulletinReminder;
 use Mail;
 use UnexpectedValueException;
-use App\Mail\FillBulletinReminder;
 
 class Project
 {

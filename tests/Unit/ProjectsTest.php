@@ -3,8 +3,8 @@
 namespace Tests\Unit;
 
 use App\Report;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ProjectsTest extends TestCase
 {

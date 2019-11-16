@@ -2,9 +2,9 @@
 
 use App\Date;
 use App\Report;
-use Illuminate\Support\Carbon;
-use Illuminate\Database\Seeder;
 use Faker\Factory as FakerFactory;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
