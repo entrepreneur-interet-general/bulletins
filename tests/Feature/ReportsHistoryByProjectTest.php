@@ -4,10 +4,10 @@ namespace Tests\Feature;
 
 use App\Date;
 use App\Report;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ReportsHistoryByProjectTest extends TestCase
 {

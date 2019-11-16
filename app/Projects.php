@@ -3,9 +3,9 @@
 namespace App;
 
 use Illuminate\Support\Arr;
-use UnexpectedValueException;
-use Symfony\Component\Yaml\Yaml;
 use Illuminate\Support\Collection;
+use Symfony\Component\Yaml\Yaml;
+use UnexpectedValueException;
 
 class Projects extends Collection
 {
