@@ -9,6 +9,11 @@ class Date extends Model
     public $guarded = [];
     public $casts = ['date' => 'datetime:Y-m-d'];
 
+    public function getMonthAttribute()
+    {
+        return $this->date->monthName.' '.$this->date->year;
+    }
+
     public function scopeForProject($query, $project)
     {
         return $query->where('project', '=', $project);
@@ -22,5 +27,10 @@ class Date extends Model
     public function scopePast($query)
     {
         return $query->where('date', '<', now())->orderBy('date');
+    }
+
+    public function projectObject()
+    {
+        return config('app.projects')->where('name', $this->project)->first();
     }
 }

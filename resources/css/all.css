@@ -55,6 +55,14 @@ h6:hover .header-anchor {
   opacity: 1;
 }
 
+.date_grid {
+  margin-bottom: 3em;
+}
+
+.date_card {
+  max-width: 30em;
+}
+
 @media (max-width:749px) {
   .dashboard .main {
     padding: 2em 0;

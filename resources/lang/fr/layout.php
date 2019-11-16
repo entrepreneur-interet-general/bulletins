@@ -12,4 +12,5 @@ return [
     'language_fr' => 'Français',
     'language_en' => 'Anglais',
     'documentation' => 'Documentation',
+    'dates' => 'Dates clés',
 ];
