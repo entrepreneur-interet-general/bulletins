@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Date;
 use Illuminate\Http\Request;
 
-class DatesControllers extends Controller
+class DatesController extends Controller
 {
     public function index(Request $request)
     {

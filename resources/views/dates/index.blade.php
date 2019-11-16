@@ -9,16 +9,24 @@ section-grey
   <div class="main">
     <div class="panel">
       <div class="panel__header">
-        <h2>{{ trans('reports.previous_reports') }}</h2>
+        <h2>{{ trans('dates.title') }}</h2>
       </div>
       <div class="form__group">
         @foreach($data as $month => $dates)
           <h3>{{ $month }}</h3>
-          <ul>
+
+          <div class="grid date_grid mb3">
             @foreach($dates as $date)
-              <li>{{ $date->date->isoFormat('LL') }} – {{ $date->description }}</li>
+              <div class="card date_card">
+                <div class="card__content">
+                  <h3><img src="{{ asset($date->projectObject()->logoUrl) }}" alt="{{ $date->project }}" width="32px"> {{ $date->project }}</h3>
+                  <div class="card__meta">{{ $date->date->isoFormat('LL') }}</div>
+                  <p>{{ $date->description }}</p>
+                </div>
+              </div>
             @endforeach
-          </ul>
+          </div>
+
         @endforeach
       </div>
     </div>

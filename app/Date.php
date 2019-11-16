@@ -28,4 +28,9 @@ class Date extends Model
     {
         return $query->where('date', '<', now())->orderBy('date');
     }
+
+    public function projectObject()
+    {
+        return config('app.projects')->where('name', $this->project)->first();
+    }
 }
