@@ -17,4 +17,4 @@
   logo: images/logos/example.png
   members:
     - inactive@example.com
-  is_active: false
+  ends_on: "2000-01-01"
