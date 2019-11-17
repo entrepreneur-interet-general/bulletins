@@ -1,5 +1,6 @@
 <?php
 
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\Date;
 use Faker\Generator as Faker;
 
