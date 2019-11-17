@@ -49,6 +49,7 @@
               </div>
             </div>
           </li>
+          <li class="nav__item"><a href="{{ route('dates.index') }}">{{ trans('layout.dates') }}</a></li>
           <li class="nav__item"><a href="{{ route('about') }}">{{ trans('layout.about') }}</a></li>
           <li class="nav__item">
             <div class="dropdown">

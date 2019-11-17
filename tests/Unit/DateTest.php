@@ -33,4 +33,12 @@ class DateTest extends TestCase
         $this->assertTrue(Date::upcoming()->get()->contains($b));
         $this->assertTrue(Date::past()->get()->contains($c));
     }
+
+    public function testProjectObject()
+    {
+        $date = factory(Date::class)->create();
+
+        $this->assertInstanceOf(\App\Project::class, $date->projectObject());
+        $this->assertEquals($date->project, $date->projectObject()->name);
+    }
 }
