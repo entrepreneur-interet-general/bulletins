@@ -2,11 +2,11 @@
 
 namespace App\Console;
 
-use App\Slack;
 use App\Mail\WeeklyReport;
-use Illuminate\Support\Facades\Mail;
+use App\Slack;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Mail;
 
 class Kernel extends ConsoleKernel
 {

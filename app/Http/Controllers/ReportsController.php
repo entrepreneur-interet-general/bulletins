@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Date;
 use App\Report;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Validation\Rule;
 
 class ReportsController extends Controller
 {

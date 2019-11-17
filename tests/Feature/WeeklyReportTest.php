@@ -3,11 +3,11 @@
 namespace Tests\Feature;
 
 use App\Date;
-use App\Report;
-use Tests\TestCase;
 use App\Mail\WeeklyReport;
-use UnexpectedValueException;
+use App\Report;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+use UnexpectedValueException;
 
 class WeeklyReportTest extends TestCase
 {
