@@ -4,9 +4,9 @@ namespace Tests\Feature;
 
 use App\Date;
 use App\Report;
-use Tests\TestCase;
-use Illuminate\Support\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Carbon;
+use Tests\TestCase;
 
 class WriteReportTest extends TestCase
 {

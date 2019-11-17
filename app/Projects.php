@@ -22,6 +22,7 @@ class Projects extends Collection
                 'logoUrl' => $project['logo'],
                 'endsOn' => Arr::get($project, 'ends_on', Carbon::tomorrow()),
             ];
+
             return new Project($attributes);
         })->sortBy('name');
 
