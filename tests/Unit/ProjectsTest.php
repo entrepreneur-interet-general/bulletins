@@ -15,6 +15,12 @@ class ProjectsTest extends TestCase
         $this->assertEquals(config('app.projects')->map->name, config('app.projects')->names());
     }
 
+    public function testIsActive()
+    {
+        $this->assertCount(3, config('app.projects'));
+        $this->assertCount(2, config('app.projects')->active());
+    }
+
     public function testFilledProjectsFor()
     {
         $this->assertCount(0, config('app.projects')->filledProjectsFor('2019-10'));

@@ -3,33 +3,40 @@
 namespace App;
 
 use App\Mail\FillBulletinReminder;
+use Illuminate\Support\Carbon;
 use Mail;
 use UnexpectedValueException;
 
 class Project
 {
     public $name;
-    protected $notificationChannel;
+    protected $channel;
     protected $members;
     public $logoUrl;
 
     const SUPPORTED_NOTIFICATION_CHANNELS = ['slack', 'email', null];
 
-    public function __construct($name, $notificationChannel, array $members, $logoUrl)
+    public function __construct(array $attributes)
     {
-        if (! in_array($notificationChannel, self::SUPPORTED_NOTIFICATION_CHANNELS)) {
+        if (! in_array($attributes['channel'], self::SUPPORTED_NOTIFICATION_CHANNELS)) {
             throw new UnexpectedValueException;
         }
 
-        $this->name = $name;
-        $this->notificationChannel = $notificationChannel;
-        $this->members = $members;
-        $this->logoUrl = $logoUrl;
+        $this->name = $attributes['name'];
+        $this->channel = $attributes['channel'];
+        $this->members = $attributes['members'];
+        $this->logoUrl = $attributes['logoUrl'];
+        $this->endsOn = Carbon::parse($attributes['endsOn']);
+    }
+
+    public function isActive()
+    {
+        return ! $this->endsOn->isPast();
     }
 
     public function notify()
     {
-        switch ($this->notificationChannel) {
+        switch ($this->channel) {
             case 'slack':
                 $this->slackNotify();
                 break;

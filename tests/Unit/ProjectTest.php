@@ -11,7 +11,16 @@ class ProjectTest extends TestCase
     public function testConstructorWrongChannel()
     {
         $this->expectException(UnexpectedValueException::class);
-        $project = new Project('The name', $channel = 'foobar', $members = [], 'img.png');
+        factory(Project::class)->make(['channel' => 'foobar']);
+    }
+
+    public function testIsActive()
+    {
+        $project = factory(Project::class)->make();
+        $this->assertTrue($project->isActive());
+
+        $project = factory(Project::class)->state('inactive')->make();
+        $this->assertFalse($project->isActive());
     }
 
     /**
@@ -19,7 +28,7 @@ class ProjectTest extends TestCase
      */
     public function testNotifyNoChannel()
     {
-        $project = new Project('The name', $channel = null, $members = [], 'img.png');
+        $project = factory(Project::class)->make();
         $project->notify();
     }
 
@@ -28,7 +37,7 @@ class ProjectTest extends TestCase
      */
     public function testNotifySlackChannel()
     {
-        $project = new Project('The name', $channel = 'slack', $members = [], 'img.png');
+        $project = factory(Project::class)->make(['channel' => 'slack']);
         $project->notify();
     }
 
@@ -37,7 +46,7 @@ class ProjectTest extends TestCase
      */
     public function testNotifyEmailChannel()
     {
-        $project = new Project('The name', $channel = 'email', $members = [], 'img.png');
+        $project = factory(Project::class)->make(['channel' => 'email']);
         $project->notify();
     }
 }
