@@ -12,6 +12,10 @@ class Projects extends Collection
 {
     public static function fromYaml($path)
     {
+        if (! file_exists($path)) {
+            return new self([]);
+        }
+
         $config = collect(Yaml::parse(file_get_contents($path)));
 
         $projects = $config->map(function ($project) {
