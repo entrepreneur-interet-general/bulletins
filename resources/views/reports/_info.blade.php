@@ -1,5 +1,16 @@
 <div class="panel">
-  <h1>{{ $projectName }} <img src="{{ asset($currentProject->logoUrl) }}" alt="{{ $projectName }}" width="32px"></h1>
+  <div class="panel__header">
+    <h1>
+      {{ $projectName }} <img src="{{ asset($currentProject->logoUrl) }}" alt="{{ $projectName }}" class="project_logo">
+    </h1>
+
+    @if(! $currentProject->isActive())
+    <small class="panel__header-extra">
+      {{ trans('reports.ended_on', ['date_str' => $currentProject->endsOn->isoFormat('LL')]) }}
+    </small>
+    @endif
+  </div>
+
 
   @if($reports->count() > 1)
     <div class="form__group">

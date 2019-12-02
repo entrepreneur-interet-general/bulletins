@@ -36,6 +36,16 @@ main {
   margin-top: 1.5em;
 }
 
+.panel__header h1 {
+  display: inline-block;
+  margin: 0;
+}
+
+.project_logo {
+  vertical-align: middle;
+  width: 32px;
+}
+
 a.header-anchor {
   font-size: .9em;
   float: left;

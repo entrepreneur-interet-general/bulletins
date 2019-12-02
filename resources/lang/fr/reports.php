@@ -2,6 +2,7 @@
 
 return [
     // reports.index
+    'ended_on' => 'Terminé depuis le :date_str',
     'by_month' => 'Bilans par mois',
     'past_dates' => 'Dates importantes passées',
     'upcoming_dates' => 'Dates importantes futures',
