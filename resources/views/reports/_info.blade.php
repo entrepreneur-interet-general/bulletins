@@ -8,7 +8,7 @@
     <small class="panel__header-extra">
       {{ trans('reports.ended_on', ['date_str' => $currentProject->endsOn->isoFormat('LL')]) }}
     </small>
-    @else
+    @elseif($currentProject->isActive() && $currentProject->endsOn)
     <small class="panel__header-extra">
       {{ trans('reports.ends_on', ['date_str' => $currentProject->endsOn->isoFormat('LL')]) }}
     </small>
