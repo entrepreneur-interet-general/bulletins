@@ -3,6 +3,7 @@
 return [
     // reports.index
     'ended_on' => 'Ended on :date_str',
+    'ends_on' => 'Ends on :date_str',
     'by_month' => 'Bulletins by month',
     'past_dates' => 'Past key dates',
     'upcoming_dates' => 'Upcoming key dates',
