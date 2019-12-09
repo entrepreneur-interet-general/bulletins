@@ -24,7 +24,7 @@ class Projects extends Collection
                 'channel' => Arr::get($project, 'notification'),
                 'members' => $project['members'],
                 'logoUrl' => $project['logo'],
-                'endsOn' => Arr::get($project, 'ends_on', Carbon::tomorrow()),
+                'endsOn' => Arr::get($project, 'ends_on'),
             ];
 
             return new Project($attributes);

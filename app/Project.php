@@ -26,12 +26,12 @@ class Project
         $this->channel = $attributes['channel'];
         $this->members = $attributes['members'];
         $this->logoUrl = $attributes['logoUrl'];
-        $this->endsOn = Carbon::parse($attributes['endsOn']);
+        $this->endsOn = is_null($attributes['endsOn']) ? null : Carbon::parse($attributes['endsOn']);
     }
 
     public function isActive()
     {
-        return ! $this->endsOn->isPast();
+        return is_null($this->endsOn) || $this->endsOn->isFuture();
     }
 
     public function notify()

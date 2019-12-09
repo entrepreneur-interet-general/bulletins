@@ -19,6 +19,9 @@ class ProjectTest extends TestCase
         $project = factory(Project::class)->make();
         $this->assertTrue($project->isActive());
 
+        $project = factory(Project::class)->make(['ends_on' => null]);
+        $this->assertTrue($project->isActive());
+
         $project = factory(Project::class)->state('inactive')->make();
         $this->assertFalse($project->isActive());
     }
