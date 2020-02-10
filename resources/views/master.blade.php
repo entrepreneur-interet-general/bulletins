@@ -6,6 +6,7 @@
 
   <title>{{ config('app.name') }}</title>
   <link href="https://unpkg.com/template.data.gouv.fr@1.2.1/dist/main.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
   <link href="{{ mix('/css/all.css') }}" rel="stylesheet">
   <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
