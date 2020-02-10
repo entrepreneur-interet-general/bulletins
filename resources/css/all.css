@@ -73,6 +73,10 @@ h6:hover .header-anchor {
   max-width: 30em;
 }
 
+.CodeMirror, .CodeMirror-scroll {
+  min-height: 70px;
+}
+
 @media (max-width:749px) {
   .dashboard .main {
     padding: 2em 0;

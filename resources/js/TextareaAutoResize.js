@@ -5,9 +5,9 @@
  * longer than the initial height of the element to ease writing for users.
  */
 export default class TextareaAutoResize {
-    constructor( element ) {
+    constructor(element) {
         this.element = element
-        this.element.addEventListener( 'input', this.textareaDidChange.bind( this ) )
+        this.element.addEventListener('input', this.textareaDidChange.bind(this))
 
         this.textareaDidChange()
     }
