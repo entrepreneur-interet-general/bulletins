@@ -12,7 +12,7 @@ class DatesController extends Controller
         abort_if(Date::count() == 0, 404);
 
         return view('dates.index', [
-          'data' => Date::orderBy('date', 'desc')->get()->groupBy->month,
+            'data' => Date::orderBy('date', 'desc')->get()->groupBy->month,
         ]);
     }
 }

@@ -15,8 +15,8 @@ require_once __DIR__.'/../vendor/autoload.php';
 |
 */
 $commands = [
-  'config:cache',
-  'event:cache',
+    'config:cache',
+    'event:cache',
 ];
 
 $app = require __DIR__.'/../bootstrap/app.php';
