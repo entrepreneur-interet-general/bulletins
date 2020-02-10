@@ -38,10 +38,10 @@
     <div class="form__group">
       <fieldset>
         <legend>{{ trans('form.team_mood') }}</legend>
-        <input type="radio" name="spirit" id="spirit" value="☹️"><label for="spirit" class="label-inline">☹️</label>
-        <input type="radio" name="spirit" id="spirit" value="😐"><label for="spirit" class="label-inline">😐</label>
-        <input type="radio" name="spirit" id="spirit" value="🙂"><label for="spirit" class="label-inline">🙂</label>
-        <input type="radio" name="spirit" id="spirit" value="😀"><label for="spirit" class="label-inline">😀</label>
+        <input type="radio" name="spirit" value="☹️"><label for="spirit" class="label-inline">☹️</label>
+        <input type="radio" name="spirit" value="😐"><label for="spirit" class="label-inline">😐</label>
+        <input type="radio" name="spirit" value="🙂"><label for="spirit" class="label-inline">🙂</label>
+        <input type="radio" name="spirit" value="😀"><label for="spirit" class="label-inline">😀</label>
       </fieldset>
     </div>
 
