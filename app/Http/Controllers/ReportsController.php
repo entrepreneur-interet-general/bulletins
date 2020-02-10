@@ -16,41 +16,41 @@ class ReportsController extends Controller
         abort_unless(Report::canBeFilled(), 403);
 
         $request->validate([
-          'spirit' => ['required', Rule::in(['☹️', '😐', '🙂', '😀'])],
-          'project' => ['required', Rule::in(config('app.projects')->active()->names())],
-          'priorities' => 'required|max:300',
-          'victories' => 'required|max:300',
-          'help' => 'max:300',
-          'key_date' => [
-            'nullable',
-            'date',
-            'date_format:Y-m-d',
-            'required_with:key_date_description',
-            'unique:dates,date,null,id,project,'.$request->input('project'),
-          ],
-          'key_date_description' => 'nullable|max:200|required_with:key_date',
+            'spirit' => ['required', Rule::in(['☹️', '😐', '🙂', '😀'])],
+            'project' => ['required', Rule::in(config('app.projects')->active()->names())],
+            'priorities' => 'required|max:300',
+            'victories' => 'required|max:300',
+            'help' => 'max:300',
+            'key_date' => [
+                'nullable',
+                'date',
+                'date_format:Y-m-d',
+                'required_with:key_date_description',
+                'unique:dates,date,null,id,project,'.$request->input('project'),
+            ],
+            'key_date_description' => 'nullable|max:200|required_with:key_date',
         ]);
 
         Report::create([
-          'project' => $request->input('project'),
-          'week_number' => $this->weekNumber(),
-          'spirit' => $request->input('spirit'),
-          'priorities' => $request->input('priorities'),
-          'victories' => $request->input('victories'),
-          'help' => $request->input('help'),
+            'project' => $request->input('project'),
+            'week_number' => $this->weekNumber(),
+            'spirit' => $request->input('spirit'),
+            'priorities' => $request->input('priorities'),
+            'victories' => $request->input('victories'),
+            'help' => $request->input('help'),
         ])->save();
 
         if ($request->filled('key_date')) {
             Date::create([
-            'project' => $request->input('project'),
-            'date' => $request->input('key_date'),
-            'description' => $request->input('key_date_description'),
-          ]);
+                'project' => $request->input('project'),
+                'date' => $request->input('key_date'),
+                'description' => $request->input('key_date_description'),
+            ]);
         }
 
         return view('success', [
-          'week' => $this->week(),
-          'gif' => $this->randomGif(),
+            'week' => $this->week(),
+            'gif' => $this->randomGif(),
         ]);
     }
 
@@ -76,13 +76,13 @@ class ReportsController extends Controller
         }
 
         return view('reports.index', [
-          'reports' => $reports->groupBy->month,
-          'currentProject' => $reports->first()->projectObject(),
-          'projects' => $projects,
-          'shareUrl' => URL::signedRoute('reports.index', $currentProject),
-          'downloadUrl' => URL::signedRoute('reports.export', $currentProject),
-          'upcomingDates' => Date::forProject($currentProject)->upcoming()->get(),
-          'pastDates' => Date::forProject($currentProject)->past()->get(),
+            'reports' => $reports->groupBy->month,
+            'currentProject' => $reports->first()->projectObject(),
+            'projects' => $projects,
+            'shareUrl' => URL::signedRoute('reports.index', $currentProject),
+            'downloadUrl' => URL::signedRoute('reports.export', $currentProject),
+            'upcomingDates' => Date::forProject($currentProject)->upcoming()->get(),
+            'pastDates' => Date::forProject($currentProject)->past()->get(),
         ]);
     }
 
@@ -123,11 +123,11 @@ class ReportsController extends Controller
     private function randomGif()
     {
         return (object) collect([
-          ['id' => '4Zo41lhzKt6iZ8xff9', 'width' => 480, 'height' => 480],
-          ['id' => 'Ztw0p2RGR36E0', 'width' => 480, 'height' => 270],
-          ['id' => 'SwImQhtiNA7io', 'width' => 480, 'height' => 297],
-          ['id' => 'eYilisUwipOEM', 'width' => 480, 'height' => 348],
-          ['id' => 'tQ8uT9t0uK92M', 'width' => 480, 'height' => 270],
+            ['id' => '4Zo41lhzKt6iZ8xff9', 'width' => 480, 'height' => 480],
+            ['id' => 'Ztw0p2RGR36E0', 'width' => 480, 'height' => 270],
+            ['id' => 'SwImQhtiNA7io', 'width' => 480, 'height' => 297],
+            ['id' => 'eYilisUwipOEM', 'width' => 480, 'height' => 348],
+            ['id' => 'tQ8uT9t0uK92M', 'width' => 480, 'height' => 270],
         ])->shuffle()->first();
     }
 }
