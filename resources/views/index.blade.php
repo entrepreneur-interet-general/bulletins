@@ -47,17 +47,17 @@
 
     <div class="form__group">
       <label for="priorities">{{ trans('form.priority') }}</label>
-      <textarea class="js-simplemde" name="priorities" rows="3" placeholder="{{ trans('form.priority.placeholder') }}" required maxlength="300">{{ old('priorities') }}</textarea>
+      <textarea class="js-simplemde" name="priorities" rows="3" placeholder="{{ trans('form.priority.placeholder') }}">{{ old('priorities') }}</textarea>
     </div>
 
     <div class="form__group">
       <label for="victories">{{ trans('form.ups_and_downs') }}</label>
-      <textarea class="js-simplemde" name="victories" rows="3" placeholder="{{ trans('form.ups_and_downs.placeholder') }}" required maxlength="300">{{ old('victories') }}</textarea>
+      <textarea class="js-simplemde" name="victories" rows="3" placeholder="{{ trans('form.ups_and_downs.placeholder') }}">{{ old('victories') }}</textarea>
     </div>
 
     <div class="form__group">
       <label for="help">{{ trans('form.help') }}<span class="label">{{ trans('form.optional') }}</span></label>
-      <textarea class="js-simplemde" name="help" rows="3" placeholder="{{ trans('form.help.placeholder') }}" maxlength="300">{{ old('help') }}</textarea>
+      <textarea class="js-simplemde" name="help" rows="3" placeholder="{{ trans('form.help.placeholder') }}">{{ old('help') }}</textarea>
     </div>
 
     <div class="form__group">
