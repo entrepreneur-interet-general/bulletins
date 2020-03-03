@@ -2,7 +2,6 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\RestoreLocale;
 use App\Http\Middleware\SeeReportsHistory;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
