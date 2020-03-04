@@ -26,20 +26,20 @@
         "issues":"https://github.com/entrepreneur-interet-general/bulletins/issues"
     },
     "require":{
-        "php": "^7.2",
+        "php": "^7.2.5",
         "bugsnag/bugsnag-laravel": "^2.0",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "^6.0",
-        "laravel/tinker": "^1.0",
+        "laravel/framework": "^7.0",
+        "laravel/tinker": "^2.2",
         "symfony/yaml": "^4.3",
-        "wrapi/slack": "^1.0"
+        "wrapi/slack": "^1.0",
+        "fruitcake/laravel-cors": "^1.0"
     },
     "require-dev": {
-        "beyondcode/laravel-dump-server": "^1.0",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^2.0",
+        "nunomaduro/collision": "^4.1",
         "phpunit/phpunit": "^8.0"
     },
     "config":{
