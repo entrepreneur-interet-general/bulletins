@@ -44,9 +44,9 @@ jobs:
             php artisan key:generate
 
       - run:
-          name: Run PHPUnit tests
+          name: Run tests
           command: |
-            ./vendor/bin/phpunit
+            php artisan test
 
   install_from_composer:
     docker:
