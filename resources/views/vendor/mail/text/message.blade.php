@@ -21,8 +21,7 @@
     {{-- Footer --}}
     @slot('footer')
         @component('mail::footer')
-            © {{ date('Y') }} {{ config('app.name') }}.
-            @lang('Pour sauver des arbres, mangez des castors et n’imprimez pas cet e-mail.')
+            © {{ date('Y') }} {{ config('app.name') }}. {{ trans('emails.footer') }}
         @endcomponent
     @endslot
 @endcomponent
