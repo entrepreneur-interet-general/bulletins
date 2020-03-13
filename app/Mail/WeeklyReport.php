@@ -7,8 +7,8 @@ use App\Report;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use UnexpectedValueException;
 use InvalidArgumentException;
+use UnexpectedValueException;
 
 class WeeklyReport extends Mailable
 {
