@@ -8,6 +8,7 @@ use App\Report;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use UnexpectedValueException;
+use InvalidArgumentException;
 
 class WeeklyReportTest extends TestCase
 {
@@ -18,6 +19,24 @@ class WeeklyReportTest extends TestCase
         $this->expectException(UnexpectedValueException::class);
 
         new WeeklyReport('foo');
+    }
+
+    public function testNoReports()
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        (new WeeklyReport('2019-01'))->build();
+    }
+
+    public function testHasReports()
+    {
+        $class = new WeeklyReport('2019-01');
+
+        $this->assertFalse($class->hasReports());
+
+        factory(Report::class)->create(['week_number' => '2019-01']);
+
+        $this->assertTrue($class->hasReports());
     }
 
     public function testForWeek()
