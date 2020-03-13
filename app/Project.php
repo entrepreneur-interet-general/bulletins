@@ -53,16 +53,21 @@ class Project
     private function emailNotify()
     {
         foreach ($this->members as $member) {
-            Mail::to($member)->send(new FillBulletinReminder($this->name, config('app.url')));
+            Mail::to($member)->send(new FillBulletinReminder($this->name, $this->fillUrl()));
         }
     }
 
     private function slackNotify()
     {
-        $text = trans('notifications.individual_reminder', ['project' => $this->name, 'url' => config('app.url')]);
+        $text = trans('notifications.individual_reminder', ['project' => $this->name, 'url' => $this->fillUrl()]);
 
         foreach ($this->members as $member) {
             Slack::sendMessage($member, $text);
         }
+    }
+
+    private function fillUrl()
+    {
+        return route('home', ['project' => $this->name]);
     }
 }

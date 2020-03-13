@@ -26,7 +26,7 @@
         @foreach($projects->map->name as $project)
         <option
           value="{{ $project }}"
-          {{ (old("project") == $project ? "selected": "") }}
+          {{ ((old("project") ?? request()->query('project')) == $project ? "selected": "") }}
           {{ $filledProjects->contains($project) ? "disabled": ""}}
         >
           {{ $filledProjects->contains($project) ? "$project ".trans('form.already_filled') : $project }}
