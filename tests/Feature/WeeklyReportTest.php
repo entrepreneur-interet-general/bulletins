@@ -6,6 +6,7 @@ use App\Date;
 use App\Mail\WeeklyReport;
 use App\Report;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use InvalidArgumentException;
 use Tests\TestCase;
 use UnexpectedValueException;
 
@@ -18,6 +19,24 @@ class WeeklyReportTest extends TestCase
         $this->expectException(UnexpectedValueException::class);
 
         new WeeklyReport('foo');
+    }
+
+    public function testNoReports()
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        (new WeeklyReport('2019-01'))->build();
+    }
+
+    public function testHasReports()
+    {
+        $class = new WeeklyReport('2019-01');
+
+        $this->assertFalse($class->hasReports());
+
+        factory(Report::class)->create(['week_number' => '2019-01']);
+
+        $this->assertTrue($class->hasReports());
     }
 
     public function testForWeek()

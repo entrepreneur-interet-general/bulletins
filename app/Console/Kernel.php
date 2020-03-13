@@ -42,7 +42,10 @@ class Kernel extends ConsoleKernel
         })->timezone(config('app.report_timezone'))->fridays()->at('14:45');
 
         $schedule->call(function () {
-            Mail::to(config('app.report_email'))->send(new WeeklyReport);
+            $builder = new WeeklyReport;
+            if ($builder->hasReports()) {
+                Mail::to(config('app.report_email'))->send($builder);
+            }
         })->timezone(config('app.report_timezone'))->fridays()->at('15:05');
     }
 

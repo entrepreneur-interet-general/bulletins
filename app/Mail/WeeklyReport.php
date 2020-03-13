@@ -7,6 +7,7 @@ use App\Report;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use InvalidArgumentException;
 use UnexpectedValueException;
 
 class WeeklyReport extends Mailable
@@ -24,13 +25,18 @@ class WeeklyReport extends Mailable
         }
     }
 
+    public function hasReports()
+    {
+        return Report::forWeek($this->week)->count() > 0;
+    }
+
     public function build()
     {
-        $reports = Report::forWeek($this->week)->get()->shuffle();
-
-        if ($reports->isEmpty()) {
-            return 'No reports';
+        if (! $this->hasReports()) {
+            throw new InvalidArgumentException('No reports for week '.$this->week);
         }
+
+        $reports = Report::forWeek($this->week)->get()->shuffle();
 
         $helpRequests = Report::forWeek($this->week)->orderBy('project')->pluck('help', 'project')->filter();
         $projectsNoInfo = config('app.projects')->active()->unfilledProjectsFor($this->week)->map->name;
