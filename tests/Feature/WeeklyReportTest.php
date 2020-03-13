@@ -6,9 +6,9 @@ use App\Date;
 use App\Mail\WeeklyReport;
 use App\Report;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use InvalidArgumentException;
 use Tests\TestCase;
 use UnexpectedValueException;
-use InvalidArgumentException;
 
 class WeeklyReportTest extends TestCase
 {
