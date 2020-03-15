@@ -128,8 +128,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'key_date' => [
+            'unique' => 'A key date has already been set for this date.',
         ],
     ],
 

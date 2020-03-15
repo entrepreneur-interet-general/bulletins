@@ -125,7 +125,7 @@ class WriteReportTest extends TestCase
         Carbon::setTestNow(Carbon::create(2019, 3, 8));
         $this->submitForm($data)
             ->assertStatus(302)
-            ->assertSessionHasErrors('key_date');
+            ->assertSessionHasErrors(['key_date' => 'A key date has already been set for this date.']);
 
         $this->assertEquals(1, Report::count());
         $this->assertEquals(1, Date::count());

@@ -127,8 +127,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'key_date' => [
+            'unique' => 'Une date clé est déjà renseignée pour cette date.',
         ],
     ],
 
