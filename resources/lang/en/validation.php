@@ -129,7 +129,7 @@ return [
 
     'custom' => [
         'key_date' => [
-            'unique' => 'A key date has already been set for this date.'
+            'unique' => 'A key date has already been set for this date.',
         ],
     ],
 
