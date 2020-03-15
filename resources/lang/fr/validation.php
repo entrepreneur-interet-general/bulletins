@@ -128,7 +128,7 @@ return [
 
     'custom' => [
         'key_date' => [
-            'unique' => 'Une date clé est déjà renseignée pour cette date.'
+            'unique' => 'Une date clé est déjà renseignée pour cette date.',
         ],
     ],
 
