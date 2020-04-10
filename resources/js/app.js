@@ -20,6 +20,6 @@ function copy() {
   document.querySelector("#js-copy-btn").classList.remove('secondary')
 }
 
-if (document.getElementById('#js-copy-btn')) {
-  document.getElementById('#js-copy-btn').addEventListener("click", copy)
+if (document.getElementById('js-copy-btn')) {
+  document.getElementById('js-copy-btn').addEventListener("click", copy)
 }
