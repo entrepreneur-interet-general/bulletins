@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a84329b055679c81f8c0143ef2007bb3",
+    "content-hash": "cb533bb696a10818469dd960e68e1ed1",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -57,6 +57,63 @@
                 "stack"
             ],
             "time": "2019-12-24T22:41:47+00:00"
+        },
+        {
+            "name": "azuyalabs/yasumi",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/azuyalabs/yasumi.git",
+                "reference": "87cde7fd22e3e6e3ace9830b145b6a77338757e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/azuyalabs/yasumi/zipball/87cde7fd22e3e6e3ace9830b145b6a77338757e6",
+                "reference": "87cde7fd22e3e6e3ace9830b145b6a77338757e6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "fzaninotto/faker": "~1.8",
+                "mikey179/vfsstream": "~1.6",
+                "phpunit/phpunit": "~8.4"
+            },
+            "suggest": {
+                "ext-calendar": "For calculating the date of Easter"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yasumi\\": "src/Yasumi/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sacha Telgenhof",
+                    "email": "me@sachatelgenhof.com"
+                }
+            ],
+            "description": "Yasumi is an easy PHP Library for calculating national holidays.",
+            "keywords": [
+                "Bank",
+                "calculation",
+                "calendar",
+                "celebration",
+                "date",
+                "holiday",
+                "holidays",
+                "national",
+                "time"
+            ],
+            "time": "2019-10-06T03:09:18+00:00"
         },
         {
             "name": "bugsnag/bugsnag",
@@ -917,6 +974,7 @@
                     "email": "jakub.onderka@gmail.com"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-color",
             "time": "2018-09-29T17:23:10+00:00"
         },
         {
@@ -963,6 +1021,7 @@
                 }
             ],
             "description": "Highlight PHP code in terminal",
+            "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
