@@ -28,18 +28,25 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $isLatestWorkingDay = function() {
+            $today = now()->timezone(config('app.report_timezone'));
+            $lastWorkingDay = App\Report::lastWorkingDayOfWeek();
+
+            return $today->isSameDay($lastWorkingDay);
+        };
+
         $schedule->call(function () {
             $text = trans('notifications.general_reminder', ['url' => config('app.url')]);
             Slack::sendMessage(config('app.slack_general_channel'), $text);
-        })->timezone(config('app.report_timezone'))->fridays()->at('10:00');
+        })->timezone(config('app.report_timezone'))->when($isLatestWorkingDay)->at('10:00');
 
         $schedule->call(function () {
             $this->unfilledProjects()->map->notify();
-        })->timezone(config('app.report_timezone'))->fridays()->at('14:00');
+        })->timezone(config('app.report_timezone'))->when($isLatestWorkingDay)->at('14:00');
 
         $schedule->call(function () {
             $this->unfilledProjects()->map->notify();
-        })->timezone(config('app.report_timezone'))->fridays()->at('14:45');
+        })->timezone(config('app.report_timezone'))->when($isLatestWorkingDay)->at('14:45');
 
         $schedule->call(function () {
             $builder = new WeeklyReport;

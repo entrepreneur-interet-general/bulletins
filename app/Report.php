@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Yasumi\Yasumi;
 
 class Report extends Model
 {
@@ -56,6 +57,19 @@ class Report extends Model
         }
 
         return $startOfWeek->format('Y-W');
+    }
+
+    public static function lastWorkingDayOfWeek()
+    {
+        $now = now()->timezone(config('app.report_timezone'));
+        $candidate = $now->startOfWeek()->next(Carbon::FRIDAY);
+
+        try {
+            $country = Yasumi::getProviders()[config('app.report_country_code')];
+            return Yasumi::prevWorkingDay($country, $candidate->addDay());
+        } catch (\Exception $e) {
+            return $candidate;
+        }
     }
 
     public function scopePublished($query)

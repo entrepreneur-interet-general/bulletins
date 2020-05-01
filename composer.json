@@ -27,13 +27,14 @@
     },
     "require":{
         "php": "^7.2.5",
+        "azuyalabs/yasumi": "^2.2",
         "bugsnag/bugsnag-laravel": "^2.0",
         "fideloper/proxy": "^4.0",
+        "fruitcake/laravel-cors": "^1.0",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.2",
         "symfony/yaml": "^4.3",
-        "wrapi/slack": "^1.0",
-        "fruitcake/laravel-cors": "^1.0"
+        "wrapi/slack": "^1.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

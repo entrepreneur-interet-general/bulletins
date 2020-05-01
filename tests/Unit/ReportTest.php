@@ -34,6 +34,34 @@ class ReportTest extends TestCase
         }
     }
 
+    public function testLastWorkingDayOfWeek()
+    {
+
+        $tests = [
+            ['FR', Carbon::create(2019, 3, 3), Carbon::create(2019, 3, 1)],
+            ['FR', Carbon::create(2019, 3, 4), Carbon::create(2019, 3, 8)],
+            ['FR', Carbon::create(2019, 3, 5), Carbon::create(2019, 3, 8)],
+            ['FR', Carbon::create(2019, 3, 6), Carbon::create(2019, 3, 8)],
+            ['FR', Carbon::create(2019, 3, 7), Carbon::create(2019, 3, 8)],
+            ['FR', Carbon::create(2019, 3, 8), Carbon::create(2019, 3, 8)],
+            [null, Carbon::create(2019, 3, 8), Carbon::create(2019, 3, 8)],
+            ['FR', Carbon::create(2019, 3, 9), Carbon::create(2019, 3, 8)],
+            ['FR', Carbon::create(2019, 3, 10), Carbon::create(2019, 3, 8)],
+            ['FR', Carbon::create(2019, 3, 11), Carbon::create(2019, 3, 15)],
+            ['FR', Carbon::create(2020, 4, 30), Carbon::create(2020, 4, 30)],
+            ['FR', Carbon::create(2020, 5, 1), Carbon::create(2020, 4, 30)],
+            ['CA', Carbon::create(2020, 5, 1), Carbon::create(2020, 5, 1)],
+        ];
+
+        foreach ($tests as $test) {
+            [$country, $date, $expected] = $test;
+            Carbon::setTestNow($date);
+            config(['app.report_country_code' => $country]);
+
+            $this->assertEquals($expected, Report::lastWorkingDayOfWeek());
+        }
+    }
+
     public function testlatestPublishedWeek()
     {
         $tests = [

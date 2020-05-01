@@ -238,6 +238,10 @@ return [
     // Use a timezone name from the IANA database like Europe/Paris.
     'report_timezone' => env('REPORT_TIMEZONE', 'UTC'),
 
+    // ISO country code to use to determine bank holidays
+    // Useful to send reminders on the last working day of the week
+    'report_country_code' => env('REPORT_COUNTRY_CODE', null),
+
     // To which email address should weekly reports be sent to.
     // Example: `team@company.com`
     'report_email' => env('REPORT_EMAIL'),
