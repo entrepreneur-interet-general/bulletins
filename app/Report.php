@@ -66,6 +66,7 @@ class Report extends Model
 
         try {
             $country = Yasumi::getProviders()[config('app.report_country_code')];
+
             return Yasumi::prevWorkingDay($country, $candidate->addDay());
         } catch (\Exception $e) {
             return $candidate;

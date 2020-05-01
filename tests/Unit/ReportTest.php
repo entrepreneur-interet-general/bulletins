@@ -36,7 +36,6 @@ class ReportTest extends TestCase
 
     public function testLastWorkingDayOfWeek()
     {
-
         $tests = [
             ['FR', Carbon::create(2019, 3, 3), Carbon::create(2019, 3, 1)],
             ['FR', Carbon::create(2019, 3, 4), Carbon::create(2019, 3, 8)],
