@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $isLatestWorkingDay = function () {
-            $today = now()->timezone(config('app.report_timezone'));
+            $today = now(config('app.report_timezone'));
             $lastWorkingDay = App\Report::lastWorkingDayOfWeek();
 
             return $today->isSameDay($lastWorkingDay);

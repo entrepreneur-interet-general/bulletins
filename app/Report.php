@@ -30,22 +30,10 @@ class Report extends Model
 
     public static function canBeFilled()
     {
-        $now = now()->timezone(config('app.report_timezone'));
-        $dayOfWeek = $now->shortEnglishDayOfWeek;
+        $now = now(config('app.report_timezone'));
+        $target = Carbon::parse('Friday this week 15:05', config('app.report_timezone'));
 
-        if (in_array($dayOfWeek, ['Mon', 'Tue', 'Wed', 'Thu'])) {
-            return true;
-        }
-
-        if ($dayOfWeek === 'Fri' and $now->hour <= 14) {
-            return true;
-        }
-
-        if ($dayOfWeek === 'Fri' and $now->hour == 15 and $now->minute < 5) {
-            return true;
-        }
-
-        return false;
+        return $now < $target;
     }
 
     public static function latestPublishedWeek()
@@ -61,8 +49,8 @@ class Report extends Model
 
     public static function lastWorkingDayOfWeek()
     {
-        $now = now()->timezone(config('app.report_timezone'));
-        $candidate = $now->startOfWeek()->next(Carbon::FRIDAY);
+        $now = now(config('app.report_timezone'));
+        $candidate = Carbon::parse('Friday this week', config('app.report_timezone'));
 
         try {
             $country = Yasumi::getProviders()[config('app.report_country_code')];
