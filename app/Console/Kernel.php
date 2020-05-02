@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Mail\WeeklyReport;
+use App\Report;
 use App\Slack;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -30,7 +31,7 @@ class Kernel extends ConsoleKernel
     {
         $isLatestWorkingDay = function () {
             $today = now(config('app.report_timezone'));
-            $lastWorkingDay = App\Report::lastWorkingDayOfWeek();
+            $lastWorkingDay = Report::lastWorkingDayOfWeek();
 
             return $today->isSameDay($lastWorkingDay);
         };
