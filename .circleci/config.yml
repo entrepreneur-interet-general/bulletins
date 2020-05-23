@@ -26,15 +26,14 @@ jobs:
             - node-v3-
 
       - run:
-          name: Yarn install
+          name: npm install
           command: |
-            yarn install
+            npm install
 
       - save_cache:
           key: node-v3-{{ checksum "package.json" }}
           paths:
             - node_modules
-            - ~/.yarn
 
       - run:
           name: Generate env file
