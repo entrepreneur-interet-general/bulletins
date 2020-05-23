@@ -70,7 +70,9 @@ class ReportsHistoryByProjectTest extends TestCase
     {
         $report = factory(Report::class)->create();
 
-        $this->get(URL::signedRoute('reports.index', $report->project))->assertOk();
+        $this->get(URL::signedRoute('reports.index', $report->project))
+            ->assertOk()
+            ->assertHeader('Referrer-Policy', 'no-referrer');
     }
 
     private function projectNames()
