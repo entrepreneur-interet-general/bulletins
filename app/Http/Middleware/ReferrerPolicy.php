@@ -16,12 +16,12 @@ class ReferrerPolicy
      */
     public function handle($request, Closure $next)
     {
-            $response = $next($request);
+        $response = $next($request);
 
-            if (get_class($response) != StreamedResponse::class) {
-                $response->header('Referrer-Policy', 'no-referrer, strict-origin-when-cross-origin');
-            }
+        if (get_class($response) != StreamedResponse::class) {
+            $response->header('Referrer-Policy', 'no-referrer, strict-origin-when-cross-origin');
+        }
 
-            return $response;
+        return $response;
     }
 }
