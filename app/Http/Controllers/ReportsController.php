@@ -127,7 +127,7 @@ class ReportsController extends Controller
             ['id' => 'Ztw0p2RGR36E0', 'width' => 480, 'height' => 270],
             ['id' => 'SwImQhtiNA7io', 'width' => 480, 'height' => 297],
             ['id' => 'eYilisUwipOEM', 'width' => 480, 'height' => 348],
-            ['id' => 'tQ8uT9t0uK92M', 'width' => 480, 'height' => 270],
+            ['id' => '1136UBdSNn6Bu8', 'width' => 250, 'height' => 163],
         ])->shuffle()->first();
     }
 }
